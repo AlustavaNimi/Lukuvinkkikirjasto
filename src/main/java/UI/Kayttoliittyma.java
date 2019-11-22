@@ -78,6 +78,7 @@ public class Kayttoliittyma {
         }
         Kirja kirja = new Kirja(otsikko,kirjailija,ISBN,kuvaus,julkaisuVuosi,kurssi);
         lukuvinkit.lisaa(kirja);
+        System.out.println("Uusi lukuvinkki lisätty");
     }
 
     private void lisaaOtsikolla() { // Riittää antaa pelkkä otsikko
@@ -85,6 +86,7 @@ public class Kayttoliittyma {
         String otsikko = lukija.nextLine();
         Kirja kirja = new Kirja(otsikko,"","","",0,"");
         lukuvinkit.lisaa(kirja);
+        System.out.println("Uusi lukuvinkki lisätty");
     }
 
 

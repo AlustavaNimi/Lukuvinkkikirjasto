@@ -50,7 +50,20 @@ public class Lukuvinkki {
     public void setJulkaisuVuosi(int julkaisuVuosi) {
         this.julkaisuVuosi = julkaisuVuosi;
     }
+
+    @Override
+    public String toString() {
+        String tuloste = "";
+        tuloste += "Otsikko: " + this.getOtsikko();
+        tuloste += "\njulkaisuVuosi: " + this.getJulkaisuVuosi();
+        tuloste += "\nRelated Courses: " + this.getKurssi();
+        tuloste += "\nTagit: ";
+        for (String tagi: tagit) {
+            tuloste += tagi + " ";
+        }
+        return tuloste;
+    }
      
-     
+    
     
 }
