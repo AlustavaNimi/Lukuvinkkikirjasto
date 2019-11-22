@@ -11,11 +11,11 @@ public class Lukuvinkki {
      private int julkaisuVuosi;
 
     public Lukuvinkki(String otsikko, String kuvaus, String kurssi, int julkaisuVuosi) {
-        this.otsikko = otsikko;
-        this.kuvaus = kuvaus;
-        this.kurssi = kurssi;
-        this.julkaisuVuosi = julkaisuVuosi;
-        tagit = new ArrayList<>();
+        alusta(otsikko, kuvaus, kurssi, julkaisuVuosi);
+    }
+    
+    public Lukuvinkki(String otsikko) {
+        alusta(otsikko,"","",0);
     }
      
     
@@ -62,6 +62,14 @@ public class Lukuvinkki {
             tuloste += tagi + " ";
         }
         return tuloste;
+    }
+
+    private void alusta(String otsikko, String kuvaus, String kurssi, int julkaisuVuosi) {
+        this.otsikko = otsikko;
+        this.kuvaus = kuvaus;
+        this.kurssi = kurssi;
+        this.julkaisuVuosi = julkaisuVuosi;
+        tagit = new ArrayList<>();
     }
      
     
