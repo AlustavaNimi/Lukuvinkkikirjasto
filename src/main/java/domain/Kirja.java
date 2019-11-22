@@ -13,6 +13,13 @@ public class Kirja extends Lukuvinkki{
         this.kirjailija = kirjailija;
         this.ISBN = ISBN;
     }
+    
+    public Kirja(String otsikko) {
+        super(otsikko);
+        this.kirjailija = "";
+        this.ISBN = "";
+    }
+    
 
     public String getKirjailija() {
         return kirjailija;
