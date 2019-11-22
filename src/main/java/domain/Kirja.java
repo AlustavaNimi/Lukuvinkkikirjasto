@@ -69,6 +69,22 @@ public class Kirja {
     public void setKurssi(String kurssi) {
         this.kurssi = kurssi;
     }
+
+    @Override
+    public String toString() {
+        String tuloste = "";
+        tuloste += "Otsikko: " + otsikko;
+        tuloste += "\nKirjoittaja " + kirjailija;
+        tuloste += "\nTyyppi: Kirja";
+        tuloste += "\nISBN: " + ISBN;
+        tuloste += "\njulkaisuVuosi: " + julkaisuVuosi;
+        tuloste += "\nRelated Courses: " + kurssi;
+        tuloste += "\nTagit: ";
+        for (String tagi: tagit) {
+            tuloste += tagi + " ";
+        }
+        return tuloste;
+    }
     
     
     

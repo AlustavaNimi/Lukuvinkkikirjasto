@@ -1,7 +1,16 @@
 
-public class Sovellus {
-    public static void main(String[] args) {
+import UI.Kayttoliittyma;
+import java.util.Scanner;
 
-        System.out.println("Hello World");
+
+public class Sovellus {
+    
+    public static void main(String[] args) {
+        
+        Scanner lukija = new Scanner(System.in);
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
+        kayttoliittyma.run();
+        
+
     }
 }
