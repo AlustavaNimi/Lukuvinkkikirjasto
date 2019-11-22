@@ -3,31 +3,15 @@ package domain;
 
 import java.util.ArrayList;
 
-public class Kirja {
+public class Kirja extends Lukuvinkki{
     
-    private String otsikko;
     private String kirjailija;
     private String ISBN;
-    private String kuvaus;
-    private int julkaisuVuosi;
-    private String kurssi;
-    private ArrayList<String> tagit = new ArrayList<>();
 
     public Kirja(String otsikko, String kirjailija, String ISBN, String kuvaus, int julkaisuVuosi, String kurssi) {
-        this.otsikko = otsikko;
+        super(otsikko,kuvaus,kurssi,julkaisuVuosi);
         this.kirjailija = kirjailija;
         this.ISBN = ISBN;
-        this.kuvaus = kuvaus;
-        this.julkaisuVuosi = julkaisuVuosi;
-        this.kurssi = kurssi;
-    }
-    
-    public String getOtsikko() {
-        return otsikko;
-    }
-
-    public void setOtsikko(String otsikko) {
-        this.otsikko = otsikko;
     }
 
     public String getKirjailija() {
@@ -46,43 +30,20 @@ public class Kirja {
         this.ISBN = ISBN;
     }
 
-    public String getKuvaus() {
-        return kuvaus;
-    }
-
-    public void setKuvaus(String kuvaus) {
-        this.kuvaus = kuvaus;
-    }
-
-    public int getJulkaisuVuosi() {
-        return julkaisuVuosi;
-    }
-
-    public void setJulkaisuVuosi(int julkaisuVuosi) {
-        this.julkaisuVuosi = julkaisuVuosi;
-    }
-
-    public String getKurssi() {
-        return kurssi;
-    }
-
-    public void setKurssi(String kurssi) {
-        this.kurssi = kurssi;
-    }
 
     @Override
     public String toString() {
         String tuloste = "";
-        tuloste += "Otsikko: " + otsikko;
-        tuloste += "\nKirjoittaja: " + kirjailija;
+        tuloste += "Otsikko: " + this.getOtsikko();
+        tuloste += "\nKirjoittaja: " + this.getKirjailija();
         tuloste += "\nTyyppi: Kirja";
         tuloste += "\nISBN: " + ISBN;
-        tuloste += "\njulkaisuVuosi: " + julkaisuVuosi;
-        tuloste += "\nRelated Courses: " + kurssi;
+        tuloste += "\njulkaisuVuosi: " + this.getJulkaisuVuosi();
+        tuloste += "\nRelated Courses: " + this.getKurssi();
         tuloste += "\nTagit: ";
-        for (String tagi: tagit) {
-            tuloste += tagi + " ";
-        }
+//        for (String tagi: tagit) {
+//            tuloste += tagi + " ";
+//        }
         return tuloste;
     }
        
