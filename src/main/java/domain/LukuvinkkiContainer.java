@@ -3,7 +3,7 @@ package domain;
 
 import java.util.ArrayList;
 
-public class LukuvinkkiContainer {
+public class LukuvinkkiContainer { // Luokka korvattu FakeTietokanta luokalla
     private ArrayList<Kirja> lukuvinkit = new ArrayList<>();
     
     public void lisaaLukuvinkki(Kirja kirja) {

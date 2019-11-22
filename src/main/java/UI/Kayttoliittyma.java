@@ -1,5 +1,7 @@
 package UI;
 
+import database.FakeTietokanta;
+import database.Tietokanta;
 import domain.Kirja;
 import domain.LukuvinkkiContainer;
 import java.util.Scanner;
@@ -7,7 +9,7 @@ import java.util.Scanner;
 public class Kayttoliittyma {
     
     private Scanner lukija;
-    LukuvinkkiContainer lukuvinkit = new LukuvinkkiContainer();
+    Tietokanta lukuvinkit = new FakeTietokanta();
 
     public Kayttoliittyma(Scanner lukija) {
         this.lukija = lukija;
@@ -46,7 +48,10 @@ public class Kayttoliittyma {
     }
     
     private void selaa() {
-        lukuvinkit.selaaLukuvinkit();
+        for (Kirja kirja : lukuvinkit.haeLukuvinkit()) {
+            System.out.println(kirja);
+            System.out.println("");
+        }
     }
 
     private void lisaa() {
@@ -72,14 +77,14 @@ public class Kayttoliittyma {
             }
         }
         Kirja kirja = new Kirja(otsikko,kirjailija,ISBN,kuvaus,julkaisuVuosi,kurssi);
-        lukuvinkit.lisaaLukuvinkki(kirja);
+        lukuvinkit.lisaa(kirja);
     }
 
     private void lisaaOtsikolla() { // Riittää antaa pelkkä otsikko
         System.out.println("Anna kirjalle Otsikko: ");
         String otsikko = lukija.nextLine();
         Kirja kirja = new Kirja(otsikko,"","","",0,"");
-        lukuvinkit.lisaaLukuvinkki(kirja);
+        lukuvinkit.lisaa(kirja);
     }
 
 
