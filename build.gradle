@@ -8,6 +8,10 @@
 
 
 // Apply the java plugin to add support for Java
+plugins {
+    id 'checkstyle'
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
 
