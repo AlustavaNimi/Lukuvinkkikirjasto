@@ -51,7 +51,7 @@ public class Kayttoliittyma {
 
     private void lisaa() {
         String otsikko,kirjailija,ISBN,kuvaus,kurssi;
-        int julkaisuVuosi;
+        int julkaisuVuosi = -1;
         System.out.println("Anna kirjalle Otsikko: ");
         otsikko = lukija.nextLine();
         System.out.println("Anna kirjalle kirjoittaja: ");
@@ -62,8 +62,15 @@ public class Kayttoliittyma {
         kuvaus = lukija.nextLine();
         System.out.println("Anna kirjalle kurssi");
         kurssi = lukija.nextLine();
-        System.out.println("Anna kirjalle julkaisuvuosi");
-        julkaisuVuosi = Integer.parseInt(lukija.nextLine());
+        while (julkaisuVuosi == -1) {
+            System.out.println("Anna kirjalle julkaisuvuosi");
+            String syote = lukija.nextLine();
+            try {
+                julkaisuVuosi = Integer.parseInt(syote);
+            } catch (NumberFormatException e) {
+                System.out.println("Virheellinen julkaisuvuosi");
+            }
+        }
         Kirja kirja = new Kirja(otsikko,kirjailija,ISBN,kuvaus,julkaisuVuosi,kurssi);
         lukuvinkit.lisaaLukuvinkki(kirja);
     }
