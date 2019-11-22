@@ -23,6 +23,8 @@ public class Kayttoliittyma {
         while(!syote.equals("Lopeta")) {
             if (syote.equals("Lisaa")) {
                 lisaa();
+            } else if (syote.equals("Lisaa Otsikolla")) {
+                lisaaOtsikolla();
             } else if (syote.equals("Selaa")) {
                 selaa();
             } else {
@@ -37,6 +39,7 @@ public class Kayttoliittyma {
         System.out.println("");
         System.out.println("Käytettävissä olevat komennot:");
         System.out.println("Lisaa");
+        System.out.println("Lisaa Otsikolla");
         System.out.println("Selaa");
         System.out.println("Lopeta");
         System.out.println("");
@@ -47,11 +50,7 @@ public class Kayttoliittyma {
     }
 
     private void lisaa() {
-        String otsikko;
-        String kirjailija;
-        String ISBN;
-        String kuvaus;
-        String kurssi;
+        String otsikko,kirjailija,ISBN,kuvaus,kurssi;
         int julkaisuVuosi;
         System.out.println("Anna kirjalle Otsikko: ");
         otsikko = lukija.nextLine();
@@ -66,6 +65,13 @@ public class Kayttoliittyma {
         System.out.println("Anna kirjalle julkaisuvuosi");
         julkaisuVuosi = Integer.parseInt(lukija.nextLine());
         Kirja kirja = new Kirja(otsikko,kirjailija,ISBN,kuvaus,julkaisuVuosi,kurssi);
+        lukuvinkit.lisaaLukuvinkki(kirja);
+    }
+
+    private void lisaaOtsikolla() { // Riittää antaa pelkkä otsikko
+        System.out.println("Anna kirjalle Otsikko: ");
+        String otsikko = lukija.nextLine();
+        Kirja kirja = new Kirja(otsikko,"","","",0,"");
         lukuvinkit.lisaaLukuvinkki(kirja);
     }
 

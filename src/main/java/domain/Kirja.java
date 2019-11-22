@@ -74,7 +74,7 @@ public class Kirja {
     public String toString() {
         String tuloste = "";
         tuloste += "Otsikko: " + otsikko;
-        tuloste += "\nKirjoittaja " + kirjailija;
+        tuloste += "\nKirjoittaja: " + kirjailija;
         tuloste += "\nTyyppi: Kirja";
         tuloste += "\nISBN: " + ISBN;
         tuloste += "\njulkaisuVuosi: " + julkaisuVuosi;
@@ -85,7 +85,5 @@ public class Kirja {
         }
         return tuloste;
     }
-    
-    
-    
+       
 }
