@@ -12,4 +12,4 @@ import org.junit.runner.RunWith;
     snippets = SnippetType.CAMELCASE
 )
 
-public class RunCucumberTest {}t {}
+public class RunCucumberTest {}
