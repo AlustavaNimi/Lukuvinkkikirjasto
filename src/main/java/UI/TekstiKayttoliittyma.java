@@ -22,12 +22,13 @@ public class TekstiKayttoliittyma implements Kayttoliittyma{
         tulostaKomennot();
         
         String syote = lukija.nextLine();
-        while(!syote.equals("Lopeta")) {
-            if (syote.equals("Lisaa")) {
+        
+        while(!syote.toLowerCase().equals("lopeta")) {
+            if (syote.toLowerCase().equals("lisaa")) {
                 lisaa();
-            } else if (syote.equals("Lisaa Otsikolla")) {
+            } else if (syote.toLowerCase().equals("lisaa otsikolla")) {
                 lisaaOtsikolla();
-            } else if (syote.equals("Selaa")) {
+            } else if (syote.toLowerCase().equals("selaa")) {
                 selaa();
             } else {
                 System.out.println("Tuntematon komento");
