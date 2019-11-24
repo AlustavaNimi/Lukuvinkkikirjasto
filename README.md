@@ -18,9 +18,9 @@
 - Yhtenäinen koodityyli varmistettu Checkstylen avulla
 
 ### Sprint 1
-#### User story: Asiakas pystyy lisäämään uusia (kirja)vinkkejä
+#### User story: _As a user, I want to be able to add book suggestions to my reading list_
 [Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature)
-#### User story: Vinkeillä on listausominaisuus
+#### User story: _As a user, I want to be able to view my reading list to see what it contains_
 - Tähän tulee linkki .feature-tiedostoon
 
 ## Asennus- ja käyttöohjeet
