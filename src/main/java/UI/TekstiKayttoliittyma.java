@@ -1,6 +1,7 @@
 package UI;
 
 import database.FakeTietokanta;
+import database.KirjaDao;
 import database.Tietokanta;
 import domain.Kirja;
 import domain.LukuvinkkiContainer;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 public class TekstiKayttoliittyma implements Kayttoliittyma{
     
     private Scanner lukija;
-    Tietokanta lukuvinkit = new FakeTietokanta();
+    Tietokanta lukuvinkit = new KirjaDao("jdbc:sqlite:kirjat.db");
 
     public TekstiKayttoliittyma(Scanner lukija) {
         this.lukija = lukija;
