@@ -24,4 +24,14 @@
 - Tähän tulee linkki .feature-tiedostoon
 
 ## Asennus- ja käyttöohjeet
-	tulossa
+Työpöytäkoneella pitää olla Java ja Gradle asennettuna.
+
+Kloonaa projekti työpöytäkoneelle komennolla
+
+	git clone git@github.com:AlustavaNimi/Lukuvinkkikirjasto.git
+
+Aja sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla
+
+	gradle run
+
+Sovelluksessa on tekstikäyttöliittymä ja sovellukseen voi lisätä kirjavinkkejä sekä selata niitä. Sovellus ilmoittaa käytettävissä olevat komennot ajon aikana.
