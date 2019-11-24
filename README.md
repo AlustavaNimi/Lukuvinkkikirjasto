@@ -17,7 +17,7 @@
 - Yksikkötestit läpäisty
 - Yhtenäinen koodityyli varmistettu Checkstylen avulla
 
-### Sprint 0
+### Sprint 1
 #### User story: Asiakas pystyy lisäämään uusia (kirja)vinkkejä
 [Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature)
 #### User story: Vinkeillä on listausominaisuus
