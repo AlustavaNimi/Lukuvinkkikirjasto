@@ -5,12 +5,12 @@
 - Koodin tarkistaa ja arvioi vähintään yksi toinen tiimiläinen (myös ylläpidettävyyden osalta, mm. nimeämiskäytäntö on yhtenäinen)
 - Selkeä ja perusteltu arkkitehtuuri
 - Hyväksymiskriteerit täyttyvät ts. Cucumber-testit läpäisty (alla määritelty)
-- Sprintin user storeihin liittyvien testien rivikattavuus on vähintään 75%
+- Sprintin user storyihin liittyvien testien rivikattavuus on vähintään 75%
 - Yksikkötestit läpäisty
 - Yhtenäinen koodityyli varmistettu Checkstylen avulla
 
 ## Sprint 0
 ### User story: Asiakas pystyy lisäämään uusia (kirja)vinkkejä
-- Tähän tulee linkki .feature-tiedostoon
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature)
 ### User story: Vinkeillä on listausominaisuus
 - Tähän tulee linkki .feature-tiedostoon
