@@ -6,4 +6,4 @@
 
 [Sprint backlog](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/projects/1)
 
-[Definition of done](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/README.md)
+[Definition of done](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/DEFINITIONOFDONE.md)
