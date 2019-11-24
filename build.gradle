@@ -1,4 +1,6 @@
 apply plugin: 'java'
+apply plugin: 'application'
+
 
 project.ext {
     cucumberVersion = '4.7.4'
@@ -8,11 +10,31 @@ project.ext {
 dependencies {
     testCompile 'io.cucumber:cucumber-java:' + cucumberVersion
     testCompile 'io.cucumber:cucumber-junit:' + cucumberVersion
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.8.11'
     testCompile 'junit:junit:' + junitVersion
 }
 
 repositories {
     mavenCentral()
+}
+
+mainClassName = 'Sovellus'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Sovellus'
+    }
+}
+
+apply plugin: "jacoco" 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
+}
+run {
+    standardInput = System.in
 }
 
 test {
