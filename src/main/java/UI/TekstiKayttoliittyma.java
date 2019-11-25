@@ -17,7 +17,7 @@ public class TekstiKayttoliittyma implements Kayttoliittyma{
     }
    
     public void run() {
-        System.out.println("Tervetuloa Lukuvinkisovellukseen!");
+        System.out.println("Tervetuloa Lukuvinkkisovellukseen!");
         
         Scanner lukija = new Scanner(System.in);
         tulostaKomennot();
@@ -43,7 +43,7 @@ public class TekstiKayttoliittyma implements Kayttoliittyma{
         System.out.println("");
         System.out.println("Käytettävissä olevat komennot:");
         System.out.println("Lisaa");
-        System.out.println("Lisaa Otsikolla");
+        System.out.println("Lisaa otsikolla");
         System.out.println("Selaa");
         System.out.println("Lopeta");
         System.out.println("");
@@ -59,7 +59,7 @@ public class TekstiKayttoliittyma implements Kayttoliittyma{
     public void lisaa() {
         String otsikko,kirjailija,ISBN,kuvaus,kurssi;
         int julkaisuVuosi = -1;
-        System.out.println("Anna kirjalle Otsikko: ");
+        System.out.println("Anna kirjalle otsikko: ");
         otsikko = lukija.nextLine();
         System.out.println("Anna kirjalle kirjoittaja: ");
         kirjailija = lukija.nextLine();
