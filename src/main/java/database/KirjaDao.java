@@ -10,27 +10,26 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class KirjaDao implements Tietokanta {
+
     private String tietokantaOsoite;
 
     public KirjaDao(String tietokantaOsoite) {
         this.tietokantaOsoite = tietokantaOsoite;
         luoTaulu();
     }
-    
+
     private void luoTaulu() {
-        try {
-            String sql = "CREATE TABLE IF NOT EXISTS kirja (" +
-                         "id integer PRIMARY KEY, " +
-                         "kirjoittaja VARCHAR(255), " +
-                         "otsikko VARCHAR(255), " +
-                         "kurssi VARCHAR(255), " +
-                         "kuvaus VARCHAR(255), " +
-                         "julkaisuvuosi integer, " +
-                         "isbn VARCHAR(255));";
-            Connection conn = DriverManager.getConnection(tietokantaOsoite);
+        try (Connection conn = luoTietokantaYhteys()) {
+            String sql = "CREATE TABLE IF NOT EXISTS kirja ("
+                    + "id integer PRIMARY KEY, "
+                    + "kirjoittaja VARCHAR(255), "
+                    + "otsikko VARCHAR(255), "
+                    + "kurssi VARCHAR(255), "
+                    + "kuvaus VARCHAR(255), "
+                    + "julkaisuvuosi integer, "
+                    + "isbn VARCHAR(255));";
             Statement stmt = conn.createStatement();
             stmt.execute(sql);
-            conn.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -38,10 +37,9 @@ public class KirjaDao implements Tietokanta {
 
     @Override
     public void lisaa(Kirja kirja) {
-        try {
-            String sql = "INSERT INTO kirja (kirjoittaja, otsikko, kurssi," +
-                         "kuvaus, julkaisuvuosi, isbn) values (?, ?, ?, ?, ?, ?)";
-            Connection conn = DriverManager.getConnection(tietokantaOsoite);
+        try (Connection conn = luoTietokantaYhteys()) {
+            String sql = "INSERT INTO kirja (kirjoittaja, otsikko, kurssi,"
+                    + "kuvaus, julkaisuvuosi, isbn) values (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, kirja.getKirjailija());
             stmt.setString(2, kirja.getOtsikko());
@@ -50,7 +48,6 @@ public class KirjaDao implements Tietokanta {
             stmt.setInt(5, kirja.getJulkaisuVuosi());
             stmt.setString(6, kirja.getISBN());
             stmt.execute();
-            conn.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -58,26 +55,36 @@ public class KirjaDao implements Tietokanta {
 
     @Override
     public ArrayList<Kirja> haeLukuvinkit() {
-        try {
-            Connection conn = DriverManager.getConnection(tietokantaOsoite);
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM kirja");
-            ArrayList<Kirja> kirjat = new ArrayList<>();
+        ArrayList<Kirja> kirjat = new ArrayList<>();
+        try (Connection conn = luoTietokantaYhteys()) {
+            ResultSet result = luoResultSet(conn, "SELECT * FROM kirja");
             while (result.next()) {
-                String kirjailija = result.getString("kirjoittaja");
-                String otsikko = result.getString("otsikko");
-                String kurssi = result.getString("kurssi");
-                String kuvaus = result.getString("kuvaus");
-                int julkaisuvuosi = result.getInt("julkaisuvuosi");
-                String isbn = result.getString("isbn");
-                Kirja kirja = new Kirja(otsikko, kirjailija, isbn, kuvaus, julkaisuvuosi, kurssi);
-                kirjat.add(kirja);
+                lisaaLukuvinkkiResultSetista(result,kirjat);
             }
-            conn.close();
-            return kirjat;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return new ArrayList<>();
         }
+        return kirjat;
+    }
+
+    private Connection luoTietokantaYhteys() throws SQLException {
+        return DriverManager.getConnection(tietokantaOsoite);
+    }
+    
+
+    private void lisaaLukuvinkkiResultSetista(ResultSet result, ArrayList<Kirja> kirjat) throws SQLException {
+        String kirjailija = result.getString("kirjoittaja");
+        String otsikko = result.getString("otsikko");
+        String kurssi = result.getString("kurssi");
+        String kuvaus = result.getString("kuvaus");
+        int julkaisuvuosi = result.getInt("julkaisuvuosi");
+        String isbn = result.getString("isbn");
+        Kirja kirja = new Kirja(otsikko, kirjailija, isbn, kuvaus, julkaisuvuosi, kurssi);
+        kirjat.add(kirja);
+    }
+
+    private ResultSet luoResultSet(Connection conn, String query) throws SQLException {
+        Statement stmt = conn.createStatement();
+        return stmt.executeQuery(query);
     }
 }
