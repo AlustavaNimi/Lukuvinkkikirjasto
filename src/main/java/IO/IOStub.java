@@ -1,11 +1,12 @@
 package IO;
 
+import domain.Kirja;
 import java.util.ArrayList;
 
 public class IOStub implements IO {
     int current = 0;
-    ArrayList<String> inputs = new ArrayList<>();
-    ArrayList<String> outputs = new ArrayList<>();
+    public ArrayList<String> inputs = new ArrayList<>();
+    public ArrayList<String> outputs = new ArrayList<>();
 
     @Override
     public String nextLine() {
