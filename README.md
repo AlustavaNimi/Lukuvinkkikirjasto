@@ -1,5 +1,7 @@
 # Lukuvinkkikirjasto
 
+[![codecov](https://codecov.io/gh/AlustavaNimi/Lukuvinkkikirjasto/branch/master/graph/badge.svg)](https://codecov.io/gh/AlustavaNimi/Lukuvinkkikirjasto)
+
 [![CircleCI](https://circleci.com/gh/AlustavaNimi/Lukuvinkkikirjasto.svg?style=svg)](https://circleci.com/gh/AlustavaNimi/Lukuvinkkikirjasto)
 
 [Product backlog](https://docs.google.com/spreadsheets/d/1rBtfdbz3aD68T5sgYHyLOhiQsKZAhYVsElXckrt0-YY/edit?usp=sharing)
