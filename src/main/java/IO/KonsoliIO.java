@@ -23,5 +23,10 @@ public class KonsoliIO implements IO {
     public void print(String output) {
         System.out.println(output);
     }
+
+    @Override
+    public void print(Object object) {
+        System.out.println(object);
+    }
     
 }
