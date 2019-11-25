@@ -89,7 +89,6 @@ public class LukuvinkkiTest {
                     + "\nTagit: ";
             
             assertEquals(l.toString(), teksti);
-
     }
 
 }
