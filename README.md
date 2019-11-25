@@ -14,8 +14,8 @@
 - User storyjen ominaisuudet koodattu valmiiksi
 - Koodin tarkistaa ja arvioi vähintään yksi toinen tiimiläinen (myös ylläpidettävyyden osalta, mm. nimeämiskäytäntö on yhtenäinen)
 - Selkeä ja perusteltu arkkitehtuuri
+- Toteutetun koodin testikattavuuden tulee olla kohtuullinen (otetaan alkuun 50% rivikattavuus muiden paitsi triviaalin koodin, kuten gettereiden/settereiden osalta ja sovitaan seuraavan 2. sprintin suunnittelussa tarkemmin)
 - Hyväksymiskriteerit täyttyvät ts. Cucumber-testit läpäisty (alla määritelty)
-- Sprintin user storyihin liittyvien testien rivikattavuus on vähintään 75%
 - Yksikkötestit läpäisty
 - Yhtenäinen koodityyli varmistettu Checkstylen avulla
 
