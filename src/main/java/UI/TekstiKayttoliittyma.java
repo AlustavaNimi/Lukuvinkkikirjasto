@@ -1,5 +1,6 @@
 package UI;
 
+import IO.IO;
 import database.FakeTietokanta;
 import database.KirjaDao;
 import database.Tietokanta;
@@ -9,20 +10,19 @@ import java.util.Scanner;
 
 public class TekstiKayttoliittyma implements Kayttoliittyma{
     
-    private Scanner lukija;
+    IO io;
     Tietokanta lukuvinkit = new KirjaDao("jdbc:sqlite:kirjat.db");
 
-    public TekstiKayttoliittyma(Scanner lukija) {
-        this.lukija = lukija;
+    public TekstiKayttoliittyma(IO io) {
+        this.io = io;
     }
    
     public void run() {
-        System.out.println("Tervetuloa Lukuvinkkisovellukseen!");
+        io.print("Tervetuloa Lukuvinkkisovellukseen!");
         
-        Scanner lukija = new Scanner(System.in);
         tulostaKomennot();
         
-        String syote = lukija.nextLine();
+        String syote = io.nextLine();
         
         while(!syote.toLowerCase().equals("lopeta")) {
             if (syote.toLowerCase().equals("lisaa")) {
@@ -32,64 +32,64 @@ public class TekstiKayttoliittyma implements Kayttoliittyma{
             } else if (syote.toLowerCase().equals("selaa")) {
                 selaa();
             } else {
-                System.out.println("Tuntematon komento");
+                io.print("Tuntematon komento");
             }
             tulostaKomennot();
-            syote = lukija.nextLine();
+            syote = io.nextLine();
         }
     }
     
     private void tulostaKomennot() {
-        System.out.println("");
-        System.out.println("Käytettävissä olevat komennot:");
-        System.out.println("Lisaa");
-        System.out.println("Lisaa otsikolla");
-        System.out.println("Selaa");
-        System.out.println("Lopeta");
-        System.out.println("");
+        io.print("");
+        io.print("Käytettävissä olevat komennot:");
+        io.print("Lisaa");
+        io.print("Lisaa otsikolla");
+        io.print("Selaa");
+        io.print("Lopeta");
+        io.print("");
     }
     
     public void selaa() {
         for (Kirja kirja : lukuvinkit.haeLukuvinkit()) {
-            System.out.println(kirja);
-            System.out.println("");
+            io.print(kirja);
+            io.print("");
         }
     }
 
     public void lisaa() {
         String otsikko,kirjailija,ISBN,kuvaus,kurssi;
         int julkaisuVuosi = -1;
-        System.out.println("Anna kirjalle otsikko: ");
-        otsikko = lukija.nextLine();
-        System.out.println("Anna kirjalle kirjoittaja: ");
-        kirjailija = lukija.nextLine();
-        System.out.println("Anna kirjalle ISBN:");
-        ISBN = lukija.nextLine();
-        System.out.println("Anna kirjalle kuvaus:");
-        kuvaus = lukija.nextLine();
-        System.out.println("Anna kirjalle kurssi");
-        kurssi = lukija.nextLine();
+        io.print("Anna kirjalle otsikko: ");
+        otsikko = io.nextLine();
+        io.print("Anna kirjalle kirjoittaja: ");
+        kirjailija = io.nextLine();
+        io.print("Anna kirjalle ISBN:");
+        ISBN = io.nextLine();
+        io.print("Anna kirjalle kuvaus:");
+        kuvaus = io.nextLine();
+        io.print("Anna kirjalle kurssi");
+        kurssi = io.nextLine();
         while (julkaisuVuosi == -1) {
-            System.out.println("Anna kirjalle julkaisuvuosi");
-            String syote = lukija.nextLine();
+            io.print("Anna kirjalle julkaisuvuosi");
+            String syote = io.nextLine();
             try {
                 julkaisuVuosi = Integer.parseInt(syote);
             } catch (NumberFormatException e) {
-                System.out.println("Virheellinen julkaisuvuosi");
+                io.print("Virheellinen julkaisuvuosi");
             }
         }
         Kirja kirja = new Kirja(otsikko,kirjailija,ISBN,kuvaus,julkaisuVuosi,kurssi);
         lukuvinkit.lisaa(kirja);
-        System.out.println("Uusi lukuvinkki lisätty");
+        io.print("Uusi lukuvinkki lisätty");
     }
 
     public void lisaaOtsikolla() { // Riittää antaa pelkkä otsikko
-        System.out.println("Anna kirjalle Otsikko: ");
-        String otsikko = lukija.nextLine();
+        io.print("Anna kirjalle Otsikko: ");
+        String otsikko = io.nextLine();
         Kirja kirja = new Kirja(otsikko);
         //Kirja kirja = new Kirja(otsikko,"","","",0,"");
         lukuvinkit.lisaa(kirja);
-        System.out.println("Uusi lukuvinkki lisätty");
+        io.print("Uusi lukuvinkki lisätty");
     }
 
 

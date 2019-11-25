@@ -1,4 +1,5 @@
 
+import IO.KonsoliIO;
 import UI.Kayttoliittyma;
 import UI.TekstiKayttoliittyma;
 import java.util.Scanner;
@@ -6,9 +7,8 @@ import java.util.Scanner;
 
 public class Sovellus {
     
-    public static void main(String[] args) {       
-        Scanner lukija = new Scanner(System.in);
-        Kayttoliittyma kayttoliittyma = new TekstiKayttoliittyma(lukija);
+    public static void main(String[] args) {
+        Kayttoliittyma kayttoliittyma = new TekstiKayttoliittyma(new KonsoliIO());
         kayttoliittyma.run();
     }
 }
