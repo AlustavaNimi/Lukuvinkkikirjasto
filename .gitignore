@@ -1,7 +1,7 @@
 *.tmp
 build/
 .gradle/
-/nbproject/
+nbproject/
 
 /.nb-gradle/
 *.db
