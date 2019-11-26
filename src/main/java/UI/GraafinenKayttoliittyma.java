@@ -56,6 +56,7 @@ public class GraafinenKayttoliittyma extends JPanel implements Kayttoliittyma, A
             kirjat += kirja + "\n\n";
         }
         output.setText(kirjat);
+        input.setText("");
 
     }
 
