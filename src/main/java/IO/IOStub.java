@@ -1,11 +1,13 @@
 package IO;
 
+import domain.Kirja;
 import java.util.ArrayList;
+import java.util.List;
 
 public class IOStub implements IO {
     int current = 0;
-    ArrayList<String> inputs = new ArrayList<>();
-    ArrayList<String> outputs = new ArrayList<>();
+    public ArrayList<String> inputs = new ArrayList<>();
+    public ArrayList<String> outputs = new ArrayList<>();
 
     @Override
     public String nextLine() {
@@ -25,5 +27,13 @@ public class IOStub implements IO {
     @Override
     public void print(Object object) {
         outputs.add(object.toString());
+    }
+    
+    public void setInputs(ArrayList<String> values) {
+        inputs = values;
+    }
+    
+    public ArrayList<String> getOutputs() {
+        return outputs;
     }
 }

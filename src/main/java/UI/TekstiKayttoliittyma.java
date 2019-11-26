@@ -11,10 +11,11 @@ import java.util.Scanner;
 public class TekstiKayttoliittyma implements Kayttoliittyma{
     
     IO io;
-    Tietokanta lukuvinkit = new KirjaDao("jdbc:sqlite:kirjat.db");
+    Tietokanta lukuvinkit;
 
-    public TekstiKayttoliittyma(IO io) {
+    public TekstiKayttoliittyma(IO io, Tietokanta lukuvinkit) {
         this.io = io;
+        this.lukuvinkit = lukuvinkit;
     }
    
     public void run() {

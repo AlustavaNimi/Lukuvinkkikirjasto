@@ -1,8 +1,9 @@
-
 import IO.KonsoliIO;
 import UI.GraafinenKayttoliittyma;
 import UI.Kayttoliittyma;
 import UI.TekstiKayttoliittyma;
+import database.KirjaDao;
+import database.Tietokanta;
 import java.util.Scanner;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -22,13 +23,14 @@ public class Sovellus extends Application{
     }
 
     public static void main(String[] args) {
-        boolean graafinen = true;
+        boolean graafinen = false;
         //cubbli-linuxilla anna komentorivillä komento
         //export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
         if(graafinen) {
             launch(args);
         } else {
-            Kayttoliittyma kayttoliittyma = new TekstiKayttoliittyma(new KonsoliIO());
+            Tietokanta lukuvinkit = new KirjaDao("jdbc:sqlite:kirjat.db");
+            Kayttoliittyma kayttoliittyma = new TekstiKayttoliittyma(new KonsoliIO(), lukuvinkit);
             kayttoliittyma.run();
         }
     }
