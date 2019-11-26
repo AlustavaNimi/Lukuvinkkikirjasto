@@ -2,6 +2,7 @@ package IO;
 
 import domain.Kirja;
 import java.util.ArrayList;
+import java.util.List;
 
 public class IOStub implements IO {
     int current = 0;
@@ -26,5 +27,13 @@ public class IOStub implements IO {
     @Override
     public void print(Object object) {
         outputs.add(object.toString());
+    }
+    
+    public void setInputs(ArrayList<String> values) {
+        inputs = values;
+    }
+    
+    public ArrayList<String> getOutputs() {
+        return outputs;
     }
 }
