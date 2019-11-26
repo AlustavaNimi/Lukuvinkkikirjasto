@@ -87,4 +87,21 @@ public class KirjaDao implements Tietokanta {
         Statement stmt = conn.createStatement();
         return stmt.executeQuery(query);
     }
+
+    private void luoTaulut() {
+        try (Connection conn = luoTietokantaYhteys()) {
+            String sql = "CREATE TABLE IF NOT EXISTS kirja ("
+                    + "id integer PRIMARY KEY, "
+                    + "kirjoittaja VARCHAR(255), "
+                    + "otsikko VARCHAR(255), "
+                    + "kurssi VARCHAR(255), "
+                    + "kuvaus VARCHAR(255), "
+                    + "julkaisuvuosi integer, "
+                    + "isbn VARCHAR(255));";
+            Statement stmt = conn.createStatement();
+            stmt.execute(sql);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

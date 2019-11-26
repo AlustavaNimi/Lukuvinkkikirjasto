@@ -17,7 +17,6 @@ public class Lukuvinkki {
     public Lukuvinkki(String otsikko) {
         alusta(otsikko,"","",0);
     }
-     
     
     public String getOtsikko() {
         return otsikko;
