@@ -16,6 +16,7 @@ public class KirjaDao implements Tietokanta {
     public KirjaDao(String tietokantaOsoite) {
         this.tietokantaOsoite = tietokantaOsoite;
         luoTaulu();
+        luoTaulut();
     }
 
     private void luoTaulu() {
@@ -88,16 +89,42 @@ public class KirjaDao implements Tietokanta {
         return stmt.executeQuery(query);
     }
 
-    private void luoTaulut() {
+    private void luoTaulut() { // Tässä ratkaisussa Lukuvinkki-taulu sisältää kaikkien alaluokkien attribuutit
+        //Lukuvinkki
+        ArrayList<String> attribuutit = new ArrayList<>();
+        attribuutit.add("kirjoittaja VARCHAR(255)");
+        attribuutit.add("otsikko VARCHAR(255)");
+        attribuutit.add("kurssi VARCHAR(255)");
+        attribuutit.add("kuvaus VARCHAR(255)");
+        attribuutit.add("julkaisuvuosi integer");
+        attribuutit.add("isbn VARCHAR(255)");
+        attribuutit.add("url VARCHAR(255)");
+        luoTaulu("Lukuvinkki", attribuutit);
+        
+        //Tagi
+        attribuutit = new ArrayList<>();
+        attribuutit.add("nimi VARCHAR(255)");
+        luoTaulu("Tagi", attribuutit);
+        
+        //LukuvinkkiTagi
+        attribuutit = new ArrayList<>();
+        attribuutit.add("tagi_id integer");
+        attribuutit.add("lukuvinkki_id integer");
+        attribuutit.add("FOREIGN KEY (tagi_id) REFERENCES Tagi(id)");
+        attribuutit.add("FOREIGN KEY (lukuvinkki_id) REFERENCES Lukuvinkki(id)");
+        luoTaulu("Lukuvinkkitagi", attribuutit);
+    }
+
+    private void luoTaulu(String nimi, ArrayList<String> attribuutit) {
         try (Connection conn = luoTietokantaYhteys()) {
-            String sql = "CREATE TABLE IF NOT EXISTS kirja ("
-                    + "id integer PRIMARY KEY, "
-                    + "kirjoittaja VARCHAR(255), "
-                    + "otsikko VARCHAR(255), "
-                    + "kurssi VARCHAR(255), "
-                    + "kuvaus VARCHAR(255), "
-                    + "julkaisuvuosi integer, "
-                    + "isbn VARCHAR(255));";
+            String sql = "CREATE TABLE IF NOT EXISTS "+ nimi + " ("
+                    + "id integer PRIMARY KEY, ";
+            for (int i = 0; i < attribuutit.size(); i++) {
+                sql += attribuutit.get(i);
+                if (i < attribuutit.size()-1) sql += ", ";
+            }
+            sql += ");";
+            //System.out.println(sql);
             Statement stmt = conn.createStatement();
             stmt.execute(sql);
         } catch (Exception e) {
