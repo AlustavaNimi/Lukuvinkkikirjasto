@@ -36,4 +36,8 @@ Aja sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla
 
 	gradle run
 
+tai komennolla
+
+	./gradlew run
+	
 Sovelluksessa on tekstikäyttöliittymä ja sovellukseen voi lisätä kirjavinkkejä sekä selata niitä. Sovellus ilmoittaa käytettävissä olevat komennot ajon aikana.
