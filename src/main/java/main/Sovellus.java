@@ -1,3 +1,4 @@
+
 import IO.KonsoliIO;
 import UI.GraafinenKayttoliittyma;
 import UI.Kayttoliittyma;
@@ -13,21 +14,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javax.swing.SwingUtilities;
 
+public class Sovellus extends Application {
 
-public class Sovellus extends Application{
-    
     @Override
     public void start(Stage primaryStage) {
-        new GraafinenKayttoliittyma(primaryStage);
+        System.out.println("test");
     }
 
     public static void main(String[] args) {
         boolean graafinen = false;
         //cubbli-linuxilla anna komentorivillä komento
         //export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
-        if(graafinen) {
-            launch(args);
+        if (graafinen) {
+            Tietokanta lukuvinkit = new KirjaDao("jdbc:sqlite:kirjat.db");
+            GraafinenKayttoliittyma kayttoliittyma = new GraafinenKayttoliittyma(lukuvinkit);
+            kayttoliittyma.run();
         } else {
             Tietokanta lukuvinkit = new KirjaDao("jdbc:sqlite:kirjat.db");
             Kayttoliittyma kayttoliittyma = new TekstiKayttoliittyma(new KonsoliIO(), lukuvinkit);
