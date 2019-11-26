@@ -1,4 +1,3 @@
-
 package domain;
 
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ public class Kirja extends Lukuvinkki{
         this.ISBN = "";
     }
     
-
     public String getKirjailija() {
         return kirjailija;
     }
