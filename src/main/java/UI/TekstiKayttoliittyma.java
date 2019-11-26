@@ -8,30 +8,32 @@ import domain.Kirja;
 import domain.LukuvinkkiContainer;
 import java.util.Scanner;
 
-public class TekstiKayttoliittyma implements Kayttoliittyma{
-    
-    IO io;
-    Tietokanta lukuvinkit;
+public class TekstiKayttoliittyma implements Kayttoliittyma {
 
-    public TekstiKayttoliittyma(IO io, Tietokanta lukuvinkit) {
+    IO io;
+    LukuvinkkiContainer lukuvinkit;
+
+    public TekstiKayttoliittyma(IO io, Tietokanta tietokanta) {
         this.io = io;
-        this.lukuvinkit = lukuvinkit;
+        this.lukuvinkit = new LukuvinkkiContainer(tietokanta);
     }
-   
+
     public void run() {
         io.print("Tervetuloa Lukuvinkkisovellukseen!");
-        
+
         tulostaKomennot();
-        
+
         String syote = io.nextLine();
-        
-        while(!syote.toLowerCase().equals("lopeta")) {
+
+        while (!syote.toLowerCase().equals("lopeta")) {
             if (syote.toLowerCase().equals("lisaa")) {
                 lisaa();
             } else if (syote.toLowerCase().equals("lisaa otsikolla")) {
                 lisaaOtsikolla();
             } else if (syote.toLowerCase().equals("selaa")) {
                 selaa();
+            } else if (syote.toLowerCase().contains("valitse")) {
+                avaaLukuvinkki(syote);
             } else {
                 io.print("Tuntematon komento");
             }
@@ -39,26 +41,30 @@ public class TekstiKayttoliittyma implements Kayttoliittyma{
             syote = io.nextLine();
         }
     }
-    
+
     private void tulostaKomennot() {
         io.print("");
         io.print("Käytettävissä olevat komennot:");
         io.print("Lisaa");
         io.print("Lisaa otsikolla");
         io.print("Selaa");
+        io.print("Valitse " + "<lukuvinkin numero>");
         io.print("Lopeta");
         io.print("");
     }
-    
+
     public void selaa() {
+        int avain = 1;
         for (Kirja kirja : lukuvinkit.haeLukuvinkit()) {
-            io.print(kirja);
+            io.print(avain + ". " + kirja.getOtsikko());
+            io.print(kirja.getKirjailija());
             io.print("");
+            avain++;
         }
     }
 
     public void lisaa() {
-        String otsikko,kirjailija,ISBN,kuvaus,kurssi;
+        String otsikko, kirjailija, ISBN, kuvaus, kurssi;
         int julkaisuVuosi = -1;
         io.print("Anna kirjalle otsikko: ");
         otsikko = io.nextLine();
@@ -79,7 +85,7 @@ public class TekstiKayttoliittyma implements Kayttoliittyma{
                 io.print("Virheellinen julkaisuvuosi");
             }
         }
-        Kirja kirja = new Kirja(otsikko,kirjailija,ISBN,kuvaus,julkaisuVuosi,kurssi);
+        Kirja kirja = new Kirja(otsikko, kirjailija, ISBN, kuvaus, julkaisuVuosi, kurssi);
         lukuvinkit.lisaa(kirja);
         io.print("Uusi lukuvinkki lisätty");
     }
@@ -93,6 +99,14 @@ public class TekstiKayttoliittyma implements Kayttoliittyma{
         io.print("Uusi lukuvinkki lisätty");
     }
 
+    private void avaaLukuvinkki(String syote) {
+        String avainStr = syote.substring("valitse ".length());
+        try {
+            int avain = Integer.parseInt(avainStr);
+            io.print(lukuvinkit.haeAvaimella(avain));
+        } catch (NumberFormatException e) {
+            io.print("Virheellinen avain");
+        } 
+    }
 
-    
 }
