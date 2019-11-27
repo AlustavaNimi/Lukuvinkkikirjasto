@@ -24,7 +24,7 @@ public class Sovellus {
 //    }
 
     public static void main(String[] args) {
-        boolean graafinen = true;
+        boolean graafinen = false;
         //cubbli-linuxilla anna komentorivillä komento
         //export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
         if (graafinen) {
