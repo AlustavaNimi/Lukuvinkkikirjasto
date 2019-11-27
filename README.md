@@ -24,6 +24,7 @@
 
 #### User story 1.1:
 _As a user, I want to be able to add book suggestions to my reading list_
+
 [Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature)
 
 #### User story 1.2:
