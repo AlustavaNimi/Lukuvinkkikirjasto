@@ -32,7 +32,7 @@ public class GraafinenKayttoliittyma extends JPanel implements Kayttoliittyma, A
         this.tietokanta = lukuvinkit;
         komennot = "Käytettävissä olevat komennot: "
                 + "\nLisaa kirja"
-                + "\nLisaa blogi"
+                + "\nLisaa blogipostaus"
                 + "\nSelaa"
                 + "\nLopeta";
     }
@@ -69,7 +69,7 @@ public class GraafinenKayttoliittyma extends JPanel implements Kayttoliittyma, A
     
     @Override
     public void lisaaBlogi() {
-        output.setText("Anna blogille Otsikko:");
+        output.setText("Anna blogipostaukselle Otsikko:");
     }
 
     private void initComponents(Container contentPane) {
@@ -100,7 +100,7 @@ public class GraafinenKayttoliittyma extends JPanel implements Kayttoliittyma, A
             output.setText("");
             input.setText("");
             lisaaKirja();
-        } else if (e.getSource() == input && input.getText().toLowerCase().equals("lisaa blogi")) {
+        } else if (e.getSource() == input && input.getText().toLowerCase().equals("lisaa blogipostaus")) {
             output.setText("");
             input.setText("");
             lisaaBlogi();
@@ -110,7 +110,7 @@ public class GraafinenKayttoliittyma extends JPanel implements Kayttoliittyma, A
             output.setText("Lukuvinkki lisätty!");
             input.setText("");
         } 
-        else if (e.getSource() == input && output.getText().equals("Anna blogille Otsikko:")) {
+        else if (e.getSource() == input && output.getText().equals("Anna blogipostaukselle Otsikko:")) {
             Blogipostaus blogi = new Blogipostaus(input.getText());
             tietokanta.lisaaBlogi(blogi);
             output.setText("Lukuvinkki lisätty!");

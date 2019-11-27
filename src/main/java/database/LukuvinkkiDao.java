@@ -43,7 +43,7 @@ public class LukuvinkkiDao implements Tietokanta {
         String tyyppi = result.getString("tyyppi");
         if (tyyppi.equals("kirja")) {
             lisaaKirjaResultSetista(result,lukuvinkit);
-        } else if (tyyppi.equals("blogi")) {
+        } else if (tyyppi.equals("blogipostaus")) {
             lisaaBlogiResultSetista(result,lukuvinkit);
         }
     }
@@ -152,7 +152,7 @@ public class LukuvinkkiDao implements Tietokanta {
             stmt.setString(4, blogi.getKuvaus());
             stmt.setInt(5, blogi.getJulkaisuVuosi());
             stmt.setString(6, blogi.getUrl());
-            stmt.setString(7, "blogi");
+            stmt.setString(7, "blogipostaus");
             stmt.execute();
         } catch (Exception e) {
             System.out.println(e.getMessage());
