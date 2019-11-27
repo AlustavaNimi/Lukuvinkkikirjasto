@@ -4,7 +4,7 @@ import IO.IO;
 import database.FakeTietokanta;
 import database.LukuvinkkiDao;
 import database.Tietokanta;
-import domain.Blogi;
+import domain.Blogipostaus;
 import domain.Kirja;
 import domain.Lukuvinkki;
 import domain.LukuvinkkiContainer;
@@ -123,7 +123,7 @@ public class TekstiKayttoliittyma implements Kayttoliittyma {
     public void lisaaBlogi() {
         io.print("Anna blogille Otsikko: ");
         String otsikko = io.nextLine();
-        Blogi blogi = new Blogi(otsikko);
+        Blogipostaus blogi = new Blogipostaus(otsikko);
         lukuvinkit.lisaaBlogi(blogi);
         io.print("Uusi blogi lisätty");
     }

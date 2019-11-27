@@ -1,14 +1,14 @@
 package domain;
 
-public class Blogi extends Lukuvinkki {
+public class Blogipostaus extends Lukuvinkki {
     private String url;
 
-    public Blogi(String url, String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
+    public Blogipostaus(String url, String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
         super(otsikko, kuvaus, kurssi, kirjoittaja, julkaisuVuosi);
         this.url = url;
     }
 
-    public Blogi(String otsikko) {
+    public Blogipostaus(String otsikko) {
         super(otsikko);
         this.url = "";
     }
@@ -26,7 +26,7 @@ public class Blogi extends Lukuvinkki {
     public String toString() {
         String tuloste = super.toString();
         tuloste += "\nURL: " + this.getUrl();
-        tuloste += "\nTyyppi: Blogi";
+        tuloste += "\nTyyppi: Blogipostaus";
         return tuloste;
     }    
     

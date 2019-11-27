@@ -1,7 +1,7 @@
 package UI;
 
 import database.Tietokanta;
-import domain.Blogi;
+import domain.Blogipostaus;
 import domain.Kirja;
 import domain.Lukuvinkki;
 import java.awt.Container;
@@ -111,7 +111,7 @@ public class GraafinenKayttoliittyma extends JPanel implements Kayttoliittyma, A
             input.setText("");
         } 
         else if (e.getSource() == input && output.getText().equals("Anna blogille Otsikko:")) {
-            Blogi blogi = new Blogi(input.getText());
+            Blogipostaus blogi = new Blogipostaus(input.getText());
             tietokanta.lisaaBlogi(blogi);
             output.setText("Lukuvinkki lisätty!");
             input.setText("");

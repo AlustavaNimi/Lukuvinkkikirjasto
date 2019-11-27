@@ -1,6 +1,6 @@
 package database;
 
-import domain.Blogi;
+import domain.Blogipostaus;
 import domain.Kirja;
 import domain.Lukuvinkki;
 import java.sql.Connection;
@@ -115,7 +115,7 @@ public class LukuvinkkiDao implements Tietokanta {
         int julkaisuvuosi = result.getInt("julkaisuvuosi");
         String url = result.getString("isbn");
         String kirjoittaja = result.getString("kirjoittaja");
-        Blogi blogi = new Blogi(url, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuvuosi);
+        Blogipostaus blogi = new Blogipostaus(url, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuvuosi);
         lukuvinkit.add(blogi);
     }
     
@@ -141,7 +141,7 @@ public class LukuvinkkiDao implements Tietokanta {
 
     @Override
     public void lisaaBlogi(Lukuvinkki lukuvinkki) {
-        Blogi blogi = (Blogi) lukuvinkki;
+        Blogipostaus blogi = (Blogipostaus) lukuvinkki;
         try (Connection conn = luoTietokantaYhteys()) {
             String sql = "INSERT INTO Lukuvinkki (kirjoittaja, otsikko, kurssi,"
                     + "kuvaus, julkaisuvuosi, url, tyyppi) values (?, ?, ?, ?, ?, ?, ?)";
