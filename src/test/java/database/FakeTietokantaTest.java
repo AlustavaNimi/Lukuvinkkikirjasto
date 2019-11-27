@@ -36,7 +36,7 @@ public class FakeTietokantaTest {
     @Test
     public void testLisaa() {
         assertEquals(ftk.haeLukuvinkit().size(), 0);
-        ftk.lisaa(new Kirja("otsikko"));
+        ftk.lisaaKirja(new Kirja("otsikko"));
         assertEquals(ftk.haeLukuvinkit().size(), 1);
     }
 

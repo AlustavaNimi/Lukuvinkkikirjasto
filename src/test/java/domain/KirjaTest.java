@@ -35,14 +35,14 @@ public class KirjaTest {
 
     @Test
     public void testGetKirjailija() {
-        assertEquals(k.getKirjailija(), "Kirjailija");
+        assertEquals(k.getKirjoittaja(), "Kirjailija");
         assertEquals(kirjaPelkallaOtsikolla.getOtsikko(), "Pelkkä otsikko");
     }
 
     @Test
     public void testSetKirjailija() {
-        k.setKirjailija("Testi");
-        assertEquals(k.getKirjailija(), "Testi");
+        k.setKirjoittaja("Testi");
+        assertEquals(k.getKirjoittaja(), "Testi");
     }
 
     @Test

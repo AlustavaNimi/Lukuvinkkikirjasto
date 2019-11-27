@@ -21,8 +21,8 @@ public class TekstiKayttoliittymaTest {
         io = new IOStub();
         db = new FakeTietokanta();
         ui = new TekstiKayttoliittyma(io, db);
-        db.lisaa(new Kirja("test"));
-        db.lisaa(new Kirja("test2"));
+        db.lisaaKirja(new Kirja("test"));
+        db.lisaaKirja(new Kirja("test2"));
     }
     
     @Test

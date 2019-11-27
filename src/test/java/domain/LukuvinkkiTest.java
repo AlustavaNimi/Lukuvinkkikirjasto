@@ -25,7 +25,7 @@ public class LukuvinkkiTest {
 
     @Before
     public void setUp() {
-        l = new Lukuvinkki("otsikko", "kuvaus", "kurssi", 0);
+        l = new Lukuvinkki("otsikko", "kuvaus", "kurssi", "kirjoittaja", 0);
         lukuvinkkiPelkallaOtsikolla = new Lukuvinkki("otsikko");
 
     }
