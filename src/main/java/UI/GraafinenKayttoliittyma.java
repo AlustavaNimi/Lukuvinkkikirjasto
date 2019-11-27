@@ -1,7 +1,9 @@
 package UI;
 
 import database.Tietokanta;
+import domain.Blogi;
 import domain.Kirja;
+import domain.Lukuvinkki;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -29,8 +31,8 @@ public class GraafinenKayttoliittyma extends JPanel implements Kayttoliittyma, A
     public GraafinenKayttoliittyma(Tietokanta lukuvinkit) {
         this.tietokanta = lukuvinkit;
         komennot = "Käytettävissä olevat komennot: "
-                + "\nLisaa"
-                + "\nLisaa otsikolla"
+                + "\nLisaa kirja"
+                + "\nLisaa blogi"
                 + "\nSelaa"
                 + "\nLopeta";
     }
@@ -51,23 +53,23 @@ public class GraafinenKayttoliittyma extends JPanel implements Kayttoliittyma, A
 
     @Override
     public void selaa() {
-        String kirjat = "";
-        for (Kirja kirja : tietokanta.haeLukuvinkit()) {
-            kirjat += kirja + "\n\n";
+        String lukuvinkit = "";
+        for (Lukuvinkki lukuvinkki : tietokanta.haeLukuvinkit()) {
+            lukuvinkit += lukuvinkki + "\n\n";
         }
-        output.setText(kirjat);
+        output.setText(lukuvinkit);
         input.setText("");
 
     }
 
     @Override
-    public void lisaa() {
-        
-    }
-
-    @Override
-    public void lisaaOtsikolla() {
+    public void lisaaKirja() {
         output.setText("Anna kirjalle Otsikko:");
+    }
+    
+    @Override
+    public void lisaaBlogi() {
+        output.setText("Anna blogille Otsikko:");
     }
 
     private void initComponents(Container contentPane) {
@@ -94,13 +96,23 @@ public class GraafinenKayttoliittyma extends JPanel implements Kayttoliittyma, A
         } else if (e.getSource() == restart) {
             output.setText(komennot);
             input.setText("");
-        } else if (e.getSource() == input && input.getText().toLowerCase().equals("lisaa otsikolla")) {
+        } else if (e.getSource() == input && input.getText().toLowerCase().equals("lisaa kirja")) {
             output.setText("");
             input.setText("");
-            lisaaOtsikolla();
+            lisaaKirja();
+        } else if (e.getSource() == input && input.getText().toLowerCase().equals("lisaa blogi")) {
+            output.setText("");
+            input.setText("");
+            lisaaBlogi();
         } else if (e.getSource() == input && output.getText().equals("Anna kirjalle Otsikko:")) {
             Kirja kirja = new Kirja(input.getText());
-            tietokanta.lisaa(kirja);
+            tietokanta.lisaaKirja(kirja);
+            output.setText("Lukuvinkki lisätty!");
+            input.setText("");
+        } 
+        else if (e.getSource() == input && output.getText().equals("Anna blogille Otsikko:")) {
+            Blogi blogi = new Blogi(input.getText());
+            tietokanta.lisaaBlogi(blogi);
             output.setText("Lukuvinkki lisätty!");
             input.setText("");
         } else if (e.getSource() == input && input.getText().toLowerCase().equals("lopeta")) {

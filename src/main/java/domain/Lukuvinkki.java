@@ -7,15 +7,24 @@ public class Lukuvinkki {
      private String otsikko;
      private String kuvaus;
      private String kurssi;
+     private String kirjoittaja;
      private ArrayList<String> tagit;
      private int julkaisuVuosi;
 
-    public Lukuvinkki(String otsikko, String kuvaus, String kurssi, int julkaisuVuosi) {
-        alusta(otsikko, kuvaus, kurssi, julkaisuVuosi);
+    public Lukuvinkki(String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
+        alusta(otsikko, kuvaus, kurssi, kirjoittaja, julkaisuVuosi);
+    }
+
+    public String getKirjoittaja() {
+        return kirjoittaja;
+    }
+
+    public void setKirjoittaja(String kirjoittaja) {
+        this.kirjoittaja = kirjoittaja;
     }
     
     public Lukuvinkki(String otsikko) {
-        alusta(otsikko,"","",0);
+        alusta(otsikko,"","","",0);
     }
     
     public String getOtsikko() {
@@ -54,6 +63,7 @@ public class Lukuvinkki {
     public String toString() {
         String tuloste = "";
         tuloste += "Otsikko: " + this.getOtsikko();
+        tuloste += "\nkirjoittaja: " + this.getKirjoittaja();
         tuloste += "\nJulkaisuvuosi: " + this.getJulkaisuVuosi();
         tuloste += "\nRelated Courses: " + this.getKurssi();
         tuloste += "\nTagit: ";
@@ -63,11 +73,12 @@ public class Lukuvinkki {
         return tuloste;
     }
 
-    private void alusta(String otsikko, String kuvaus, String kurssi, int julkaisuVuosi) {
+    private void alusta(String otsikko, String kuvaus, String kurssi, String kirjoittaja,int julkaisuVuosi) {
         this.otsikko = otsikko;
         this.kuvaus = kuvaus;
         this.kurssi = kurssi;
         this.julkaisuVuosi = julkaisuVuosi;
+        this.kirjoittaja = kirjoittaja;
         tagit = new ArrayList<>();
     }
      

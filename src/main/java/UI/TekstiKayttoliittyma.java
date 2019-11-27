@@ -2,9 +2,11 @@ package UI;
 
 import IO.IO;
 import database.FakeTietokanta;
-import database.KirjaDao;
+import database.LukuvinkkiDao;
 import database.Tietokanta;
+import domain.Blogi;
 import domain.Kirja;
+import domain.Lukuvinkki;
 import domain.LukuvinkkiContainer;
 import java.util.Scanner;
 
@@ -26,10 +28,10 @@ public class TekstiKayttoliittyma implements Kayttoliittyma {
         String syote = io.nextLine();
 
         while (!syote.toLowerCase().equals("lopeta")) {
-            if (syote.toLowerCase().equals("lisaa")) {
-                lisaa();
-            } else if (syote.toLowerCase().equals("lisaa otsikolla")) {
-                lisaaOtsikolla();
+            if (syote.toLowerCase().equals("lisaa kirja")) {
+                lisaaKirja();
+            } else if (syote.toLowerCase().equals("lisaa blogi")) {
+                lisaaBlogi();
             } else if (syote.toLowerCase().equals("selaa")) {
                 selaa();
             } else if (syote.toLowerCase().contains("valitse")) {
@@ -46,8 +48,8 @@ public class TekstiKayttoliittyma implements Kayttoliittyma {
     private void tulostaKomennot() {
         io.print("");
         io.print("Käytettävissä olevat komennot:");
-        io.print("Lisaa");
-        io.print("Lisaa otsikolla");
+        io.print("Lisaa kirja");
+        io.print("Lisaa blogi");
         io.print("Selaa");
         io.print("Valitse " + "<lukuvinkin numero>");
         io.print("Lopeta");
@@ -56,9 +58,9 @@ public class TekstiKayttoliittyma implements Kayttoliittyma {
 
     public void selaa() {
         int avain = 1;
-        for (Kirja kirja : lukuvinkit.haeLukuvinkit()) {
-            io.print(avain + ". " + kirja.getOtsikko());
-            io.print(kirja.getKirjailija());
+        for (Lukuvinkki lukuvinkki : lukuvinkit.haeLukuvinkit()) {
+            io.print(avain + ". " + lukuvinkki.getOtsikko());
+            io.print(lukuvinkki.getKirjoittaja());
             io.print("");
             avain++;
         }
@@ -87,7 +89,7 @@ public class TekstiKayttoliittyma implements Kayttoliittyma {
             }
         }
         Kirja kirja = new Kirja(otsikko, kirjailija, ISBN, kuvaus, julkaisuVuosi, kurssi);
-        lukuvinkit.lisaa(kirja);
+        lukuvinkit.lisaaKirja(kirja);
         io.print("Uusi lukuvinkki lisätty");
     }
 
@@ -96,7 +98,7 @@ public class TekstiKayttoliittyma implements Kayttoliittyma {
         String otsikko = io.nextLine();
         Kirja kirja = new Kirja(otsikko);
         //Kirja kirja = new Kirja(otsikko,"","","",0,"");
-        lukuvinkit.lisaa(kirja);
+        lukuvinkit.lisaaKirja(kirja);
         io.print("Uusi lukuvinkki lisätty");
     }
 
@@ -108,6 +110,22 @@ public class TekstiKayttoliittyma implements Kayttoliittyma {
         } catch (NumberFormatException e) {
             io.print("Virheellinen avain");
         } 
+    }
+
+    public void lisaaKirja() {
+        io.print("Anna kirjalle Otsikko: ");
+        String otsikko = io.nextLine();
+        Kirja kirja = new Kirja(otsikko);
+        lukuvinkit.lisaaKirja(kirja);
+        io.print("Uusi kirja lisätty");
+    }
+
+    public void lisaaBlogi() {
+        io.print("Anna blogille Otsikko: ");
+        String otsikko = io.nextLine();
+        Blogi blogi = new Blogi(otsikko);
+        lukuvinkit.lisaaBlogi(blogi);
+        io.print("Uusi blogi lisätty");
     }
 
 }

@@ -2,12 +2,15 @@
 package database;
 
 import domain.Kirja;
+import domain.Lukuvinkki;
 import java.util.ArrayList;
 
 public interface Tietokanta {
     
-    public void lisaa(Kirja kirja);
+    public void lisaaKirja(Lukuvinkki lukuvinkki);
     
-    public ArrayList<Kirja> haeLukuvinkit();
+    public void lisaaBlogi(Lukuvinkki lukuvinkki);
+    
+    public ArrayList<Lukuvinkki> haeLukuvinkit();
     
 }

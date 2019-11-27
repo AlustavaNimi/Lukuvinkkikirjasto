@@ -3,14 +3,20 @@ package domain;
 public class Blogi extends Lukuvinkki {
     private String url;
 
-    public Blogi(String url, String otsikko, String kuvaus, String kurssi, int julkaisuVuosi) {
-        super(otsikko, kuvaus, kurssi, julkaisuVuosi);
+    public Blogi(String url, String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
+        super(otsikko, kuvaus, kurssi, kirjoittaja, julkaisuVuosi);
         this.url = url;
+    }
+
+    public Blogi(String otsikko) {
+        super(otsikko);
+        this.url = "";
     }
 
     public String getUrl() {
         return url;
     }
+
 
     public void setUrl(String url) {
         this.url = url;

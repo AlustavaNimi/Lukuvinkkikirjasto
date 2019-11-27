@@ -6,7 +6,7 @@ public interface Kayttoliittyma {
     
     public void selaa();
     
-    public void lisaa();
+    public void lisaaKirja();
     
-    public void lisaaOtsikolla();
+    public void lisaaBlogi();
 }
