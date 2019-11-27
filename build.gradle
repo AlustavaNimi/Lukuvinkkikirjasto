@@ -1,6 +1,9 @@
+plugins {
+     id 'checkstyle'
+ }
+
 apply plugin: 'java'
 apply plugin: 'application'
-
 
 project.ext {
     cucumberVersion = '4.7.4'
@@ -26,7 +29,7 @@ jar {
     }
 }
 
-apply plugin: "jacoco" 
+apply plugin: "jacoco"
 jacocoTestReport {
     reports {
         xml.enabled true
