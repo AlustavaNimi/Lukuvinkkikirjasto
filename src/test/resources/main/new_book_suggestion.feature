@@ -15,7 +15,17 @@ Feature: A new book suggestion can be created
         When  title "Tirakirja" and publication date "today" is entered
         Then  system will respond with "Vuosiluvun on oltava luku"
 
-    Scenario: creation fails without valid title
+    Scenario: creation fails with empty title
         Given command lisaa vinkki is selected
         When  title "" is entered
-        Then  system will respond with "Lukuvinkille on annettava otsikko"
+        Then  system will respond with "Lukuvinkille on annettava otsikko
+
+    Scenario: creation fails with invalid type
+        Given command lisaa vinkki is selected
+        When  type "ovi" is entered
+        Then  system will respond with "Lukuvinkille on annettava tyyppi kirja/blogi"
+
+    Scenario: creation fails with empty type
+        Given command lisaa vinkki is selected
+        When  type "" is entered
+        Then  system will respond with "Lukuvinkille on annettava tyyppi kirja/blogi"
