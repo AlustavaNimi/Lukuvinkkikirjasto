@@ -1,6 +1,7 @@
 package UI;
 
 import database.Tietokanta;
+import domain.Blogipostaus;
 import domain.Kirja;
 import domain.Lukuvinkki;
 import java.awt.Dimension;
@@ -45,9 +46,13 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
 
     @Override
     public void selaa() {
+        int i = 1;
+        
         String lukuvinkit = "";
         for (Lukuvinkki lukuvinkki : tietokanta.haeLukuvinkit()) {
-            lukuvinkit += lukuvinkki + "\n\n";
+            String numerointi = String.valueOf(i);
+            lukuvinkit += numerointi + " " + lukuvinkki.lyhytTulostus() + "\n\n";
+            i++;
         }
         alusta.getOutput().setText(lukuvinkit);
         alusta.getInput().setText("");
@@ -65,7 +70,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     }
 
     public void muokkaaVinkkia() {
-        System.out.println("ei vielä toiminnassa");      
+        System.out.println("ei vielä toiminnassa");
     }
 
     public void lisaaLukuvinkkiValikko() {
@@ -82,16 +87,27 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         } catch (NumberFormatException nfe) {
             System.out.println("VUOSILUKU NOLLA");
         }
-        
-        Kirja kirja = new Kirja(alusta.getVinkinTiedot().get(0).getText(),
-                alusta.getVinkinTiedot().get(1).getText(),
-                alusta.getVinkinTiedot().get(2).getText(),
-                alusta.getVinkinTiedot().get(3).getText(),
-                vuosi,
-                alusta.getVinkinTiedot().get(5).getText());
-        tietokanta.lisaaKirja(kirja);
-        uusiAlusta();
-        alusta.getOutput().setText("Lukuvinkki lisätty!");
+        if (alusta.getVinkinTiedot().get(6).getText().equals("kirja")) {
+            Kirja kirja = new Kirja(alusta.getVinkinTiedot().get(0).getText(),
+                    alusta.getVinkinTiedot().get(1).getText(),
+                    alusta.getVinkinTiedot().get(2).getText(),
+                    alusta.getVinkinTiedot().get(3).getText(),
+                    vuosi,
+                    alusta.getVinkinTiedot().get(5).getText());
+            tietokanta.lisaaKirja(kirja);
+            uusiAlusta();
+            alusta.getOutput().setText("Lukuvinkki lisätty!");
+        } else if (alusta.getVinkinTiedot().get(6).getText().equals("blogi")) {
+            Blogipostaus postaus = new Blogipostaus(alusta.getVinkinTiedot().get(0).getText(),
+                    alusta.getVinkinTiedot().get(2).getText(),
+                    alusta.getVinkinTiedot().get(3).getText(),
+                    alusta.getVinkinTiedot().get(5).getText(),
+                    alusta.getVinkinTiedot().get(1).getText(),
+                    vuosi);
+            tietokanta.lisaaBlogi(postaus);
+            uusiAlusta();
+            alusta.getOutput().setText("Lukuvinkki lisätty!");
+        }
     }
 
     public JFrame getFrame() {

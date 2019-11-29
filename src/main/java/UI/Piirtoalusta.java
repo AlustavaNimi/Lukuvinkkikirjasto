@@ -113,7 +113,7 @@ public class Piirtoalusta extends JPanel {
         this.add(otsikko);
         this.add(new JLabel("kirjoittaja"));
         this.add(kirjoittaja);
-        this.add(new JLabel("isbn"));
+        this.add(new JLabel("isbn/url"));
         this.add(isbn);
         this.add(new JLabel("kuvaus"));
         this.add(kuvaus);
@@ -121,7 +121,7 @@ public class Piirtoalusta extends JPanel {
         this.add(vuosiluku);
         this.add(new JLabel("kurssi"));
         this.add(kurssi);
-        this.add(new JLabel("url"));
+        this.add(new JLabel("tyyppi"));
         this.add(tyyppi);
 
         this.add(tallennaNappi);

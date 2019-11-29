@@ -3,13 +3,13 @@ package domain;
 import java.util.ArrayList;
 
 public class Lukuvinkki {
-    
-     private String otsikko;
-     private String kuvaus;
-     private String kurssi;
-     private String kirjoittaja;
-     private ArrayList<String> tagit;
-     private int julkaisuVuosi;
+
+    private String otsikko;
+    private String kuvaus;
+    private String kurssi;
+    private String kirjoittaja;
+    private ArrayList<String> tagit;
+    private int julkaisuVuosi;
 
     public Lukuvinkki(String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
         alusta(otsikko, kuvaus, kurssi, kirjoittaja, julkaisuVuosi);
@@ -22,11 +22,11 @@ public class Lukuvinkki {
     public void setKirjoittaja(String kirjoittaja) {
         this.kirjoittaja = kirjoittaja;
     }
-    
+
     public Lukuvinkki(String otsikko) {
-        alusta(otsikko,"","","",0);
+        alusta(otsikko, "", "", "", 0);
     }
-    
+
     public String getOtsikko() {
         return otsikko;
     }
@@ -67,13 +67,21 @@ public class Lukuvinkki {
         tuloste += "\nJulkaisuvuosi: " + this.getJulkaisuVuosi();
         tuloste += "\nRelated Courses: " + this.getKurssi();
         tuloste += "\nTagit: ";
-        for (String tagi: tagit) {
+        for (String tagi : tagit) {
             tuloste += tagi + " ";
         }
         return tuloste;
     }
 
-    private void alusta(String otsikko, String kuvaus, String kurssi, String kirjoittaja,int julkaisuVuosi) {
+    public String lyhytTulostus() {
+        String tuloste = "";
+        tuloste += "Otsikko: " + this.getOtsikko();
+        tuloste += "\nKirjoittaja: " + this.getKirjoittaja();
+        
+        return tuloste;
+    }
+
+    private void alusta(String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
         this.otsikko = otsikko;
         this.kuvaus = kuvaus;
         this.kurssi = kurssi;
@@ -81,7 +89,5 @@ public class Lukuvinkki {
         this.kirjoittaja = kirjoittaja;
         tagit = new ArrayList<>();
     }
-     
-    
-    
+
 }
