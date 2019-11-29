@@ -42,7 +42,6 @@ public class TekstiKayttoliittyma implements Kayttoliittyma {
             tulostaKomennot();
             syote = io.nextLine();
         }
-        System.exit(0);
     }
 
     private void tulostaKomennot() {

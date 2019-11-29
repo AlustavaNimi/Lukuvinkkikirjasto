@@ -1,6 +1,3 @@
-plugins {
-     id 'checkstyle'
- }
 
 apply plugin: 'java'
 apply plugin: 'application'
