@@ -1,6 +1,7 @@
 package UI;
 
 import java.awt.Point;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class Piirtoalusta extends JPanel {
@@ -11,6 +12,8 @@ public class Piirtoalusta extends JPanel {
     private JButton alkuunNappi;
     private JScrollPane scroll;
     private NappaimistonKuuntelija kuuntelija;
+    private ArrayList<JTextField> vinkinTiedot;
+    private JButton tallennaNappi;
 
     public Piirtoalusta() {
         kuuntelija = new NappaimistonKuuntelija(this);
@@ -62,44 +65,79 @@ public class Piirtoalusta extends JPanel {
     public void setGUIforKuuntelija(GraafinenKayttoliittyma liittyma) {
         kuuntelija.setGUI(liittyma);
     }
+    
+    public JFrame lukuvinkinMuokkaus(JFrame frame, ArrayList<JTextField> lista) {
+        return frame;
+    }
 
     public JFrame lukuvinkinLisays(JFrame frame) {
+        JTextField otsikko;
+        JTextField kirjoittaja;
+        JTextField isbn;
+        JTextField kuvaus;
+        JTextField vuosiluku;
+        JTextField kurssi;
+        JTextField tyyppi;
 
-        JTextField otsikko = new JTextField(20);
-        JTextField kuvaus = new JTextField(20);
-        JTextField kurssi = new JTextField(20);
-        JTextField kirjoittaja = new JTextField(15);
-        JTextField vuosiluku = new JTextField(18);
-        JTextField tyyppi = new JTextField(20);
-        JTextField url = new JTextField(20);
+        vinkinTiedot = new ArrayList<>();
+
+        otsikko = new JTextField(20);
+        vinkinTiedot.add(otsikko);
+
+        kirjoittaja = new JTextField(18);
+        vinkinTiedot.add(kirjoittaja);
+
+        isbn = new JTextField(20);
+        vinkinTiedot.add(isbn);
+
+        kuvaus = new JTextField(20);
+        vinkinTiedot.add(kuvaus);
+
+        vuosiluku = new JTextField(18);
+        vinkinTiedot.add(vuosiluku);
+
+        kurssi = new JTextField(20);
+        vinkinTiedot.add(kurssi);
+
+        tyyppi = new JTextField(20);
+        vinkinTiedot.add(tyyppi);
 
         alkuunNappi = new JButton("Alkuun");
         alkuunNappi.addActionListener(kuuntelija);
 
-        JButton tallenna = new JButton("Tallenna");
-        tallenna.addActionListener(kuuntelija);
+        tallennaNappi = new JButton("Tallenna");
+        tallennaNappi.addActionListener(kuuntelija);
 
         alkuunNappi.setLocation(new Point(195, 313));
         this.add(new JLabel("otsikko"));
         this.add(otsikko);
-        this.add(new JLabel("kuvaus"));
-        this.add(kuvaus);
-        this.add(new JLabel("kurssi"));
-        this.add(kurssi);
         this.add(new JLabel("kirjoittaja"));
         this.add(kirjoittaja);
+        this.add(new JLabel("isbn"));
+        this.add(isbn);
+        this.add(new JLabel("kuvaus"));
+        this.add(kuvaus);
         this.add(new JLabel("vuosiluku"));
         this.add(vuosiluku);
-        this.add(new JLabel("tyyppi"));
-        this.add(tyyppi);
+        this.add(new JLabel("kurssi"));
+        this.add(kurssi);
         this.add(new JLabel("url"));
-        this.add(url);
-        this.add(tallenna);
+        this.add(tyyppi);
+
+        this.add(tallennaNappi);
         this.add(alkuunNappi);
 
         frame.add(this);
         frame.pack();
 
         return frame;
+    }
+
+    public JButton getTallennaNappi() {
+        return tallennaNappi;
+    }
+
+    public ArrayList<JTextField> getVinkinTiedot() {
+        return vinkinTiedot;
     }
 }

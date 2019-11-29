@@ -1,11 +1,12 @@
 package UI;
 
 import database.Tietokanta;
+import domain.Kirja;
 import domain.Lukuvinkki;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
@@ -63,11 +64,34 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta.getOutput().setText("Anna blogipostaukselle Otsikko:");
     }
 
-    public void lisaaLukuvinkinTiedot() {
+    public void muokkaaVinkkia() {
+        System.out.println("ei vielä toiminnassa");      
+    }
+
+    public void lisaaLukuvinkkiValikko() {
         frame.getContentPane().remove(alusta);
         alusta = new Piirtoalusta();
         frame = alusta.lukuvinkinLisays(frame);
         alusta.setGUIforKuuntelija(this);
+    }
+
+    public void lisaaLukuvinkki() {
+        int vuosi = 0;
+        try {
+            vuosi = Integer.parseInt(alusta.getVinkinTiedot().get(4).getText());
+        } catch (NumberFormatException nfe) {
+            System.out.println("VUOSILUKU NOLLA");
+        }
+        
+        Kirja kirja = new Kirja(alusta.getVinkinTiedot().get(0).getText(),
+                alusta.getVinkinTiedot().get(1).getText(),
+                alusta.getVinkinTiedot().get(2).getText(),
+                alusta.getVinkinTiedot().get(3).getText(),
+                vuosi,
+                alusta.getVinkinTiedot().get(5).getText());
+        tietokanta.lisaaKirja(kirja);
+        uusiAlusta();
+        alusta.getOutput().setText("Lukuvinkki lisätty!");
     }
 
     public JFrame getFrame() {

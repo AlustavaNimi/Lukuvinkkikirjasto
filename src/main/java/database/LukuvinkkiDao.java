@@ -26,7 +26,7 @@ public class LukuvinkkiDao implements Tietokanta {
         try (Connection conn = luoTietokantaYhteys()) {
             ResultSet result = luoResultSet(conn, "SELECT * FROM Lukuvinkki");
             while (result.next()) {
-                lisaaLukuvinkkiResultSetista(result,lukuvinkit);
+                lisaaLukuvinkkiResultSetista(result, lukuvinkit);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -37,14 +37,13 @@ public class LukuvinkkiDao implements Tietokanta {
     private Connection luoTietokantaYhteys() throws SQLException {
         return DriverManager.getConnection(tietokantaOsoite);
     }
-    
 
     private void lisaaLukuvinkkiResultSetista(ResultSet result, ArrayList<Lukuvinkki> lukuvinkit) throws SQLException {
         String tyyppi = result.getString("tyyppi");
         if (tyyppi.equals("kirja")) {
-            lisaaKirjaResultSetista(result,lukuvinkit);
+            lisaaKirjaResultSetista(result, lukuvinkit);
         } else if (tyyppi.equals("blogipostaus")) {
-            lisaaBlogiResultSetista(result,lukuvinkit);
+            lisaaBlogiResultSetista(result, lukuvinkit);
         }
     }
 
@@ -65,12 +64,12 @@ public class LukuvinkkiDao implements Tietokanta {
         attribuutit.add("url VARCHAR(255)");
         attribuutit.add("tyyppi VARCHAR(255)");
         luoTaulu("Lukuvinkki", attribuutit);
-        
+
         //Tagi
         attribuutit = new ArrayList<>();
         attribuutit.add("nimi VARCHAR(255)");
         luoTaulu("Tagi", attribuutit);
-        
+
         //LukuvinkkiTagi
         attribuutit = new ArrayList<>();
         attribuutit.add("tagi_id integer");
@@ -82,20 +81,41 @@ public class LukuvinkkiDao implements Tietokanta {
 
     private void luoTaulu(String nimi, ArrayList<String> attribuutit) {
         try (Connection conn = luoTietokantaYhteys()) {
-            String sql = "CREATE TABLE IF NOT EXISTS "+ nimi + " ("
+            String sql = "CREATE TABLE IF NOT EXISTS " + nimi + " ("
                     + "id integer PRIMARY KEY, ";
             for (int i = 0; i < attribuutit.size(); i++) {
                 sql += attribuutit.get(i);
-                if (i < attribuutit.size()-1) sql += ", ";
+                if (i < attribuutit.size() - 1) {
+                    sql += ", ";
+                }
             }
             sql += ");";
             //System.out.println(sql);
             Statement stmt = conn.createStatement();
             stmt.execute(sql);
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
+//    private void lisaaDefaultVinkitTietokantaan() {
+//        try (Connection conn = luoTietokantaYhteys()) {
+//            String sql = "INSERT INTO Lukuvinkki (kirjoittaja, otsikko, kurssi,"
+//                    + "kuvaus, julkaisuvuosi, isbn, tyyppi) values (?, ?, ?, ?, ?, ?, ?)";
+//            PreparedStatement stmt = conn.prepareStatement(sql);
+//            stmt.setString(1, "J.K.ROWLING");
+//            stmt.setString(2, "HARRY POTTER");
+//            stmt.setString(3, "FANTASIAKIRJALLISUUS");
+//            stmt.setString(4, "TAIKURI HARRI");
+//            stmt.setInt(5, 1234);
+//            stmt.setString(6, "12323520598-123");
+//            stmt.setString(7, "kirja");
+//            stmt.execute();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
     private void lisaaKirjaResultSetista(ResultSet result, ArrayList<Lukuvinkki> lukuvinkit) throws SQLException {
         String kirjailija = result.getString("kirjoittaja");
@@ -118,7 +138,7 @@ public class LukuvinkkiDao implements Tietokanta {
         Blogipostaus blogi = new Blogipostaus(url, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuvuosi);
         lukuvinkit.add(blogi);
     }
-    
+
     @Override
     public void lisaaKirja(Lukuvinkki lukuvinkki) {
         Kirja kirja = (Kirja) lukuvinkki;
