@@ -41,16 +41,18 @@ public class PiirtoalustaTest {
     public void setUp() {
         frame = new JFrame();
         alusta = new Piirtoalusta();
+        System.setProperty("java.awt.headless", "true");
     }
 
     @After
     public void tearDown() {
+        System.setProperty("java.awt.headless", "false");
+
     }
 
     @Test
     public void testInitComponents() {
-        
-        
+
     }
 
     @Test
@@ -62,7 +64,7 @@ public class PiirtoalustaTest {
     public void testLukuvinkinLisays() {
         frame = alusta.lukuvinkinLisays(frame);
         assertTrue(frame.isResizable());
-        
+
     }
 
 }
