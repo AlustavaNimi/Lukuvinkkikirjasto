@@ -6,9 +6,7 @@ import domain.Kirja;
 import domain.Lukuvinkki;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import javax.swing.JFrame;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class GraafinenKayttoliittyma implements Kayttoliittyma {
@@ -51,7 +49,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         String lukuvinkit = "";
         for (Lukuvinkki lukuvinkki : tietokanta.haeLukuvinkit()) {
             String numerointi = String.valueOf(i);
-            lukuvinkit += numerointi + " " + lukuvinkki.lyhytTulostus() + "\n\n";
+            lukuvinkit += numerointi + ". " + lukuvinkki.lyhytTulostus() + "\n\n";
             i++;
         }
         alusta.getOutput().setText(lukuvinkit);

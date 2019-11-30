@@ -57,17 +57,5 @@ public class KirjaTest {
         assertEquals(k.getISBN(), "Testi");
     }
     
-    @Test
-    public void testToString() {
-        String tuloste =  "Otsikko: Otsikko"
-                + "\nJulkaisuvuosi: 2019"
-                + "\nRelated Courses: Kurssi"
-                + "\nTagit: "
-                + "\nKirjoittaja: Kirjailija"
-                + "\nTyyppi: Kirja"
-                + "\nISBN: ISBN";
-
-        assertEquals(k.toString(), tuloste);
-    }
 
 }

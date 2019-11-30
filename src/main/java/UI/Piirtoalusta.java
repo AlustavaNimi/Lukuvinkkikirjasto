@@ -71,35 +71,27 @@ public class Piirtoalusta extends JPanel {
     }
 
     public JFrame lukuvinkinLisays(JFrame frame) {
-        JTextField otsikko;
-        JTextField kirjoittaja;
-        JTextField isbn;
-        JTextField kuvaus;
-        JTextField vuosiluku;
-        JTextField kurssi;
-        JTextField tyyppi;
-
         vinkinTiedot = new ArrayList<>();
 
-        otsikko = new JTextField(20);
+        JTextField otsikko = new JTextField(20);
         vinkinTiedot.add(otsikko);
 
-        kirjoittaja = new JTextField(18);
+         JTextField kirjoittaja = new JTextField(18);
         vinkinTiedot.add(kirjoittaja);
 
-        isbn = new JTextField(20);
+         JTextField isbn = new JTextField(20);
         vinkinTiedot.add(isbn);
 
-        kuvaus = new JTextField(20);
+        JTextField kuvaus = new JTextField(20);
         vinkinTiedot.add(kuvaus);
 
-        vuosiluku = new JTextField(18);
+        JTextField vuosiluku = new JTextField(18);
         vinkinTiedot.add(vuosiluku);
 
-        kurssi = new JTextField(20);
+        JTextField  kurssi = new JTextField(20);
         vinkinTiedot.add(kurssi);
 
-        tyyppi = new JTextField(20);
+        JTextField tyyppi = new JTextField(20);
         vinkinTiedot.add(tyyppi);
 
         alkuunNappi = new JButton("Alkuun");

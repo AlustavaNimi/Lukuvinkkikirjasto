@@ -81,14 +81,6 @@ public class LukuvinkkiTest {
 
     }
 
-    @Test
-    public void testToString() {
-            String teksti = "Otsikko: otsikko"
-                    + "\nJulkaisuvuosi: 0"
-                    + "\nRelated Courses: kurssi"
-                    + "\nTagit: ";
-            
-            assertEquals(l.toString(), teksti);
-    }
+
 
 }

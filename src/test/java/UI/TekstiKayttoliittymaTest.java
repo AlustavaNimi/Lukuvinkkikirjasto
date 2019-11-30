@@ -25,31 +25,8 @@ public class TekstiKayttoliittymaTest {
         db.lisaaKirja(new Kirja("test2"));
     }
     
-    @Test
-    public void testRun() {
-        io.inputs.add("tuntematon komento");
-        io.inputs.add("lopeta");
-        ui.run();
-        assertEquals("Tervetuloa Lukuvinkkisovellukseen!", io.outputs.get(0));
-        assertEquals("", io.outputs.get(1));
-        assertEquals("Käytettävissä olevat komennot:", io.outputs.get(2));
-        assertEquals("Lisaa", io.outputs.get(3));
-        assertEquals("Lisaa otsikolla", io.outputs.get(4));
-        assertEquals("Selaa", io.outputs.get(5));
-        assertEquals("Lopeta", io.outputs.get(6));
-        assertEquals("", io.outputs.get(7));
-        assertEquals("Tuntematon komento", io.outputs.get(8));
-    }
+
     
-    @Test
-    public void testSelaa() {
-        io.inputs.add("selaa");
-        ui.selaa();
-        assertEquals(db.haeLukuvinkit().get(0).toString(), io.outputs.get(0));
-        assertEquals("", io.outputs.get(1));
-        assertEquals(db.haeLukuvinkit().get(1).toString(), io.outputs.get(2));
-        assertEquals("", io.outputs.get(3));
-    }
     
     @Test
     public void testLisaa() {
