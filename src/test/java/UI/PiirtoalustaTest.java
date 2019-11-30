@@ -39,9 +39,10 @@ public class PiirtoalustaTest {
 
     @Before
     public void setUp() {
+        System.setProperty("java.awt.headless", "true");
         frame = new JFrame();
         alusta = new Piirtoalusta();
-        System.setProperty("java.awt.headless", "true");
+        
     }
 
     @After
