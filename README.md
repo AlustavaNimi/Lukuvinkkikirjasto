@@ -25,11 +25,12 @@
 #### User story 1.1:
 _As a user, I want to be able to add book suggestions to my reading list_
 
-[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature)
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature) Gherkin-formaatissa
 
 #### User story 1.2:
 _As a user, I want to be able to view a list of my book suggestions to browse through it_
-- Tähän tulee linkki .feature-tiedostoon
+
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/browse_reading_suggestions.feature) Gherkin-formaatissa
 
 ### Sprint 2
 
@@ -60,12 +61,6 @@ Kloonaa projekti työpöytäkoneelle komennolla
 
 	git clone git@github.com:AlustavaNimi/Lukuvinkkikirjasto.git
 
-Aja sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla
-
-	gradle run
-
-tai komennolla
-
-	./gradlew run
+Aja sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla `gradle run` tai komennolla `./gradlew run`.
 
 Sovelluksessa on tekstikäyttöliittymä ja sovellukseen voi lisätä kirjavinkkejä sekä selata niitä. Sovellus ilmoittaa käytettävissä olevat komennot ajon aikana.
