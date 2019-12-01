@@ -8,6 +8,11 @@ public class Blogipostaus extends Lukuvinkki {
         this.url = url;
     }
 
+    public Blogipostaus(int id, String url, String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
+        super(id, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuVuosi);
+        this.url = url;
+    }
+
     public Blogipostaus(String otsikko) {
         super(otsikko);
         this.url = "";

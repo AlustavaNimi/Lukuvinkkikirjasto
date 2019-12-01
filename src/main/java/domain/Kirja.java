@@ -11,6 +11,11 @@ public class Kirja extends Lukuvinkki{
         this.ISBN = ISBN;
     }
     
+    public Kirja(int id, String otsikko, String kirjoittaja, String ISBN, String kuvaus, int julkaisuVuosi, String kurssi) {
+        super(id, otsikko,kuvaus,kurssi, kirjoittaja,julkaisuVuosi);
+        this.ISBN = ISBN;
+    }
+    
     public Kirja(String otsikko) {
         super(otsikko);
         this.ISBN = "";

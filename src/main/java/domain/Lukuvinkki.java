@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Lukuvinkki {
 
+    private int id;
     private String otsikko;
     private String kuvaus;
     private String kurssi;
@@ -11,8 +12,16 @@ public class Lukuvinkki {
     private ArrayList<String> tagit;
     private int julkaisuVuosi;
 
+    public Lukuvinkki(int id, String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
+        alusta(id, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuVuosi);
+    }
+
     public Lukuvinkki(String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
-        alusta(otsikko, kuvaus, kurssi, kirjoittaja, julkaisuVuosi);
+        alusta(-1, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuVuosi);
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getKirjoittaja() {
@@ -24,7 +33,7 @@ public class Lukuvinkki {
     }
 
     public Lukuvinkki(String otsikko) {
-        alusta(otsikko, "", "", "", 0);
+        alusta(-1, otsikko, "", "", "", 0);
     }
 
     public String getOtsikko() {
@@ -81,7 +90,7 @@ public class Lukuvinkki {
         return tuloste;
     }
 
-    private void alusta(String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
+    private void alusta(int id, String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
         this.otsikko = otsikko;
         this.kuvaus = kuvaus;
         this.kurssi = kurssi;

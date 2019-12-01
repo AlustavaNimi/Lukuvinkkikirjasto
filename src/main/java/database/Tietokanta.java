@@ -11,6 +11,14 @@ public interface Tietokanta {
     
     public void lisaaBlogi(Lukuvinkki lukuvinkki);
     
+    public void muokkaaKirjaa(Lukuvinkki lukuvinkki);
+    
+    public void muokkaaBlogia(Lukuvinkki lukuvinkki);
+    
+    public void poistaKirja(Lukuvinkki lukuvinkki);
+    
+    public void poistaBlogi(Lukuvinkki lukuvinkki);
+    
     public ArrayList<Lukuvinkki> haeLukuvinkit();
     
 }

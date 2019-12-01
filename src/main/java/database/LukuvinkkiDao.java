@@ -118,24 +118,26 @@ public class LukuvinkkiDao implements Tietokanta {
 //    }
 
     private void lisaaKirjaResultSetista(ResultSet result, ArrayList<Lukuvinkki> lukuvinkit) throws SQLException {
+        int id = result.getInt("id");
         String kirjailija = result.getString("kirjoittaja");
         String otsikko = result.getString("otsikko");
         String kurssi = result.getString("kurssi");
         String kuvaus = result.getString("kuvaus");
         int julkaisuvuosi = result.getInt("julkaisuvuosi");
         String isbn = result.getString("isbn");
-        Kirja kirja = new Kirja(otsikko, kirjailija, isbn, kuvaus, julkaisuvuosi, kurssi);
+        Kirja kirja = new Kirja(id, otsikko, kirjailija, isbn, kuvaus, julkaisuvuosi, kurssi);
         lukuvinkit.add(kirja);
     }
 
     private void lisaaBlogiResultSetista(ResultSet result, ArrayList<Lukuvinkki> lukuvinkit) throws SQLException {
+        int id = result.getInt("id");
         String otsikko = result.getString("otsikko");
         String kurssi = result.getString("kurssi");
         String kuvaus = result.getString("kuvaus");
         int julkaisuvuosi = result.getInt("julkaisuvuosi");
         String url = result.getString("isbn");
         String kirjoittaja = result.getString("kirjoittaja");
-        Blogipostaus blogi = new Blogipostaus(url, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuvuosi);
+        Blogipostaus blogi = new Blogipostaus(id, url, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuvuosi);
         lukuvinkit.add(blogi);
     }
 
@@ -173,6 +175,84 @@ public class LukuvinkkiDao implements Tietokanta {
             stmt.setInt(5, blogi.getJulkaisuVuosi());
             stmt.setString(6, blogi.getUrl());
             stmt.setString(7, "blogipostaus");
+            stmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void muokkaaKirjaa(Lukuvinkki lukuvinkki) {
+        Kirja k = (Kirja) lukuvinkki;
+        try (Connection conn = luoTietokantaYhteys()) {
+            String sql = "UPDATE Lukuvinkki SET " +
+                         "kirjoittaja = ?, " +
+                         "otsikko = ?, " +
+                         "kurssi = ?, " +
+                         "kuvaus = ?, " + 
+                         "julkaisuvuosi = ?, " +
+                         "isbn = ?" +
+                         "WHERE id = ?;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, k.getKirjoittaja());
+            stmt.setString(2, k.getOtsikko());
+            stmt.setString(3, k.getKurssi());
+            stmt.setString(4, k.getKuvaus());
+            stmt.setInt(5, k.getJulkaisuVuosi());
+            stmt.setString(6, k.getISBN());
+            stmt.setInt(7, k.getId());
+            stmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void muokkaaBlogia(Lukuvinkki lukuvinkki) {
+        Blogipostaus b = (Blogipostaus) lukuvinkki;
+        try (Connection conn = luoTietokantaYhteys()) {
+            String sql = "UPDATE Lukuvinkki SET " +
+                         "kirjoittaja = ?, " +
+                         "otsikko = ?, " +
+                         "kurssi = ?, " +
+                         "kuvaus = ?, " + 
+                         "julkaisuvuosi = ?, " +
+                         "url = ?" +
+                         "WHERE id = ?;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, b.getKirjoittaja());
+            stmt.setString(2, b.getOtsikko());
+            stmt.setString(3, b.getKurssi());
+            stmt.setString(4, b.getKuvaus());
+            stmt.setInt(5, b.getJulkaisuVuosi());
+            stmt.setString(6, b.getUrl());
+            stmt.setInt(7, b.getId());
+            stmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void poistaKirja(Lukuvinkki lukuvinkki) {
+        Kirja k = (Kirja) lukuvinkki;
+        try (Connection conn = luoTietokantaYhteys()) {
+            String sql = "DELETE FROM Lukuvinkki WHERE id = ?;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, k.getId());
+            stmt.execute();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void poistaBlogi(Lukuvinkki lukuvinkki) {
+        Blogipostaus b = (Blogipostaus) lukuvinkki;
+        try (Connection conn = luoTietokantaYhteys()) {
+            String sql = "DELETE FROM Lukuvinkki WHERE id = ?;";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, b.getId());
             stmt.execute();
         } catch (Exception e) {
             System.out.println(e.getMessage());
