@@ -139,6 +139,7 @@ public class LukuvinkkiDao implements Tietokanta {
             stmt.setString(6, kirja.getISBN());
             stmt.setString(7, "kirja");
             stmt.execute();
+            conn.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -175,8 +176,8 @@ public class LukuvinkkiDao implements Tietokanta {
                     + "kurssi = ?, "
                     + "kuvaus = ?, "
                     + "julkaisuvuosi = ?, "
-                    + "isbn = ?"
-                    + "WHERE id = ?";
+                    + "isbn = ? "
+                    + "WHERE id = ? ";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, k.getKirjoittaja());
             stmt.setString(2, k.getOtsikko());
@@ -185,7 +186,14 @@ public class LukuvinkkiDao implements Tietokanta {
             stmt.setInt(5, k.getJulkaisuVuosi());
             stmt.setString(6, k.getISBN());
             stmt.setInt(7, k.getId());
-            stmt.execute();
+            stmt.executeUpdate();
+            System.out.println(k.getKirjoittaja());
+            System.out.println(k.getOtsikko());
+            System.out.println(k.getKurssi());
+            System.out.println(k.getKuvaus());
+            System.out.println(k.getJulkaisuVuosi());
+            System.out.println(k.getISBN());
+            System.out.println(k.getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -211,7 +219,7 @@ public class LukuvinkkiDao implements Tietokanta {
             stmt.setInt(5, b.getJulkaisuVuosi());
             stmt.setString(6, b.getUrl());
             stmt.setInt(7, b.getId());
-            stmt.execute();
+            stmt.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

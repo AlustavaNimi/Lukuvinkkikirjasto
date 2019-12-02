@@ -80,6 +80,7 @@ public class Piirtoalusta extends JPanel {
     }
 
     public JFrame lukuvinkinMuokkaus(JFrame frame, Lukuvinkki vinkki) {
+        vinkinTiedot = new ArrayList<>();
         JTextField isbn = new JTextField();
         JTextField tyyppi = new JTextField();        
         JTextField otsikko = new JTextField(vinkki.getOtsikko(), 20);
@@ -97,6 +98,13 @@ public class Piirtoalusta extends JPanel {
             isbn = new JTextField(postaus.getUrl(),20);
             tyyppi = new JTextField("blogi", 20); 
         }
+        vinkinTiedot.add(otsikko);
+        vinkinTiedot.add(kirjoittaja);
+        vinkinTiedot.add(kuvaus);
+        vinkinTiedot.add(vuosiluku);
+        vinkinTiedot.add(kurssi); 
+        vinkinTiedot.add(isbn);
+        vinkinTiedot.add(tyyppi);
         
         alkuunNappi = new JButton("Alkuun");
         alkuunNappi.addActionListener(kuuntelija);

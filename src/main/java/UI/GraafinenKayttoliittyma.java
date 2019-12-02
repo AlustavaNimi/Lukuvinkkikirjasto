@@ -6,8 +6,10 @@ import domain.Kirja;
 import domain.Lukuvinkki;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class GraafinenKayttoliittyma implements Kayttoliittyma {
@@ -47,7 +49,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     public void run() {
         screenW = Toolkit.getDefaultToolkit().getScreenSize().width;
         screenH = Toolkit.getDefaultToolkit().getScreenSize().height;
-        frame = new JFrame();
+        frame = new JFrame("Lukuvinkit");
         alusta = new Piirtoalusta();
         frame.setPreferredSize(new Dimension(300, 400));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -112,13 +114,20 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     }
 
     public void tallennaMuokkaus() {
-        Lukuvinkki muokattavaVinkki = tietokanta.haeLukuvinkki(lukuvinkkiTaulu.get(selattavaVinkki).getId());
-        if (muokattavaVinkki instanceof Kirja) {
+        int id = lukuvinkkiTaulu.get(selattavaVinkki).getId();
+        ArrayList<JTextField> lista = alusta.getVinkinTiedot();
+        int vuosi = Integer.parseInt(lista.get(3).getText());
+        lukuvinkkiTaulu.get(selattavaVinkki).setJulkaisuVuosi(vuosi);
+        lukuvinkkiTaulu.get(selattavaVinkki).setOtsikko(lista.get(0).getText());
+        lukuvinkkiTaulu.get(selattavaVinkki).setKirjoittaja(lista.get(1).getText());
+        lukuvinkkiTaulu.get(selattavaVinkki).setKuvaus(lista.get(2).getText());
+        lukuvinkkiTaulu.get(selattavaVinkki).setKurssi(lista.get(4).getText());
+        if (lukuvinkkiTaulu.get(selattavaVinkki) instanceof Kirja) {
             System.out.println("KIRJA");
-            tietokanta.muokkaaKirjaa(muokattavaVinkki);
-        }   else if (muokattavaVinkki instanceof Blogipostaus) {
+            tietokanta.muokkaaKirjaa(lukuvinkkiTaulu.get(selattavaVinkki));
+        }   else if (lukuvinkkiTaulu.get(selattavaVinkki) instanceof Blogipostaus) {
             System.out.println("BLOGI");
-            tietokanta.muokkaaBlogia(muokattavaVinkki);
+            tietokanta.muokkaaBlogia(lukuvinkkiTaulu.get(selattavaVinkki));
         }
 
         muokkaus = false;
