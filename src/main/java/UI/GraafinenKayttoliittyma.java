@@ -38,7 +38,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     public boolean getSelaus() {
         return selaus;
     }
-    
+
     public boolean getMuokkaus() {
         return muokkaus;
     }
@@ -57,7 +57,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta.setGUIforKuuntelija(this);
 
     }
-    
+
     public void poistaLukuvinkki() {
         tietokanta.poistaLukuvinkki(lukuvinkkiTaulu.get(selattavaVinkki));
         uusiAlusta();
@@ -77,6 +77,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
 
     @Override
     public void selaa() {
+        lukuvinkkiTaulu = new HashMap<>();
         selaus = true;
         int i = 1;
 
@@ -111,7 +112,15 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     }
 
     public void tallennaMuokkaus() {
-        tietokanta.muokkaaKirjaa(lukuvinkkiTaulu.get(selattavaVinkki));
+        Lukuvinkki muokattavaVinkki = tietokanta.haeLukuvinkki(lukuvinkkiTaulu.get(selattavaVinkki).getId());
+        if (muokattavaVinkki instanceof Kirja) {
+            System.out.println("KIRJA");
+            tietokanta.muokkaaKirjaa(muokattavaVinkki);
+        }   else if (muokattavaVinkki instanceof Blogipostaus) {
+            System.out.println("BLOGI");
+            tietokanta.muokkaaBlogia(muokattavaVinkki);
+        }
+
         muokkaus = false;
         uusiAlusta();
         alusta.getOutput().setText("Muokkaus valmis!");

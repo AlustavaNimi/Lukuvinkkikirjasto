@@ -176,7 +176,7 @@ public class LukuvinkkiDao implements Tietokanta {
                     + "kuvaus = ?, "
                     + "julkaisuvuosi = ?, "
                     + "isbn = ?"
-                    + "WHERE id = ?;";
+                    + "WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, k.getKirjoittaja());
             stmt.setString(2, k.getOtsikko());

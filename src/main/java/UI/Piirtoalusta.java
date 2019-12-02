@@ -1,5 +1,7 @@
 package UI;
 
+import domain.Blogipostaus;
+import domain.Kirja;
 import domain.Lukuvinkki;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -78,14 +80,24 @@ public class Piirtoalusta extends JPanel {
     }
 
     public JFrame lukuvinkinMuokkaus(JFrame frame, Lukuvinkki vinkki) {
+        JTextField isbn = new JTextField();
+        JTextField tyyppi = new JTextField();        
         JTextField otsikko = new JTextField(vinkki.getOtsikko(), 20);
-        JTextField kirjoittaja = new JTextField(vinkki.getKirjoittaja(), 18);
-        JTextField isbn = new JTextField(20);
+        JTextField kirjoittaja = new JTextField(vinkki.getKirjoittaja(), 18);       
         JTextField kuvaus = new JTextField(vinkki.getKuvaus(), 20);
         String vuosi = String.valueOf(vinkki.getJulkaisuVuosi());
         JTextField vuosiluku = new JTextField(vuosi, 18);
         JTextField kurssi = new JTextField(vinkki.getKurssi(), 20);
-        JTextField tyyppi = new JTextField(20);
+        if (vinkki instanceof Kirja) {
+            Kirja kirja = (Kirja) vinkki;
+            isbn = new JTextField(kirja.getISBN(),20);
+            tyyppi = new JTextField("kirja", 20);
+        }   else if (vinkki instanceof Blogipostaus) {
+            Blogipostaus postaus = (Blogipostaus) vinkki;
+            isbn = new JTextField(postaus.getUrl(),20);
+            tyyppi = new JTextField("blogi", 20); 
+        }
+        
         alkuunNappi = new JButton("Alkuun");
         alkuunNappi.addActionListener(kuuntelija);
 
