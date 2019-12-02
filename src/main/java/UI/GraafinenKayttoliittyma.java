@@ -123,10 +123,8 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         lukuvinkkiTaulu.get(selattavaVinkki).setKuvaus(lista.get(2).getText());
         lukuvinkkiTaulu.get(selattavaVinkki).setKurssi(lista.get(4).getText());
         if (lukuvinkkiTaulu.get(selattavaVinkki) instanceof Kirja) {
-            System.out.println("KIRJA");
             tietokanta.muokkaaKirjaa(lukuvinkkiTaulu.get(selattavaVinkki));
         }   else if (lukuvinkkiTaulu.get(selattavaVinkki) instanceof Blogipostaus) {
-            System.out.println("BLOGI");
             tietokanta.muokkaaBlogia(lukuvinkkiTaulu.get(selattavaVinkki));
         }
 

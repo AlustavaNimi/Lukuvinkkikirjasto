@@ -187,13 +187,6 @@ public class LukuvinkkiDao implements Tietokanta {
             stmt.setString(6, k.getISBN());
             stmt.setInt(7, k.getId());
             stmt.executeUpdate();
-            System.out.println(k.getKirjoittaja());
-            System.out.println(k.getOtsikko());
-            System.out.println(k.getKurssi());
-            System.out.println(k.getKuvaus());
-            System.out.println(k.getJulkaisuVuosi());
-            System.out.println(k.getISBN());
-            System.out.println(k.getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
