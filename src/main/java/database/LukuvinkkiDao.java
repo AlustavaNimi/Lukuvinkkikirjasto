@@ -99,23 +99,7 @@ public class LukuvinkkiDao implements Tietokanta {
         }
     }
 
-//    private void lisaaDefaultVinkitTietokantaan() {
-//        try (Connection conn = luoTietokantaYhteys()) {
-//            String sql = "INSERT INTO Lukuvinkki (kirjoittaja, otsikko, kurssi,"
-//                    + "kuvaus, julkaisuvuosi, isbn, tyyppi) values (?, ?, ?, ?, ?, ?, ?)";
-//            PreparedStatement stmt = conn.prepareStatement(sql);
-//            stmt.setString(1, "J.K.ROWLING");
-//            stmt.setString(2, "HARRY POTTER");
-//            stmt.setString(3, "FANTASIAKIRJALLISUUS");
-//            stmt.setString(4, "TAIKURI HARRI");
-//            stmt.setInt(5, 1234);
-//            stmt.setString(6, "12323520598-123");
-//            stmt.setString(7, "kirja");
-//            stmt.execute();
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
+
     private void lisaaKirjaResultSetista(ResultSet result, ArrayList<Lukuvinkki> lukuvinkit) throws SQLException {
         int id = result.getInt("id");
         String kirjailija = result.getString("kirjoittaja");
@@ -240,7 +224,6 @@ public class LukuvinkkiDao implements Tietokanta {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, k.getId());
             stmt.executeUpdate();
-            System.out.println(lukuvinkki.getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -254,7 +237,6 @@ public class LukuvinkkiDao implements Tietokanta {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, b.getId());
             stmt.execute();
-            System.out.println(sql);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
