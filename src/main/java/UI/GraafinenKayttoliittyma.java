@@ -164,6 +164,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         frame = alusta.initComponents(frame, false);
         alusta.setGUIforKuuntelija(this);
         selaus = false;
+        muokkaus = false;
     }
 
 }
