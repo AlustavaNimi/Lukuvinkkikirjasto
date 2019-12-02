@@ -62,5 +62,47 @@ public class Stepdefs {
         // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
     }
+    
+    @Given("reading suggestion with title {string} and type {string} is successfully created")
+    public void readingSuggestionWithTitleAndTypeIsSuccessfullyCreated(String string, String string2) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("command selaa is selected")
+    public void commandSelaaIsSelected() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @Then("reading suggestion with title {string} is listed")
+    public void readingSuggestionWithTitleIsListed(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("title {string} and type {string} are entered")
+    public void titleAndTypeAreEntered(String string, String string2) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("title {string}, author {string}, isbn {string}, description {string}, publication date {string}, course {string} and type {string} are entered")
+    public void titleAuthorIsbnDescriptionPublicationDateCourseAndTypeAreEntered(String string, String string2, String string3, String string4, String string5, String string6, String string7) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @Then("system will respond with \"Lukuvinkille on annettava otsikko")
+    public void systemWillRespondWithLukuvinkilleOnAnnettavaOtsikko() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("type {string} is entered")
+    public void typeIsEntered(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
 
 }
