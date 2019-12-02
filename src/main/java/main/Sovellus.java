@@ -28,11 +28,11 @@ public class Sovellus {
         //cubbli-linuxilla anna komentorivillä komento
         //export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
         if (graafinen) {
-            Tietokanta lukuvinkit = new LukuvinkkiDao("jdbc:sqlite:kirjat.db");
+            Tietokanta lukuvinkit = new LukuvinkkiDao("jdbc:sqlite:db.db");
             GraafinenKayttoliittyma kayttoliittyma = new GraafinenKayttoliittyma(lukuvinkit);
             kayttoliittyma.run();
         } else {
-            Tietokanta lukuvinkit = new LukuvinkkiDao("jdbc:sqlite:kirjat.db");
+            Tietokanta lukuvinkit = new LukuvinkkiDao("jdbc:sqlite:db.db");
             Kayttoliittyma kayttoliittyma = new TekstiKayttoliittyma(new KonsoliIO(), lukuvinkit);
             kayttoliittyma.run();
         }
