@@ -136,12 +136,13 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         String isbnUrl = alusta.getVinkinTiedot().get(2).getText();
         String kuvaus = alusta.getVinkinTiedot().get(3).getText();
         String kurssi = alusta.getVinkinTiedot().get(5).getText();
-        if (alusta.getVinkinTiedot().get(6).getText().toLowerCase().equals("kirja")) {
+        String tyyppi = alusta.getVinkinTiedot().get(6).getText().toLowerCase();
+        if (tyyppi.equals("kirja")) {
             Kirja kirja = new Kirja(otsikko, kirjoittaja, isbnUrl, kuvaus, vuosi, kurssi);
             tietokanta.lisaaKirja(kirja);
             uusiAlusta();
             alusta.getOutput().setText("Lukuvinkki lisätty!");
-        } else if (alusta.getVinkinTiedot().get(6).getText().toLowerCase().equals("blogi")) {
+        } else if (tyyppi.equals("blogi")) {
             System.out.println(alusta.getVinkinTiedot().get(0).getText());
             Blogipostaus postaus = new Blogipostaus(isbnUrl, otsikko, kuvaus, kurssi, kirjoittaja, vuosi);
             tietokanta.lisaaBlogi(postaus);
