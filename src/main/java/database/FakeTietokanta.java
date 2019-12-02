@@ -25,15 +25,6 @@ public class FakeTietokanta implements Tietokanta{
     }
 
     @Override
-    public void muokkaaKirjaa(Lukuvinkki lukuvinkki) {
-        
-    }
-
-    @Override
-    public void muokkaaBlogia(Lukuvinkki lukuvinkki) {
-    }
-
-    @Override
     public void poistaLukuvinkki(Lukuvinkki lukuvinkki) {
         lukuvinkit.remove(lukuvinkki);
     }
@@ -41,6 +32,11 @@ public class FakeTietokanta implements Tietokanta{
     @Override
     public Lukuvinkki haeLukuvinkki(int id) {
         return lukuvinkit.get(id - 1);
+    }
+
+    @Override
+    public void muokkaaLukuvinkkia(Lukuvinkki lukuvinkki) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

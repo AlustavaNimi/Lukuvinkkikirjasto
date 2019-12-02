@@ -165,10 +165,9 @@ public class LukuvinkkiDao implements Tietokanta {
             System.out.println(e.getMessage());
         }
     }
-
+    
     @Override
-    public void muokkaaKirjaa(Lukuvinkki lukuvinkki) {
-        Kirja k = (Kirja) lukuvinkki;
+    public void muokkaaLukuvinkkia(Lukuvinkki vinkki) {
         try (Connection conn = luoTietokantaYhteys()) {
             String sql = "UPDATE Lukuvinkki SET "
                     + "kirjoittaja = ?, "
@@ -176,42 +175,25 @@ public class LukuvinkkiDao implements Tietokanta {
                     + "kurssi = ?, "
                     + "kuvaus = ?, "
                     + "julkaisuvuosi = ?, "
-                    + "isbn = ? "
+                    + "isbn = ?, "
+                    + "url = ? "
                     + "WHERE id = ? ";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, k.getKirjoittaja());
-            stmt.setString(2, k.getOtsikko());
-            stmt.setString(3, k.getKurssi());
-            stmt.setString(4, k.getKuvaus());
-            stmt.setInt(5, k.getJulkaisuVuosi());
-            stmt.setString(6, k.getISBN());
-            stmt.setInt(7, k.getId());
-            stmt.executeUpdate();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    @Override
-    public void muokkaaBlogia(Lukuvinkki lukuvinkki) {
-        Blogipostaus b = (Blogipostaus) lukuvinkki;
-        try (Connection conn = luoTietokantaYhteys()) {
-            String sql = "UPDATE Lukuvinkki SET "
-                    + "kirjoittaja = ?, "
-                    + "otsikko = ?, "
-                    + "kurssi = ?, "
-                    + "kuvaus = ?, "
-                    + "julkaisuvuosi = ?, "
-                    + "url = ?"
-                    + "WHERE id = ?;";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, b.getKirjoittaja());
-            stmt.setString(2, b.getOtsikko());
-            stmt.setString(3, b.getKurssi());
-            stmt.setString(4, b.getKuvaus());
-            stmt.setInt(5, b.getJulkaisuVuosi());
-            stmt.setString(6, b.getUrl());
-            stmt.setInt(7, b.getId());
+            stmt.setString(1, vinkki.getKirjoittaja());
+            stmt.setString(2, vinkki.getOtsikko());
+            stmt.setString(3, vinkki.getKurssi());
+            stmt.setString(4, vinkki.getKuvaus());
+            stmt.setInt(5, vinkki.getJulkaisuVuosi());
+            stmt.setString(6,"");
+            stmt.setString(7,"");
+            stmt.setInt(8, vinkki.getId());
+            if (vinkki.getTyyppi().equals("kirja")) {
+                Kirja k = (Kirja) vinkki;
+                stmt.setString(6, k.getISBN());
+            } else if (vinkki.getTyyppi().equals("blogi")) {
+                Blogipostaus b = (Blogipostaus) vinkki;
+                stmt.setString(7,b.getUrl());
+            }
             stmt.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -242,6 +224,7 @@ public class LukuvinkkiDao implements Tietokanta {
         }
         return lista.get(0);
     }
+
     
 
    
