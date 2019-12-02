@@ -24,11 +24,15 @@ public class NappaimistonKuuntelija implements ActionListener {
             GUI.selaa();
         } else if (e.getSource() == alusta.getAlkuun()) {
             GUI.uusiAlusta();
+        } else if (e.getSource() == alusta.getInput() && GUI.getSelaus()) {
+            int i = Integer.parseInt(alusta.getInput().getText());
+            GUI.tulostaYksittainenLukuvinkki(i);
+            alusta.getOutput().setText("");
         } else if (e.getSource() == alusta.getInput() && alusta.getInput().getText().toLowerCase().equals("lisaa vinkki")) {
             alusta.getOutput().setText("");
             alusta.getInput().setText("");
             GUI.lisaaLukuvinkkiValikko();
-        } else if (e.getSource() == alusta.getInput() && alusta.getInput().getText().toLowerCase().equals("muokkaa")) {
+        } else if (e.getSource() == alusta.getMuokkausNappi()) {
             alusta.getOutput().setText("");
             alusta.getInput().setText("");
             GUI.muokkaaVinkkia();
@@ -36,6 +40,8 @@ public class NappaimistonKuuntelija implements ActionListener {
             GUI.getFrame().dispose();
         } else if (e.getSource() == alusta.getTallennaNappi()) {
             GUI.lisaaLukuvinkki();
+        } else if (e.getSource() == alusta.getPoistaNappi()) {
+            GUI.poistaLukuvinkki();
         }
     }
 

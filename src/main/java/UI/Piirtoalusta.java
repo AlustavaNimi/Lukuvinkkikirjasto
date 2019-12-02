@@ -1,5 +1,6 @@
 package UI;
 
+import domain.Lukuvinkki;
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -14,17 +15,18 @@ public class Piirtoalusta extends JPanel {
     private NappaimistonKuuntelija kuuntelija;
     private ArrayList<JTextField> vinkinTiedot;
     private JButton tallennaNappi;
+    private JButton muokkausNappi;
+    private JButton poistaNappi;
 
     public Piirtoalusta() {
         kuuntelija = new NappaimistonKuuntelija(this);
         komennot = "Käytettävissä olevat komennot: "
                 + "\nLisaa vinkki"
-                + "\nMuokkaa"
                 + "\nSelaa"
                 + "\nLopeta";
     }
 
-    public JFrame initComponents(JFrame frame) {
+    public JFrame initComponents(JFrame frame, boolean muokkaus) {
         output = new JTextArea(komennot, 20, 20);
         output.setLineWrap(true);
         scroll = new JScrollPane(output);
@@ -34,8 +36,17 @@ public class Piirtoalusta extends JPanel {
         alkuunNappi = new JButton("Alkuun");
         input.addActionListener(kuuntelija);
         alkuunNappi.addActionListener(kuuntelija);
-        this.add(scroll);
-        this.add(input);
+        this.add(scroll);       
+        if (muokkaus) {
+            poistaNappi = new JButton("Poista");
+            muokkausNappi = new JButton("Muokkaa");
+            poistaNappi.addActionListener(kuuntelija);
+            muokkausNappi.addActionListener(kuuntelija);
+            this.add(poistaNappi);
+            this.add(muokkausNappi);
+        } else {
+            this.add(input);
+        }
         this.add(alkuunNappi);
         frame.getContentPane().add(this);
         frame.pack();
@@ -65,8 +76,44 @@ public class Piirtoalusta extends JPanel {
     public void setGUIforKuuntelija(GraafinenKayttoliittyma liittyma) {
         kuuntelija.setGUI(liittyma);
     }
-    
-    public JFrame lukuvinkinMuokkaus(JFrame frame, ArrayList<JTextField> lista) {
+
+    public JFrame lukuvinkinMuokkaus(JFrame frame, Lukuvinkki vinkki) {
+        JTextField otsikko = new JTextField(vinkki.getOtsikko(), 20);
+        JTextField kirjoittaja = new JTextField(vinkki.getKirjoittaja(), 18);
+        JTextField isbn = new JTextField(20);
+        JTextField kuvaus = new JTextField(vinkki.getKuvaus(), 20);
+        String vuosi = String.valueOf(vinkki.getJulkaisuVuosi());
+        JTextField vuosiluku = new JTextField(vuosi, 18);
+        JTextField kurssi = new JTextField(vinkki.getKurssi(), 20);
+        JTextField tyyppi = new JTextField(20);
+        alkuunNappi = new JButton("Alkuun");
+        alkuunNappi.addActionListener(kuuntelija);
+
+        tallennaNappi = new JButton("Tallenna");
+        tallennaNappi.addActionListener(kuuntelija);
+
+        alkuunNappi.setLocation(new Point(195, 313));
+        this.add(new JLabel("otsikko"));
+        this.add(otsikko);
+        this.add(new JLabel("kirjoittaja"));
+        this.add(kirjoittaja);
+        this.add(new JLabel("isbn/url"));
+        this.add(isbn);
+        this.add(new JLabel("kuvaus"));
+        this.add(kuvaus);
+        this.add(new JLabel("vuosiluku"));
+        this.add(vuosiluku);
+        this.add(new JLabel("kurssi"));
+        this.add(kurssi);
+        this.add(new JLabel("tyyppi"));
+        this.add(tyyppi);
+
+        this.add(tallennaNappi);
+        this.add(alkuunNappi);
+
+        frame.add(this);
+        frame.pack();
+
         return frame;
     }
 
@@ -76,10 +123,10 @@ public class Piirtoalusta extends JPanel {
         JTextField otsikko = new JTextField(20);
         vinkinTiedot.add(otsikko);
 
-         JTextField kirjoittaja = new JTextField(18);
+        JTextField kirjoittaja = new JTextField(18);
         vinkinTiedot.add(kirjoittaja);
 
-         JTextField isbn = new JTextField(20);
+        JTextField isbn = new JTextField(20);
         vinkinTiedot.add(isbn);
 
         JTextField kuvaus = new JTextField(20);
@@ -88,7 +135,7 @@ public class Piirtoalusta extends JPanel {
         JTextField vuosiluku = new JTextField(18);
         vinkinTiedot.add(vuosiluku);
 
-        JTextField  kurssi = new JTextField(20);
+        JTextField kurssi = new JTextField(20);
         vinkinTiedot.add(kurssi);
 
         JTextField tyyppi = new JTextField(20);
@@ -127,6 +174,14 @@ public class Piirtoalusta extends JPanel {
 
     public JButton getTallennaNappi() {
         return tallennaNappi;
+    }
+    
+    public JButton getPoistaNappi() {
+        return poistaNappi;
+    }
+    
+    public JButton getMuokkausNappi() {
+        return muokkausNappi;
     }
 
     public ArrayList<JTextField> getVinkinTiedot() {

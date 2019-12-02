@@ -116,7 +116,6 @@ public class LukuvinkkiDao implements Tietokanta {
 //            System.out.println(e.getMessage());
 //        }
 //    }
-
     private void lisaaKirjaResultSetista(ResultSet result, ArrayList<Lukuvinkki> lukuvinkit) throws SQLException {
         int id = result.getInt("id");
         String kirjailija = result.getString("kirjoittaja");
@@ -185,14 +184,14 @@ public class LukuvinkkiDao implements Tietokanta {
     public void muokkaaKirjaa(Lukuvinkki lukuvinkki) {
         Kirja k = (Kirja) lukuvinkki;
         try (Connection conn = luoTietokantaYhteys()) {
-            String sql = "UPDATE Lukuvinkki SET " +
-                         "kirjoittaja = ?, " +
-                         "otsikko = ?, " +
-                         "kurssi = ?, " +
-                         "kuvaus = ?, " + 
-                         "julkaisuvuosi = ?, " +
-                         "isbn = ?" +
-                         "WHERE id = ?;";
+            String sql = "UPDATE Lukuvinkki SET "
+                    + "kirjoittaja = ?, "
+                    + "otsikko = ?, "
+                    + "kurssi = ?, "
+                    + "kuvaus = ?, "
+                    + "julkaisuvuosi = ?, "
+                    + "isbn = ?"
+                    + "WHERE id = ?;";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, k.getKirjoittaja());
             stmt.setString(2, k.getOtsikko());
@@ -211,14 +210,14 @@ public class LukuvinkkiDao implements Tietokanta {
     public void muokkaaBlogia(Lukuvinkki lukuvinkki) {
         Blogipostaus b = (Blogipostaus) lukuvinkki;
         try (Connection conn = luoTietokantaYhteys()) {
-            String sql = "UPDATE Lukuvinkki SET " +
-                         "kirjoittaja = ?, " +
-                         "otsikko = ?, " +
-                         "kurssi = ?, " +
-                         "kuvaus = ?, " + 
-                         "julkaisuvuosi = ?, " +
-                         "url = ?" +
-                         "WHERE id = ?;";
+            String sql = "UPDATE Lukuvinkki SET "
+                    + "kirjoittaja = ?, "
+                    + "otsikko = ?, "
+                    + "kurssi = ?, "
+                    + "kuvaus = ?, "
+                    + "julkaisuvuosi = ?, "
+                    + "url = ?"
+                    + "WHERE id = ?;";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, b.getKirjoittaja());
             stmt.setString(2, b.getOtsikko());
@@ -237,10 +236,11 @@ public class LukuvinkkiDao implements Tietokanta {
     public void poistaKirja(Lukuvinkki lukuvinkki) {
         Kirja k = (Kirja) lukuvinkki;
         try (Connection conn = luoTietokantaYhteys()) {
-            String sql = "DELETE FROM Lukuvinkki WHERE id = ?;";
+            String sql = "DELETE FROM Lukuvinkki WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, k.getId());
-            stmt.execute();
+            stmt.executeUpdate();
+            System.out.println(lukuvinkki.getId());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -254,6 +254,7 @@ public class LukuvinkkiDao implements Tietokanta {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, b.getId());
             stmt.execute();
+            System.out.println(sql);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
