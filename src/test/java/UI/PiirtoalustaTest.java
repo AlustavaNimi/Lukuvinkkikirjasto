@@ -5,7 +5,6 @@
  */
 package UI;
 
-
 import domain.Lukuvinkki;
 import javax.swing.JFrame;
 import org.junit.After;
@@ -20,6 +19,7 @@ public class PiirtoalustaTest {
     private JFrame frame;
     private Piirtoalusta alusta;
     private Lukuvinkki vinkki;
+
     public PiirtoalustaTest() {
 
     }
@@ -36,12 +36,20 @@ public class PiirtoalustaTest {
     public void setUp() {
         alusta = new Piirtoalusta();
         vinkki = new Lukuvinkki("otsikko", "kuvaus", "kurssi", "kirjoittaja", 1234);
-        frame = new JFrame();
+        try {
+            frame = new JFrame();
+        } catch (Exception e) {
+
+        }
     }
 
     @After
     public void tearDown() {
-        frame.dispose();
+        try {
+            frame.dispose();
+        } catch (Exception e) {
+
+        }
     }
 
     @Test
