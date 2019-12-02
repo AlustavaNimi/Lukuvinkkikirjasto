@@ -59,7 +59,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     }
     
     public void poistaLukuvinkki() {
-        tietokanta.poistaKirja(lukuvinkkiTaulu.get(selattavaVinkki));
+        tietokanta.poistaLukuvinkki(lukuvinkkiTaulu.get(selattavaVinkki));
         uusiAlusta();
         alusta.getOutput().setText("Vinkki poistettu!");
     }

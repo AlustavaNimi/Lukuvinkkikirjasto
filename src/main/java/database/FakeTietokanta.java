@@ -35,13 +35,9 @@ public class FakeTietokanta implements Tietokanta{
     }
 
     @Override
-    public void poistaKirja(Lukuvinkki lukuvinkki) {
+    public void poistaLukuvinkki(Lukuvinkki lukuvinkki) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void poistaBlogi(Lukuvinkki lukuvinkki) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

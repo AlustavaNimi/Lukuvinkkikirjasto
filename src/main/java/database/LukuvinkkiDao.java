@@ -216,28 +216,14 @@ public class LukuvinkkiDao implements Tietokanta {
             System.out.println(e.getMessage());
         }
     }
-
+    
     @Override
-    public void poistaKirja(Lukuvinkki lukuvinkki) {
-        Kirja k = (Kirja) lukuvinkki;
+    public void poistaLukuvinkki(Lukuvinkki lukuvinkki) {
         try (Connection conn = luoTietokantaYhteys()) {
             String sql = "DELETE FROM Lukuvinkki WHERE id = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, k.getId());
+            stmt.setInt(1, lukuvinkki.getId());
             stmt.executeUpdate();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    @Override
-    public void poistaBlogi(Lukuvinkki lukuvinkki) {
-        Blogipostaus b = (Blogipostaus) lukuvinkki;
-        try (Connection conn = luoTietokantaYhteys()) {
-            String sql = "DELETE FROM Lukuvinkki WHERE id = ?;";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, b.getId());
-            stmt.execute();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
