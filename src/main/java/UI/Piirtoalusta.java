@@ -19,6 +19,9 @@ public class Piirtoalusta extends JPanel {
     private JButton tallennaNappi;
     private JButton muokkausNappi;
     private JButton poistaNappi;
+    private JButton lisaaNappi;
+    private JButton selaaNappi;
+    private JButton lopetaNappi;
 
     public Piirtoalusta() {
         kuuntelija = new NappaimistonKuuntelija(this);
@@ -38,6 +41,12 @@ public class Piirtoalusta extends JPanel {
         alkuunNappi = new JButton("Alkuun");
         input.addActionListener(kuuntelija);
         alkuunNappi.addActionListener(kuuntelija);
+        lisaaNappi = new JButton("Lisää");
+        selaaNappi = new JButton("Selaa");
+        lopetaNappi = new JButton("Lopeta");
+        lisaaNappi.addActionListener(kuuntelija);
+        selaaNappi.addActionListener(kuuntelija);
+        lopetaNappi.addActionListener(kuuntelija);
         this.add(scroll);       
         if (muokkaus) {
             poistaNappi = new JButton("Poista");
@@ -48,6 +57,9 @@ public class Piirtoalusta extends JPanel {
             this.add(muokkausNappi);
         } else {
             this.add(input);
+            this.add(lisaaNappi);
+            this.add(selaaNappi);
+            this.add(lopetaNappi);
         }
         this.add(alkuunNappi);
         frame.getContentPane().add(this);
@@ -202,6 +214,18 @@ public class Piirtoalusta extends JPanel {
     
     public JButton getMuokkausNappi() {
         return muokkausNappi;
+    }
+    
+    public JButton getSelaaNappi() {
+        return this.selaaNappi;
+    }
+    
+    public JButton getLisaaNappi() {
+        return this.lisaaNappi;
+    }
+    
+    public JButton getLopetaNappi() {
+        return this.lopetaNappi;
     }
 
     public ArrayList<JTextField> getVinkinTiedot() {
