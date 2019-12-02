@@ -3,6 +3,7 @@ import IO.KonsoliIO;
 import UI.GraafinenKayttoliittyma;
 import UI.Kayttoliittyma;
 import UI.TekstiKayttoliittyma;
+import database.FakeTietokanta;
 import database.LukuvinkkiDao;
 import database.Tietokanta;
 import java.util.Scanner;
@@ -28,7 +29,7 @@ public class Sovellus {
         //cubbli-linuxilla anna komentorivillä komento
         //export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64/
         if (graafinen) {
-            Tietokanta lukuvinkit = new LukuvinkkiDao("jdbc:sqlite:db.db");
+            Tietokanta lukuvinkit = new FakeTietokanta();//new LukuvinkkiDao("jdbc:sqlite:db.db");
             GraafinenKayttoliittyma kayttoliittyma = new GraafinenKayttoliittyma(lukuvinkit);
             kayttoliittyma.run();
         } else {

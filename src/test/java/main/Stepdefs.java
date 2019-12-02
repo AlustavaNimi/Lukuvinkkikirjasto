@@ -1,106 +1,140 @@
 package main;
 
 import IO.IOStub;
+import UI.GraafinenKayttoliittyma;
+import UI.NappaimistonKuuntelija;
+import UI.Piirtoalusta;
 import UI.TekstiKayttoliittyma;
 import database.FakeTietokanta;
 import database.Tietokanta;
+import domain.Lukuvinkki;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import java.awt.Event;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import static org.junit.Assert.*;
 
 public class Stepdefs {
-    ArrayList<String> inputLines;
-    IOStub io;
+    GraafinenKayttoliittyma gui;
+    Piirtoalusta alusta;
+    NappaimistonKuuntelija kuuntelija;
     Tietokanta tietokanta;
-    TekstiKayttoliittyma tekstiKayttoliittyma;
+    JFrame frame;
 
     @Before
     public void setup(){
         tietokanta = new FakeTietokanta();
-        inputLines = new ArrayList<>();
-    }
-
-    @Given("command lisaa otsikolla is selected")
-    public void commandLisaaOtsikollaSelected() {
-        inputLines.add("lisaa otsikolla");
-    }
-
-    @When("title {string} is entered")
-    public void titleIsEntered(String title) {
-        inputLines.add(title);
-        inputLines.add("lisaa otsikolla");
-        
-        io = new IOStub();
-        io.setInputs(inputLines);
-        tekstiKayttoliittyma = new TekstiKayttoliittyma(io, tietokanta);
-        tekstiKayttoliittyma.run();
-    }
-
-    @Then("system will respond with {string}")
-    public void systemWillRespondWith(String expectedOutput) {
-        assertTrue(io.getOutputs().contains(expectedOutput));
-    }
-    
-    @Given("command lisaa vinkki is selected")
-    public void commandLisaaVinkkiIsSelected() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
-    }
-
-    @When("title {string}, author {string}, isbn {string}, description {string}, publication date {string}, course {string} and url {string} are entered")
-    public void titleAuthorIsbnDescriptionPublicationDateCourseAndUrlAreEntered(String string, String string2, String string3, String string4, String string5, String string6, String string7) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
-    }
-
-    @When("title {string} and publication date {string} is entered")
-    public void titleAndPublicationDateIsEntered(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        alusta = new Piirtoalusta();
+        tietokanta = new FakeTietokanta();
+        kuuntelija = new NappaimistonKuuntelija(alusta);
+        gui = new GraafinenKayttoliittyma(tietokanta);
+        gui.run();
+        frame = gui.getFrame();
+        alusta.setGUIforKuuntelija(gui);
+        init();
     }
     
     @Given("reading suggestion with title {string} and type {string} is successfully created")
-    public void readingSuggestionWithTitleAndTypeIsSuccessfullyCreated(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    public void readingSuggestionWithTitleAndTypeIsSuccessfullyCreated(String title, String type) {
+        tietokanta.lisaaKirja(new Lukuvinkki(title));
+    }
+    
+    private void init() {
+        alusta.initComponents(frame, true);
+    }
+    
+    private void performAction(Object o, String cmd) {
+        init();
+        ActionEvent tapahtuma = new ActionEvent(o, 0, cmd);
+        kuuntelija.actionPerformed(tapahtuma);
+    }
+    
+    @When("Poista is pressed")
+    public void poistaIsPressed() {
+        performAction(alusta.getPoistaNappi(), alusta.getPoistaNappi().getActionCommand());
     }
 
-    @When("command selaa is selected")
-    public void commandSelaaIsSelected() {
+    @When("Muokkaa is pressed")
+    public void muokkaaIsPressed() {
+        performAction(alusta.getMuokkausNappi(), alusta.getMuokkausNappi().getActionCommand());
+    }
+
+    @When("command {string} is selected")
+    public void commandIsSelected(String command) {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        alusta.getInput().setText(command);
+        performAction(alusta.getInput().getText(), alusta.getInput().getText());
     }
 
     @Then("reading suggestion with title {string} is listed")
-    public void readingSuggestionWithTitleIsListed(String string) {
+    public void readingSuggestionWithTitleIsListed(String title) {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        ArrayList<String> otsikot = new ArrayList<>();
+        for (Lukuvinkki v : tietokanta.haeLukuvinkit()) {
+            otsikot.add(v.getOtsikko());
+        }
+        assertTrue(otsikot.contains(title));
     }
 
-    @When("title {string} and type {string} are entered")
-    public void titleAndTypeAreEntered(String string, String string2) {
+    @Then("system will respond with {string}")
+    public void systemWillRespondWith(String output) {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        init();
+        assertEquals(alusta.getOutput().getText(), output);
     }
 
-    @When("title {string}, author {string}, isbn {string}, description {string}, publication date {string}, course {string} and type {string} are entered")
-    public void titleAuthorIsbnDescriptionPublicationDateCourseAndTypeAreEntered(String string, String string2, String string3, String string4, String string5, String string6, String string7) {
+    /*@Given("command {string} is selected")
+    public void commandIsSelected(String string) {
         // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
-    }
+    }*/
 
-    @Then("system will respond with \"Lukuvinkille on annettava otsikko")
-    public void systemWillRespondWithLukuvinkilleOnAnnettavaOtsikko() {
+    @When("title {string} is entered")
+    public void titleIsEntered(String string) {
         // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        init();
+        
     }
 
     @When("type {string} is entered")
     public void typeIsEntered(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("author {string} is entered")
+    public void authorIsEntered(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("isbn {string} is entered")
+    public void isbnIsEntered(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("description {string} is entered")
+    public void descriptionIsEntered(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("publication date {string} is entered")
+    public void publicationDateIsEntered(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
+    @When("course {string} is entered")
+    public void courseIsEntered(String string) {
         // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
     }

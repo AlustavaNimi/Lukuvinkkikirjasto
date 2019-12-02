@@ -26,22 +26,21 @@ public class FakeTietokanta implements Tietokanta{
 
     @Override
     public void muokkaaKirjaa(Lukuvinkki lukuvinkki) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void muokkaaBlogia(Lukuvinkki lukuvinkki) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void poistaLukuvinkki(Lukuvinkki lukuvinkki) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        lukuvinkit.remove(lukuvinkki);
     }
 
     @Override
     public Lukuvinkki haeLukuvinkki(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return lukuvinkit.get(id - 1);
     }
 
     
