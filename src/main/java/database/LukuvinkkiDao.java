@@ -228,4 +228,20 @@ public class LukuvinkkiDao implements Tietokanta {
             System.out.println(e.getMessage());
         }
     }
+
+    @Override
+    public Lukuvinkki haeLukuvinkki(int id) {
+        ArrayList<Lukuvinkki> lista = new ArrayList<>();
+        try (Connection conn = luoTietokantaYhteys()) {
+            ResultSet result = luoResultSet(conn, "SELECT * FROM Lukuvinkki WHERE id = " + id);
+            result.next();
+            this.lisaaLukuvinkkiResultSetista(result, lista);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return lista.get(0);
+    }
+    
+
+   
 }

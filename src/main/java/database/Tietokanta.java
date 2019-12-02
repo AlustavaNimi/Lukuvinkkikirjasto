@@ -17,6 +17,8 @@ public interface Tietokanta {
     
     public void poistaLukuvinkki(Lukuvinkki lukuvinkki);
     
+    public Lukuvinkki haeLukuvinkki(int id);
+    
     public ArrayList<Lukuvinkki> haeLukuvinkit();
     
 }
