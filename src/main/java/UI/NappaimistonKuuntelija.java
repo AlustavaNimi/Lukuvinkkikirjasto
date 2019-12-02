@@ -39,7 +39,11 @@ public class NappaimistonKuuntelija implements ActionListener {
         } else if (e.getSource() == alusta.getInput() && alusta.getInput().getText().toLowerCase().equals("lopeta")) {
             GUI.getFrame().dispose();
         } else if (e.getSource() == alusta.getTallennaNappi()) {
-            GUI.lisaaLukuvinkki();
+            if (!GUI.getMuokkaus()) {
+                GUI.lisaaLukuvinkki();
+            }   else {
+                GUI.tallennaMuokkaus();
+            }
         } else if (e.getSource() == alusta.getPoistaNappi()) {
             GUI.poistaLukuvinkki();
         }

@@ -7,7 +7,6 @@ import domain.Lukuvinkki;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.HashMap;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -22,12 +21,14 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     private HashMap<Integer, Lukuvinkki> lukuvinkkiTaulu;
     private boolean selaus;
     private int selattavaVinkki;
+    private boolean muokkaus;
 
     public GraafinenKayttoliittyma(Tietokanta lukuvinkit) {
         this.tietokanta = lukuvinkit;
         frame = new JFrame("Lukuvinkit");
         lukuvinkkiTaulu = new HashMap<>();
         selaus = false;
+        muokkaus = false;
     }
 
     public GraafinenKayttoliittyma() {
@@ -36,6 +37,10 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
 
     public boolean getSelaus() {
         return selaus;
+    }
+    
+    public boolean getMuokkaus() {
+        return muokkaus;
     }
 
     @Override
@@ -102,11 +107,14 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta = new Piirtoalusta();
         frame = alusta.lukuvinkinMuokkaus(frame, lukuvinkkiTaulu.get(selattavaVinkki));
         alusta.setGUIforKuuntelija(this);
+        muokkaus = true;
     }
 
     public void tallennaMuokkaus() {
-        
         tietokanta.muokkaaKirjaa(lukuvinkkiTaulu.get(selattavaVinkki));
+        muokkaus = false;
+        uusiAlusta();
+        alusta.getOutput().setText("Muokkaus valmis!");
     }
 
     public void lisaaLukuvinkkiValikko() {
