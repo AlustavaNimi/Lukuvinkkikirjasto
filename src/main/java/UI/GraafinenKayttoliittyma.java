@@ -51,7 +51,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         screenH = Toolkit.getDefaultToolkit().getScreenSize().height;
         frame = new JFrame("Lukuvinkit");
         alusta = new Piirtoalusta();
-        frame.setPreferredSize(new Dimension(300, 400));
+        frame.setPreferredSize(new Dimension(300, 450));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocation(screenW / 2, screenH / 2);
         frame.setVisible(true);
