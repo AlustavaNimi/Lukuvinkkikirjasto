@@ -13,7 +13,7 @@ project.ext {
 dependencies {
     testCompile 'io.cucumber:cucumber-java:' + cucumberVersion
     testCompile 'io.cucumber:cucumber-junit:' + cucumberVersion
-    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.8.11'
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.28.0'
     testCompile 'junit:junit:' + junitVersion
 }
 

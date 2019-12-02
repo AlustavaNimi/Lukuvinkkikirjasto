@@ -82,7 +82,7 @@ public class LukuvinkkiDao implements Tietokanta {
     private void luoTaulu(String nimi, ArrayList<String> attribuutit) {
         try (Connection conn = luoTietokantaYhteys()) {
             String sql = "CREATE TABLE IF NOT EXISTS " + nimi + " ("
-                    + "id integer PRIMARY KEY, ";
+                    + "id INTEGER PRIMARY KEY AUTOINCREMENT, ";
             for (int i = 0; i < attribuutit.size(); i++) {
                 sql += attribuutit.get(i);
                 if (i < attribuutit.size() - 1) {

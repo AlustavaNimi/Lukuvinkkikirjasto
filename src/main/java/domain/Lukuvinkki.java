@@ -91,6 +91,7 @@ public class Lukuvinkki {
     }
 
     private void alusta(int id, String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi) {
+        this.id = id;
         this.otsikko = otsikko;
         this.kuvaus = kuvaus;
         this.kurssi = kurssi;
