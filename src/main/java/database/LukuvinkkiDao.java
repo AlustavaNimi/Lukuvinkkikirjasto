@@ -159,6 +159,7 @@ public class LukuvinkkiDao implements Tietokanta {
             stmt.setString(6, blogi.getUrl());
             stmt.setString(7, "blogipostaus");
             stmt.execute();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

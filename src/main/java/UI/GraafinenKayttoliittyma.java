@@ -131,23 +131,19 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         } catch (NumberFormatException nfe) {
             System.out.println("VUOSILUKU NOLLA");
         }
-        if (alusta.getVinkinTiedot().get(6).getText().equals("kirja")) {
-            Kirja kirja = new Kirja(alusta.getVinkinTiedot().get(0).getText(),
-                    alusta.getVinkinTiedot().get(1).getText(),
-                    alusta.getVinkinTiedot().get(2).getText(),
-                    alusta.getVinkinTiedot().get(3).getText(),
-                    vuosi,
-                    alusta.getVinkinTiedot().get(5).getText());
+        String otsikko = alusta.getVinkinTiedot().get(0).getText();
+        String kirjoittaja = alusta.getVinkinTiedot().get(1).getText();
+        String isbnUrl = alusta.getVinkinTiedot().get(2).getText();
+        String kuvaus = alusta.getVinkinTiedot().get(3).getText();
+        String kurssi = alusta.getVinkinTiedot().get(5).getText();
+        if (alusta.getVinkinTiedot().get(6).getText().toLowerCase().equals("kirja")) {
+            Kirja kirja = new Kirja(otsikko, kirjoittaja, isbnUrl, kuvaus, vuosi, kurssi);
             tietokanta.lisaaKirja(kirja);
             uusiAlusta();
             alusta.getOutput().setText("Lukuvinkki lisätty!");
-        } else if (alusta.getVinkinTiedot().get(6).getText().equals("blogi")) {
-            Blogipostaus postaus = new Blogipostaus(alusta.getVinkinTiedot().get(0).getText(),
-                    alusta.getVinkinTiedot().get(2).getText(),
-                    alusta.getVinkinTiedot().get(3).getText(),
-                    alusta.getVinkinTiedot().get(5).getText(),
-                    alusta.getVinkinTiedot().get(1).getText(),
-                    vuosi);
+        } else if (alusta.getVinkinTiedot().get(6).getText().toLowerCase().equals("blogi")) {
+            System.out.println(alusta.getVinkinTiedot().get(0).getText());
+            Blogipostaus postaus = new Blogipostaus(isbnUrl, otsikko, kuvaus, kurssi, kirjoittaja, vuosi);
             tietokanta.lisaaBlogi(postaus);
             uusiAlusta();
             alusta.getOutput().setText("Lukuvinkki lisätty!");
