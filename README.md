@@ -16,7 +16,7 @@
 - Koodin tarkistaa ja arvioi vähintään yksi toinen tiimiläinen (myös ylläpidettävyyden osalta, mm. nimeämiskäytäntö on yhtenäinen)
 - Selkeä ja perusteltu arkkitehtuuri
 - Toteutetun koodin testikattavuuden tulee olla kohtuullinen (50% rivikattavuus muiden paitsi triviaalin koodin, kuten gettereiden/settereiden osalta)
-- Hyväksymiskriteerit täyttyvät ts. Cucumber-testit läpäisty (alla määritelty user storyjen yhteydessä)
+- Hyväksymiskriteerit (Gherkin-formaatissa) täyttyvät ts. Cucumber-testit läpäisty (alla määritelty user storyjen yhteydessä)
 - Yksikkötestit läpäisty
 - Yhtenäinen koodityyli varmistettu Checkstylen avulla
 
@@ -25,12 +25,12 @@
 #### User story 1.1:
 _As a user, I want to be able to add book suggestions to my reading list_
 
-[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature) Gherkin-formaatissa
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature)
 
 #### User story 1.2:
 _As a user, I want to be able to view a list of my book suggestions to browse through it_
 
-[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/browse_reading_suggestions.feature) Gherkin-formaatissa
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/browse_reading_suggestions.feature)
 
 ### Sprint 2
 
@@ -42,14 +42,20 @@ _As a user, I want to be able select a reading suggestion (lukuvinkki) from my r
 - Tähän tulee linkki .feature-tiedostoon
 
 #### User story 2.2:
-_As a user, I want to be able to edit/remove my reading suggestions_
-- Tähän tulee linkki .feature-tiedostoon
+_As a user, I want to be able to remove my reading suggestions_
+
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/delete_reading_suggestions.feature)
 
 #### User story 2.3:
+_As a user, I want to be able to edit my reading suggestions_
+
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/edit_reading_suggestions.feature)
+
+#### User story 2.4:
 _As a user, I want to be able to filter my reading suggestions by various categories/keywords in order to view a list of suggestions that are relevant to my filter criteria_
 - Tähän tulee linkki .feature-tiedostoon
 
-#### User story 2.4:
+#### User story 2.5:
 _As a user, I want to be able to add blogpost-type of entries to my reading suggestion library_
 - Tähän tulee linkki .feature-tiedostoon
 
@@ -63,4 +69,4 @@ Kloonaa projekti työpöytäkoneelle komennolla
 
 Aja sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla `gradle run` tai komennolla `./gradlew run`.
 
-Sovelluksessa on tekstikäyttöliittymä ja sovellukseen voi lisätä kirjavinkkejä sekä selata niitä. Sovellus ilmoittaa käytettävissä olevat komennot ajon aikana.
+Sovelluksessa on graafinen käyttöliittymä ja sovelluksessa voi lisätä, muokata, selata sekä poistaa kirjavinkkejä ja blogipostausvinkkejä. Sovellus ilmoittaa käytettävissä olevat komennot ajon aikana.
