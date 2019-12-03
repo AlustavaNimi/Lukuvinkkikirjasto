@@ -18,7 +18,6 @@
 - Toteutetun koodin testikattavuuden tulee olla kohtuullinen (50% rivikattavuus muiden paitsi triviaalin koodin, kuten gettereiden/settereiden osalta)
 - Hyväksymiskriteerit (Gherkin-formaatissa) täyttyvät ts. Cucumber-testit läpäisty (alla määritelty user storyjen yhteydessä)
 - Yksikkötestit läpäisty
-- Yhtenäinen koodityyli varmistettu Checkstylen avulla
 
 ### Sprint 1
 
