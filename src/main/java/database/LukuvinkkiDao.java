@@ -118,7 +118,7 @@ public class LukuvinkkiDao implements Tietokanta {
         String kurssi = result.getString("kurssi");
         String kuvaus = result.getString("kuvaus");
         int julkaisuvuosi = result.getInt("julkaisuvuosi");
-        String url = result.getString("isbn");
+        String url = result.getString("url");
         String kirjoittaja = result.getString("kirjoittaja");
         Blogipostaus blogi = new Blogipostaus(id, url, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuvuosi);
         lukuvinkit.add(blogi);
