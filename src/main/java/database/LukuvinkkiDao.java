@@ -224,8 +224,25 @@ public class LukuvinkkiDao implements Tietokanta {
         }
         return lista.get(0);
     }
-
     
+    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana) throws SQLException {
+        hakusana = hakusana.toLowerCase();
+        ArrayList<Lukuvinkki> lukuvinkit = new ArrayList<>();
+        try (Connection conn = luoTietokantaYhteys()) {
+            String query = "SELECT * FROM Lukuvinkki WHERE "
+                    + "LOWER(kirjoittaja) LIKE '%" + hakusana + "%' OR LOWER(otsikko) LIKE '%" + hakusana + "%' "
+                    + "OR LOWER(kurssi) LIKE '%" + hakusana + "%' OR LOWER(kuvaus) LIKE '%" + hakusana + "%' "
+                    + "OR LOWER(url) LIKE '%" + hakusana + "%';";
+            ResultSet result = luoResultSet(conn, query);
+            while (result.next()) {
+                lisaaLukuvinkkiResultSetista(result, lukuvinkit);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return lukuvinkit;
+    }
+
 
    
 }
