@@ -66,6 +66,8 @@ Kloonaa projekti työpöytäkoneelle komennolla
 
 	git clone git@github.com:AlustavaNimi/Lukuvinkkikirjasto.git
 
-Aja sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla `gradle run` tai komennolla `./gradlew run`.
+Suorita sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla `gradle run` tai komennolla `./gradlew run`.
+
+Vaihtoehtoisesti voi suorittaa [releasen](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/releases) jar-tiedoston komennolla `java -jar Lukuvinkkikirjasto.jar`.
 
 Sovelluksessa on graafinen käyttöliittymä ja sovelluksessa voi lisätä, muokata, selata sekä poistaa kirjavinkkejä ja blogipostausvinkkejä. Sovellus ilmoittaa käytettävissä olevat komennot ajon aikana.
