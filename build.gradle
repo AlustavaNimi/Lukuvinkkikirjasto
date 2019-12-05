@@ -27,6 +27,11 @@ jar {
     manifest {
         attributes 'Main-Class': 'Sovellus'
     }
+    from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it)
+    }
+}
+
 }
 
 apply plugin: "jacoco"
