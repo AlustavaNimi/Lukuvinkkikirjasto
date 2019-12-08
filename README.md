@@ -71,11 +71,12 @@ _As a user, I want to be able to open a blogpost URL by clicking it_
 - #### User story 3.2:
 _As a user, I want to be see a list of reading suggestions on the home menu (aloitusnäkymä)_
 
- Tähän tulee linkki .feature-tiedostoon
+    Tähän tulee linkki .feature-tiedostoon
 
 - #### User story 3.3:
 _As a user, I want an option to view only books or blogposts_
- Tähän tulee linkki .feature-tiedostoon
+
+    Tähän tulee linkki .feature-tiedostoon
 
 - #### User story 3.4:
 _As a user, I want to be able to mark reading suggestions that have been read already_
