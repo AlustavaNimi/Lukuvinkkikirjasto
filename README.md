@@ -8,9 +8,9 @@
 
 [Sprint backlog](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/projects/1) ja [Sprint burndown-kaavio](https://docs.google.com/spreadsheets/d/1UURz--MI8hLlcHOOnGXXCvV4FUqv2Zm1d9TuHlCNGqk)
 
-### Definition of Done:
+## Definition of Done:
 
-#### Kaikille sprinteille:
+### Kaikille sprinteille:
 - Product owner hyväksyy user storyt
 - User storyjen ominaisuudet koodattu valmiiksi
 - Koodin tarkistaa ja arvioi vähintään yksi toinen tiimiläinen (myös ylläpidettävyyden osalta, mm. nimeämiskäytäntö on yhtenäinen)
@@ -19,70 +19,70 @@
 - Hyväksymiskriteerit (Gherkin-formaatissa) täyttyvät ts. Cucumber-testit läpäisty (alla määritelty user storyjen yhteydessä)
 - Yksikkötestit läpäisty
 
-#### Sprint 1
+### Sprint 1
 
-- ##### User story 1.1:
+- #### User story 1.1:
 _As a user, I want to be able to add book suggestions to my reading list_
 
  [Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature)
 
-- ##### User story 1.2:
+- #### User story 1.2:
 _As a user, I want to be able to view a list of my book suggestions to browse through it_
 
  [Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/browse_reading_suggestions.feature)
 
-#### Sprint 2
+### Sprint 2
 
-- ##### User story 1.1 and 1.2:
+- #### User story 1.1 and 1.2:
 Same acceptance criteria as in Sprint 1
 
-- ##### User story 2.1:
+- #### User story 2.1:
 _As a user, I want to be able select a reading suggestion (lukuvinkki) from my reading list to view more details of this reading suggestion_
 
  Tähän tulee linkki .feature-tiedostoon
 
-- ##### User story 2.2:
+- #### User story 2.2:
 _As a user, I want to be able to remove my reading suggestions_
 
  [Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/delete_reading_suggestions.feature)
 
-- ##### User story 2.3:
+- #### User story 2.3:
 _As a user, I want to be able to edit my reading suggestions_
 
  [Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/edit_reading_suggestions.feature)
 
-- ##### User story 2.4:
+- #### User story 2.4:
 _As a user, I want to be able to filter my reading suggestions by various categories/keywords in order to view a list of suggestions that are relevant to my filter criteria_
 
  Tähän tulee linkki .feature-tiedostoon
 
-- ##### User story 2.5:
+- #### User story 2.5:
 _As a user, I want to be able to add blogpost-type of entries to my reading suggestion library_
 
  Tähän tulee linkki .feature-tiedostoon
 
-#### Sprint 3
+### Sprint 3
 
-- ##### User story 3.1:
+- #### User story 3.1:
 _As a user, I want to be able to open a blogpost URL by clicking it_
 
  Tähän tulee linkki .feature-tiedostoon
 
-- ##### User story 3.2:
+- #### User story 3.2:
 _As a user, I want to be see a list of reading suggestions on the home menu (aloitusnäkymä)_
 
  Tähän tulee linkki .feature-tiedostoon
 
-- ##### User story 3.3:
+- #### User story 3.3:
 _As a user, I want an option to view only books or blogposts_
  Tähän tulee linkki .feature-tiedostoon
 
-- ##### User story 3.4:
+- #### User story 3.4:
 _As a user, I want to be able to mark reading suggestions that have been read already_
 
  Tähän tulee linkki .feature-tiedostoon
 
-### Asennus- ja käyttöohjeet
+## Asennus- ja käyttöohjeet
 Työpöytäkoneella pitää olla Java ja Gradle asennettuna.
 
 Kloonaa projekti työpöytäkoneelle komennolla
