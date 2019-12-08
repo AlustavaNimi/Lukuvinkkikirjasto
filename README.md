@@ -71,3 +71,4 @@ Suorita sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla
 Vaihtoehtoisesti voi suorittaa [releasen](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/releases) jar-tiedoston komennolla `java -jar Lukuvinkkikirjasto.jar`.
 
 Sovelluksessa on graafinen käyttöliittymä ja sovelluksessa voi lisätä, muokata, selata sekä poistaa kirjavinkkejä ja blogipostausvinkkejä. Sovellus ilmoittaa käytettävissä olevat komennot ajon aikana.
+
