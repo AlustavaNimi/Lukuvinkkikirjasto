@@ -4,10 +4,16 @@ import database.Tietokanta;
 import domain.Blogipostaus;
 import domain.Kirja;
 import domain.Lukuvinkki;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -55,7 +61,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocation(screenW / 2, screenH / 2);
         frame.setVisible(true);
-        frame = alusta.initComponents(frame, false);
+        frame = alusta.initComponents(frame, false, false);
         alusta.setGUIforKuuntelija(this);
 
     }
@@ -69,7 +75,8 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     public void tulostaYksittainenLukuvinkki(int numero) {
         frame.getContentPane().remove(alusta);
         alusta = new Piirtoalusta();
-        frame = alusta.initComponents(frame, true);
+        boolean onBlogi = lukuvinkkiTaulu.get(numero).getTyyppi().equals("blogi");
+        frame = alusta.initComponents(frame, true, onBlogi);
         alusta.setGUIforKuuntelija(this);
         Lukuvinkki vinkki = lukuvinkkiTaulu.get(numero);
         alusta.getOutput().setText(vinkki.toString());
@@ -177,10 +184,23 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     public void uusiAlusta() {
         frame.getContentPane().remove(alusta);
         alusta = new Piirtoalusta();
-        frame = alusta.initComponents(frame, false);
+        frame = alusta.initComponents(frame, false, false);
         alusta.setGUIforKuuntelija(this);
         selaus = false;
         muokkaus = false;
+    }
+
+    public void avaaLinkki() {
+        Blogipostaus blogi = (Blogipostaus) lukuvinkkiTaulu.get(selattavaVinkki);
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            try {
+                Desktop.getDesktop().browse(new URI(blogi.getUrl()));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(GraafinenKayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                    Logger.getLogger(GraafinenKayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
 }
