@@ -6,10 +6,9 @@
 
 [Product backlog](https://docs.google.com/spreadsheets/d/1rBtfdbz3aD68T5sgYHyLOhiQsKZAhYVsElXckrt0-YY/edit?usp=sharing)
 
-[Sprint backlog](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/projects/1) ja [Sprint burndown-kaavio](https://docs.google.com/spreadsheets/d/1UURz--MI8hLlcHOOnGXXCvV4FUqv2Zm1d9TuHlCNGqk)
+[Sprint backlog ja sprint burndown-kaavio](https://docs.google.com/spreadsheets/d/1UURz--MI8hLlcHOOnGXXCvV4FUqv2Zm1d9TuHlCNGqk)
 
 ## Definition of Done:
-
 ### Kaikille sprinteille:
 - Product owner hyväksyy user storyt
 - User storyjen ominaisuudet koodattu valmiiksi
@@ -39,7 +38,7 @@ Same acceptance criteria as in Sprint 1
 #### User story 2.1:
 _As a user, I want to be able select a reading suggestion (lukuvinkki) from my reading list to view more details of this reading suggestion_
 
- Tähän tulee linkki .feature-tiedostoon
+Tähän tulee linkki .feature-tiedostoon
 
 #### User story 2.2:
 _As a user, I want to be able to remove my reading suggestions_
@@ -54,7 +53,7 @@ _As a user, I want to be able to edit my reading suggestions_
 #### User story 2.4:
 _As a user, I want to be able to filter my reading suggestions by various categories/keywords in order to view a list of suggestions that are relevant to my filter criteria_
 
-Tähän tulee linkki .feature-tiedostoon
+__Update:__ Split in to user stories 3.1 and 3.4.
 
 #### User story 2.5:
 _As a user, I want to be able to add blogpost-type of entries to my reading suggestion library_
@@ -63,22 +62,34 @@ Tähän tulee linkki .feature-tiedostoon
 
 ### Sprint 3
 
-#### User story 3.1:
-_As a user, I want to be able to open a blogpost URL by clicking it_
+#### User story 1.1, 2.1, 2.2, 2.3, 2.5:
+
+Same acceptance criteria as before.
+
+#### User story 2.4:
+__Update:__ Split in to user stories 3.1 and 3.4.
+
+#### User story 3.1
+_As a user, I want to be able to able to filter reading suggestions by entering search terms (hakusanoja)_
 
 Tähän tulee linkki .feature-tiedostoon
 
 #### User story 3.2:
-_As a user, I want to be see a list of reading suggestions on the home menu (aloitusnäkymä)_
+_As a user, I want to be able to open a blogpost URL from within the app_
 
 Tähän tulee linkki .feature-tiedostoon
 
 #### User story 3.3:
-_As a user, I want an option to view only books or blogposts_
+_As a user, I want to be see a list of reading suggestions on the home menu (aloitusnäkymä)_
 
 Tähän tulee linkki .feature-tiedostoon
 
 #### User story 3.4:
+_As a user, I want an option to view only books or only blogposts_
+
+Tähän tulee linkki .feature-tiedostoon
+
+#### User story 3.5:
 _As a user, I want to be able to mark reading suggestions that have been read already_
 
 Tähän tulee linkki .feature-tiedostoon
