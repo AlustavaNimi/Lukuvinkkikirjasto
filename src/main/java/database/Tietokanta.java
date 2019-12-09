@@ -20,6 +20,6 @@ public interface Tietokanta {
     
     public ArrayList<Lukuvinkki> haeLukuvinkit();
     
-    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana);
+    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana, ArrayList<String> tyypit);
     
 }

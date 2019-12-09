@@ -226,14 +226,21 @@ public class LukuvinkkiDao implements Tietokanta {
     }
     
     @Override
-    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana){
+    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana, ArrayList<String> tyypit){
         hakusana = hakusana.toLowerCase();
         ArrayList<Lukuvinkki> lukuvinkit = new ArrayList<>();
+//        tyypit = new ArrayList<>();
+//        tyypit.add("kirja");
         try (Connection conn = luoTietokantaYhteys()) {
             String query = "SELECT * FROM Lukuvinkki WHERE "
-                    + "LOWER(kirjoittaja) LIKE '%" + hakusana + "%' OR LOWER(otsikko) LIKE '%" + hakusana + "%' "
+                    + "(LOWER(kirjoittaja) LIKE '%" + hakusana + "%' OR LOWER(otsikko) LIKE '%" + hakusana + "%' "
                     + "OR LOWER(kurssi) LIKE '%" + hakusana + "%' OR LOWER(kuvaus) LIKE '%" + hakusana + "%' "
-                    + "OR LOWER(url) LIKE '%" + hakusana + "%';";
+                    + "OR LOWER(url) LIKE '%" + hakusana + "%') AND (";
+            for (String tyyppi : tyypit) {
+                query += "tyyppi = '" + tyyppi + "' OR ";
+            }
+            query += " 1 = 2 );";
+            //System.out.println(query);
             ResultSet result = luoResultSet(conn, query);
             while (result.next()) {
                 lisaaLukuvinkkiResultSetista(result, lukuvinkit);

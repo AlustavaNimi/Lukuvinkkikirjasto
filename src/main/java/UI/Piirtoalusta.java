@@ -15,6 +15,8 @@ public class Piirtoalusta extends JPanel {
     private String komennot;
     private JButton alkuunNappi;
     private JScrollPane scroll;
+    private JCheckBox kirjaCheckBox;
+    private JCheckBox blogiCheckBox;
     private NappaimistonKuuntelija kuuntelija;
     private ArrayList<JTextField> vinkinTiedot;
     private JButton tallennaNappi;
@@ -54,6 +56,10 @@ public class Piirtoalusta extends JPanel {
         selaaNappi.addActionListener(kuuntelija);
         lopetaNappi.addActionListener(kuuntelija);
         linkkiNappi.addActionListener(kuuntelija);
+        kirjaCheckBox = new JCheckBox("Kirat");
+        blogiCheckBox = new JCheckBox("Blogit");
+        kirjaCheckBox.setSelected(true);
+        blogiCheckBox.setSelected(true);
         this.add(scroll);       
         if (muokkaus) {
             poistaNappi = new JButton("Poista");
@@ -68,6 +74,8 @@ public class Piirtoalusta extends JPanel {
         } else {
             this.add(new JLabel("Valitse numerolla"));
             this.add(input);
+            this.add(kirjaCheckBox);
+            this.add(blogiCheckBox);
             this.add(new JLabel("Hae hakusanalla"));
             this.add(hakuKentta);
             this.add(lisaaNappi);
@@ -251,5 +259,13 @@ public class Piirtoalusta extends JPanel {
     
     public JTextField getHakuKentta() {
         return this.hakuKentta;
+    }
+    
+    public JCheckBox getKirjaCheckBox() {
+        return this.kirjaCheckBox;
+    }
+    
+     public JCheckBox getBlogiCheckBox() {
+        return this.blogiCheckBox;
     }
 }

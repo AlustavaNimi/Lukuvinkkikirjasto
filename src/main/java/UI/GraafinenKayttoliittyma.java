@@ -100,7 +100,14 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         int i = 1;
 
         String lukuvinkit = "";
-        for (Lukuvinkki lukuvinkki : tietokanta.haeLukuvinkitHakusananPerusteella(hakusana)) {
+        ArrayList<String> tyypit = new ArrayList<>();
+        if(alusta.getKirjaCheckBox().isSelected()) {
+            tyypit.add("kirja");
+        }
+        if(alusta.getBlogiCheckBox().isSelected()) {
+            tyypit.add("blogipostaus");
+        }
+        for (Lukuvinkki lukuvinkki : tietokanta.haeLukuvinkitHakusananPerusteella(hakusana,tyypit)) {
             String numerointi = String.valueOf(i);
             lukuvinkit += numerointi + ". " + lukuvinkki.lyhytTulostus() + "\n\n";
             lukuvinkkiTaulu.put(i, lukuvinkki);
