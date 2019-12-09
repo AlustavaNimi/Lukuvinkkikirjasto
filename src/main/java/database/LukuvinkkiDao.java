@@ -3,6 +3,7 @@ package database;
 import domain.Blogipostaus;
 import domain.Kirja;
 import domain.Lukuvinkki;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,10 +15,17 @@ import java.util.ArrayList;
 public class LukuvinkkiDao implements Tietokanta {
 
     private String tietokantaOsoite;
+    private boolean tiedostoOnJoOlemassa; // Tieto kovakoodatun datan lisäämiseen
 
     public LukuvinkkiDao(String tietokantaOsoite) {
         this.tietokantaOsoite = tietokantaOsoite;
+        tiedostoOnJoOlemassa = onOlemassaTiedosto("db.db");
         luoTaulut();
+        
+        if (!tiedostoOnJoOlemassa) {
+            KovakoodattuData data = new KovakoodattuData();
+            data.lisaaKovakoodattuData(this);
+        }
     }
 
     @Override
@@ -225,14 +233,22 @@ public class LukuvinkkiDao implements Tietokanta {
         return lista.get(0);
     }
     
-    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana) throws SQLException {
+    @Override
+    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana, ArrayList<String> tyypit){
         hakusana = hakusana.toLowerCase();
         ArrayList<Lukuvinkki> lukuvinkit = new ArrayList<>();
+//        tyypit = new ArrayList<>();
+//        tyypit.add("kirja");
         try (Connection conn = luoTietokantaYhteys()) {
             String query = "SELECT * FROM Lukuvinkki WHERE "
-                    + "LOWER(kirjoittaja) LIKE '%" + hakusana + "%' OR LOWER(otsikko) LIKE '%" + hakusana + "%' "
+                    + "(LOWER(kirjoittaja) LIKE '%" + hakusana + "%' OR LOWER(otsikko) LIKE '%" + hakusana + "%' "
                     + "OR LOWER(kurssi) LIKE '%" + hakusana + "%' OR LOWER(kuvaus) LIKE '%" + hakusana + "%' "
-                    + "OR LOWER(url) LIKE '%" + hakusana + "%';";
+                    + "OR LOWER(url) LIKE '%" + hakusana + "%') AND (";
+            for (String tyyppi : tyypit) {
+                query += "tyyppi = '" + tyyppi + "' OR ";
+            }
+            query += " 1 = 2 );";
+            //System.out.println(query);
             ResultSet result = luoResultSet(conn, query);
             while (result.next()) {
                 lisaaLukuvinkkiResultSetista(result, lukuvinkit);
@@ -243,6 +259,9 @@ public class LukuvinkkiDao implements Tietokanta {
         return lukuvinkit;
     }
 
-
+    private boolean onOlemassaTiedosto(String tiedostonimi) {
+        File tiedosto = new File(tiedostonimi);
+        return tiedosto.exists();
+    }
    
 }

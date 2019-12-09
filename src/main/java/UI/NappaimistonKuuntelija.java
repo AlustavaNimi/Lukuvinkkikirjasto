@@ -24,10 +24,13 @@ public class NappaimistonKuuntelija implements ActionListener {
             GUI.selaa();
         } else if (e.getSource() == alusta.getAlkuun()) {
             GUI.uusiAlusta();
-        } else if (e.getSource() == alusta.getInput() && GUI.getSelaus()) {
+        } else if (e.getSource() == alusta.getInput()) {
             int i = Integer.parseInt(alusta.getInput().getText());
             GUI.tulostaYksittainenLukuvinkki(i);
             alusta.getOutput().setText("");
+        } else if (e.getSource() == alusta.getHakuKentta()) {
+            String hakusana = alusta.getHakuKentta().getText();
+            GUI.selaaHakusanalla(hakusana);
         } else if (e.getSource() == alusta.getInput() && alusta.getInput().getText().toLowerCase().equals("lisaa vinkki")) {
             alusta.getOutput().setText("");
             alusta.getInput().setText("");
@@ -35,15 +38,18 @@ public class NappaimistonKuuntelija implements ActionListener {
         } else if (e.getSource() == alusta.getMuokkausNappi()) {
             alusta.getOutput().setText("");
             alusta.getInput().setText("");
-            GUI.muokkaaVinkkia();
+            GUI.muokkaaVinkkia(GUI.getSelattavaVinkki());
         } else if (e.getSource() == alusta.getSelaaNappi()) {
-            GUI.selaa();
+            String hakusana = alusta.getHakuKentta().getText();
+            GUI.selaaHakusanalla(hakusana);
         } else if (e.getSource() == alusta.getLisaaNappi()) {
             alusta.getOutput().setText("");
             alusta.getInput().setText("");
             GUI.lisaaLukuvinkkiValikko();
         } else if (e.getSource() == alusta.getLopetaNappi()) {
             GUI.getFrame().dispose();
+        } else if (e.getSource() == alusta.getLinkkiNappi()) {
+            GUI.avaaLinkki();
         } else if (e.getSource() == alusta.getInput() && alusta.getInput().getText().toLowerCase().equals("lopeta")) {
             GUI.getFrame().dispose();
         } else if (e.getSource() == alusta.getTallennaNappi()) {

@@ -10,10 +10,12 @@ import javax.swing.*;
 public class Piirtoalusta extends JPanel {
 
     private JTextField input;
+    private JTextField hakuKentta;
     private JTextArea output;
-    private String komennot;
     private JButton alkuunNappi;
     private JScrollPane scroll;
+    private JCheckBox kirjaCheckBox;
+    private JCheckBox blogiCheckBox;
     private NappaimistonKuuntelija kuuntelija;
     private ArrayList<JTextField> vinkinTiedot;
     private JButton tallennaNappi;
@@ -22,31 +24,37 @@ public class Piirtoalusta extends JPanel {
     private JButton lisaaNappi;
     private JButton selaaNappi;
     private JButton lopetaNappi;
+    private JButton linkkiNappi;
+    private String vinkkiTyyppi;
 
     public Piirtoalusta() {
         kuuntelija = new NappaimistonKuuntelija(this);
-        komennot = "Käytettävissä olevat komennot: "
-                + "\nLisaa vinkki"
-                + "\nSelaa"
-                + "\nLopeta";
     }
 
-    public JFrame initComponents(JFrame frame, boolean muokkaus) {
-        output = new JTextArea(komennot, 20, 20);
+    public JFrame initComponents(JFrame frame, boolean muokkaus, boolean onBlogi) {
+        output = new JTextArea(20, 20);
         output.setLineWrap(true);
         scroll = new JScrollPane(output);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         input = new JTextField(15);
+        hakuKentta = new JTextField(15);
         output.setEditable(false);
         alkuunNappi = new JButton("Alkuun");
+        hakuKentta.addActionListener(kuuntelija);
         input.addActionListener(kuuntelija);
         alkuunNappi.addActionListener(kuuntelija);
         lisaaNappi = new JButton("Lisää");
         selaaNappi = new JButton("Selaa");
         lopetaNappi = new JButton("Lopeta");
+        linkkiNappi = new JButton("Avaa blogi");
         lisaaNappi.addActionListener(kuuntelija);
         selaaNappi.addActionListener(kuuntelija);
         lopetaNappi.addActionListener(kuuntelija);
+        linkkiNappi.addActionListener(kuuntelija);
+        kirjaCheckBox = new JCheckBox("Kirjat");
+        blogiCheckBox = new JCheckBox("Blogit");
+        kirjaCheckBox.setSelected(true);
+        blogiCheckBox.setSelected(true);
         this.add(scroll);       
         if (muokkaus) {
             poistaNappi = new JButton("Poista");
@@ -55,8 +63,16 @@ public class Piirtoalusta extends JPanel {
             muokkausNappi.addActionListener(kuuntelija);
             this.add(poistaNappi);
             this.add(muokkausNappi);
+            if (onBlogi) {
+                this.add(linkkiNappi);
+            }
         } else {
+            this.add(new JLabel("Valitse numerolla"));
             this.add(input);
+            this.add(kirjaCheckBox);
+            this.add(blogiCheckBox);
+            this.add(new JLabel("Hae hakusanalla"));
+            this.add(hakuKentta);
             this.add(lisaaNappi);
             this.add(selaaNappi);
             this.add(lopetaNappi);
@@ -230,5 +246,21 @@ public class Piirtoalusta extends JPanel {
 
     public ArrayList<JTextField> getVinkinTiedot() {
         return vinkinTiedot;
+    }
+
+    public JButton getLinkkiNappi() {
+        return this.linkkiNappi;
+    }
+    
+    public JTextField getHakuKentta() {
+        return this.hakuKentta;
+    }
+    
+    public JCheckBox getKirjaCheckBox() {
+        return this.kirjaCheckBox;
+    }
+    
+     public JCheckBox getBlogiCheckBox() {
+        return this.blogiCheckBox;
     }
 }

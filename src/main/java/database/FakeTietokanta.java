@@ -4,7 +4,7 @@ import domain.Kirja;
 import domain.Lukuvinkki;
 import java.util.ArrayList;
 
-public class FakeTietokanta implements Tietokanta{
+public class FakeTietokanta implements Tietokanta{ 
     
     private ArrayList<Lukuvinkki> lukuvinkit = new ArrayList<>();
 
@@ -37,6 +37,18 @@ public class FakeTietokanta implements Tietokanta{
     @Override
     public void muokkaaLukuvinkkia(Lukuvinkki lukuvinkki) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana, ArrayList<String> tyypit) {
+        ArrayList<Lukuvinkki> lista = new ArrayList<>();
+        for (Lukuvinkki vinkki : lukuvinkit) {
+            if (vinkki.toString().contains(hakusana)) {
+                lista.add(vinkki);
+            }
+        }
+        
+        return lista; 
     }
 
     

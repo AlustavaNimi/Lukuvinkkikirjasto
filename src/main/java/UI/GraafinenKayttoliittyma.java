@@ -4,10 +4,16 @@ import database.Tietokanta;
 import domain.Blogipostaus;
 import domain.Kirja;
 import domain.Lukuvinkki;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -21,7 +27,6 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     private String komennot;
     private JFrame frame;
     private HashMap<Integer, Lukuvinkki> lukuvinkkiTaulu;
-    private boolean selaus;
     private int selattavaVinkki;
     private boolean muokkaus;
 
@@ -29,16 +34,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         this.tietokanta = lukuvinkit;
         frame = new JFrame("Lukuvinkit");
         lukuvinkkiTaulu = new HashMap<>();
-        selaus = false;
         muokkaus = false;
-    }
-
-    public GraafinenKayttoliittyma() {
-
-    }
-
-    public boolean getSelaus() {
-        return selaus;
     }
 
     public boolean getMuokkaus() {
@@ -51,13 +47,13 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         screenH = Toolkit.getDefaultToolkit().getScreenSize().height;
         frame = new JFrame("Lukuvinkit");
         alusta = new Piirtoalusta();
-        frame.setPreferredSize(new Dimension(300, 450));
+        frame.setPreferredSize(new Dimension(350, 500));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setLocation(screenW / 2, screenH / 2);
+        frame.setLocation(screenW / 2, screenH / 4);
         frame.setVisible(true);
-        frame = alusta.initComponents(frame, false);
+        frame = alusta.initComponents(frame, false, false);
         alusta.setGUIforKuuntelija(this);
-
+        selaa();
     }
 
     public void poistaLukuvinkki() {
@@ -69,18 +65,17 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     public void tulostaYksittainenLukuvinkki(int numero) {
         frame.getContentPane().remove(alusta);
         alusta = new Piirtoalusta();
-        frame = alusta.initComponents(frame, true);
+        boolean onBlogi = lukuvinkkiTaulu.get(numero).getTyyppi().equals("blogi");
+        frame = alusta.initComponents(frame, true, onBlogi);
         alusta.setGUIforKuuntelija(this);
         Lukuvinkki vinkki = lukuvinkkiTaulu.get(numero);
         alusta.getOutput().setText(vinkki.toString());
         selattavaVinkki = numero;
-        selaus = false;
     }
 
     @Override
     public void selaa() {
         lukuvinkkiTaulu = new HashMap<>();
-        selaus = true;
         int i = 1;
 
         String lukuvinkit = "";
@@ -94,6 +89,28 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta.getInput().setText("");
 
     }
+    
+    public void selaaHakusanalla(String hakusana) {
+        lukuvinkkiTaulu = new HashMap<>();
+        int i = 1;
+
+        String lukuvinkit = "";
+        ArrayList<String> tyypit = new ArrayList<>();
+        if(alusta.getKirjaCheckBox().isSelected()) {
+            tyypit.add("kirja");
+        }
+        if(alusta.getBlogiCheckBox().isSelected()) {
+            tyypit.add("blogipostaus");
+        }
+        for (Lukuvinkki lukuvinkki : tietokanta.haeLukuvinkitHakusananPerusteella(hakusana,tyypit)) {
+            String numerointi = String.valueOf(i);
+            lukuvinkit += numerointi + ". " + lukuvinkki.lyhytTulostus() + "\n\n";
+            lukuvinkkiTaulu.put(i, lukuvinkki);
+            i++;
+        }
+        alusta.getOutput().setText(lukuvinkit);
+        alusta.getInput().setText("");
+    }
 
     @Override
     public void lisaaKirja() {
@@ -105,14 +122,14 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta.getOutput().setText("Anna blogipostaukselle Otsikko:");
     }
 
-    public void muokkaaVinkkia() {
+    public void muokkaaVinkkia(Integer vinkkiId) {
         frame.getContentPane().remove(alusta);
         alusta = new Piirtoalusta();
-        frame = alusta.lukuvinkinMuokkaus(frame, lukuvinkkiTaulu.get(selattavaVinkki));
+        frame = alusta.lukuvinkinMuokkaus(frame, lukuvinkkiTaulu.get(vinkkiId));
         alusta.setGUIforKuuntelija(this);
         muokkaus = true;
     }
-
+    
     public void tallennaMuokkaus() {
         int id = lukuvinkkiTaulu.get(selattavaVinkki).getId();
         ArrayList<JTextField> lista = alusta.getVinkinTiedot();
@@ -177,10 +194,35 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     public void uusiAlusta() {
         frame.getContentPane().remove(alusta);
         alusta = new Piirtoalusta();
-        frame = alusta.initComponents(frame, false);
+        frame = alusta.initComponents(frame, false, false);
         alusta.setGUIforKuuntelija(this);
-        selaus = false;
         muokkaus = false;
+        selaa();
+    }
+
+    public void avaaLinkki() {
+        Blogipostaus blogi = (Blogipostaus) lukuvinkkiTaulu.get(selattavaVinkki);
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            try {
+                Desktop.getDesktop().browse(new URI(blogi.getUrl()));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(GraafinenKayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                    Logger.getLogger(GraafinenKayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public Piirtoalusta getAlusta() {
+        return alusta;
+    }
+    
+    public Integer getSelattavaVinkki() {
+        return selattavaVinkki;
+    }
+    
+    public void setSelattavaVinkki(Integer i) {
+        selattavaVinkki  = i;
     }
 
 }

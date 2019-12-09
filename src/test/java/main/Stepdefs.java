@@ -1,10 +1,8 @@
 package main;
 
-import IO.IOStub;
 import UI.GraafinenKayttoliittyma;
 import UI.NappaimistonKuuntelija;
 import UI.Piirtoalusta;
-import UI.TekstiKayttoliittyma;
 import database.FakeTietokanta;
 import database.Tietokanta;
 import domain.Lukuvinkki;
@@ -47,7 +45,7 @@ public class Stepdefs {
     }
     
     private void init() {
-        alusta.initComponents(frame, true);
+        alusta.initComponents(frame, true, true);
     }
     
     private void performAction(Object o, String cmd) {
