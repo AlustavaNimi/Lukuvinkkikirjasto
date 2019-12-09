@@ -52,7 +52,7 @@ public class BlogipostausTest {
     }
 
     @Test
-    public void testSeturl() {
+    public void testSetUrl() {
         blogi.setUrl("Testi");
         assertEquals(blogi.getUrl(), "Testi");
     }

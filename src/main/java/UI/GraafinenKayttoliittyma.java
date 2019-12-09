@@ -122,14 +122,14 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta.getOutput().setText("Anna blogipostaukselle Otsikko:");
     }
 
-    public void muokkaaVinkkia() {
+    public void muokkaaVinkkia(Integer vinkkiId) {
         frame.getContentPane().remove(alusta);
         alusta = new Piirtoalusta();
-        frame = alusta.lukuvinkinMuokkaus(frame, lukuvinkkiTaulu.get(selattavaVinkki));
+        frame = alusta.lukuvinkinMuokkaus(frame, lukuvinkkiTaulu.get(vinkkiId));
         alusta.setGUIforKuuntelija(this);
         muokkaus = true;
     }
-
+    
     public void tallennaMuokkaus() {
         int id = lukuvinkkiTaulu.get(selattavaVinkki).getId();
         ArrayList<JTextField> lista = alusta.getVinkinTiedot();
@@ -216,6 +216,13 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     public Piirtoalusta getAlusta() {
         return alusta;
     }
-
+    
+    public Integer getSelattavaVinkki() {
+        return selattavaVinkki;
+    }
+    
+    public void setSelattavaVinkki(Integer i) {
+        selattavaVinkki  = i;
+    }
 
 }

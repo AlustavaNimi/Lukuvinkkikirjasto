@@ -1,6 +1,7 @@
 package UI;
 
 import database.FakeTietokanta;
+import database.LukuvinkkiDao;
 import database.Tietokanta;
 import domain.Lukuvinkki;
 import javax.swing.JFrame;
@@ -121,7 +122,13 @@ public class GraafinenKayttoliittymaTest {
 
     @Test
     public void testMuokkaaVinkkia() {
-        
+        frame = alusta.initComponents(frame, false, false);
+        assertFalse(GUI.getMuokkaus());
+        GUI.selaa();
+        GUI.muokkaaVinkkia(1);
+        alusta = GUI.getAlusta();
+        assertTrue(GUI.getMuokkaus());
+
     }
 
     @Test
@@ -141,6 +148,15 @@ public class GraafinenKayttoliittymaTest {
 
     @Test
     public void testUusiAlusta() {
+        frame = alusta.initComponents(frame, false, false);
+        GUI.selaa();
+        assertTrue(alusta.getOutput().getText().contains("testiotsikko"));
+        GUI.tulostaYksittainenLukuvinkki(1);
+        alusta = GUI.getAlusta();
+        assertFalse(alusta.getOutput().getText().contains("testiotsikko"));
+        GUI.uusiAlusta();
+        alusta = GUI.getAlusta();
+        assertTrue(alusta.getOutput().getText().contains("testiotsikko"));
 
     }
 
