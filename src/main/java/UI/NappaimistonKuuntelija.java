@@ -40,7 +40,8 @@ public class NappaimistonKuuntelija implements ActionListener {
             alusta.getInput().setText("");
             GUI.muokkaaVinkkia();
         } else if (e.getSource() == alusta.getSelaaNappi()) {
-            GUI.selaa();
+            String hakusana = alusta.getHakuKentta().getText();
+            GUI.selaaHakusanalla(hakusana);
         } else if (e.getSource() == alusta.getLisaaNappi()) {
             alusta.getOutput().setText("");
             alusta.getInput().setText("");

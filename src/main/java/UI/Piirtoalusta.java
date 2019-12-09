@@ -56,7 +56,7 @@ public class Piirtoalusta extends JPanel {
         selaaNappi.addActionListener(kuuntelija);
         lopetaNappi.addActionListener(kuuntelija);
         linkkiNappi.addActionListener(kuuntelija);
-        kirjaCheckBox = new JCheckBox("Kirat");
+        kirjaCheckBox = new JCheckBox("Kirjat");
         blogiCheckBox = new JCheckBox("Blogit");
         kirjaCheckBox.setSelected(true);
         blogiCheckBox.setSelected(true);
