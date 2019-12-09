@@ -12,6 +12,7 @@ Sprint backlogit sprinteille 1 ja 2 ovat [täällä](https://github.com/Alustava
 
 
 ## Definition of Done:
+
 ### Kaikille sprinteille:
 - Product owner hyväksyy user storyt
 - User storyjen ominaisuudet koodattu valmiiksi
