@@ -12,7 +12,6 @@ public class Piirtoalusta extends JPanel {
     private JTextField input;
     private JTextField hakuKentta;
     private JTextArea output;
-    private String komennot;
     private JButton alkuunNappi;
     private JScrollPane scroll;
     private JCheckBox kirjaCheckBox;
@@ -30,14 +29,10 @@ public class Piirtoalusta extends JPanel {
 
     public Piirtoalusta() {
         kuuntelija = new NappaimistonKuuntelija(this);
-        komennot = "Käytettävissä olevat komennot: "
-                + "\nLisaa vinkki"
-                + "\nSelaa"
-                + "\nLopeta";
     }
 
     public JFrame initComponents(JFrame frame, boolean muokkaus, boolean onBlogi) {
-        output = new JTextArea(komennot, 20, 20);
+        output = new JTextArea(20, 20);
         output.setLineWrap(true);
         scroll = new JScrollPane(output);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

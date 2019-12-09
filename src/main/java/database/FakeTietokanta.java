@@ -41,7 +41,14 @@ public class FakeTietokanta implements Tietokanta{
 
     @Override
     public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana, ArrayList<String> tyypit) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Lukuvinkki> lista = new ArrayList<>();
+        for (Lukuvinkki vinkki : lukuvinkit) {
+            if (vinkki.toString().contains(hakusana)) {
+                lista.add(vinkki);
+            }
+        }
+        
+        return lista; 
     }
 
     

@@ -37,10 +37,6 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         muokkaus = false;
     }
 
-    public GraafinenKayttoliittyma() {
-
-    }
-
     public boolean getMuokkaus() {
         return muokkaus;
     }
@@ -58,7 +54,6 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         frame = alusta.initComponents(frame, false, false);
         alusta.setGUIforKuuntelija(this);
         selaa();
-
     }
 
     public void poistaLukuvinkki() {
@@ -216,6 +211,10 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
                     Logger.getLogger(GraafinenKayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    public Piirtoalusta getAlusta() {
+        return alusta;
     }
 
 
