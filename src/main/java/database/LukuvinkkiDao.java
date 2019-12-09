@@ -3,6 +3,7 @@ package database;
 import domain.Blogipostaus;
 import domain.Kirja;
 import domain.Lukuvinkki;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,10 +15,17 @@ import java.util.ArrayList;
 public class LukuvinkkiDao implements Tietokanta {
 
     private String tietokantaOsoite;
+    private boolean tiedostoOnJoOlemassa; // Tieto kovakoodatun datan lisäämiseen
 
     public LukuvinkkiDao(String tietokantaOsoite) {
         this.tietokantaOsoite = tietokantaOsoite;
+        tiedostoOnJoOlemassa = onOlemassaTiedosto("db.db");
         luoTaulut();
+        
+        if (!tiedostoOnJoOlemassa) {
+            KovakoodattuData data = new KovakoodattuData();
+            data.lisaaKovakoodattuData(this);
+        }
     }
 
     @Override
@@ -251,6 +259,9 @@ public class LukuvinkkiDao implements Tietokanta {
         return lukuvinkit;
     }
 
-
+    private boolean onOlemassaTiedosto(String tiedostonimi) {
+        File tiedosto = new File(tiedostonimi);
+        return tiedosto.exists();
+    }
    
 }
