@@ -56,7 +56,7 @@ _As a user, I want to be able to edit my reading suggestions_
 #### User story 2.4:
 _As a user, I want to be able to filter my reading suggestions by various categories/keywords in order to view a list of suggestions that are relevant to my filter criteria_
 
-__Päivitys:__ Jaettu user storyihin [3.1](#user-story-3.1:) ja [3.4](#user-story-3.4:).
+__Päivitys:__ Jaettu user storyihin 3.1 ja 3.4.
 
 #### User story 2.5:
 _As a user, I want to be able to add blogpost-type of entries to my reading suggestion library_
@@ -80,7 +80,7 @@ _As a user, I want to be able to open a blogpost URL from within the app_
 Tähän tulee linkki .feature-tiedostoon
 
 #### User story 3.3:
-_As a user, I want to be see a list of reading suggestions on the home menu (aloitusnäkymä)_
+_As a user, I want to see a list of reading suggestions on the home menu (aloitusnäkymä)_
 
 Tähän tulee linkki .feature-tiedostoon
 
