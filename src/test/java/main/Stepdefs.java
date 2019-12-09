@@ -47,7 +47,7 @@ public class Stepdefs {
     }
     
     private void init() {
-        alusta.initComponents(frame, true);
+        alusta.initComponents(frame, true, true);
     }
     
     private void performAction(Object o, String cmd) {

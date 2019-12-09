@@ -57,7 +57,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         screenH = Toolkit.getDefaultToolkit().getScreenSize().height;
         frame = new JFrame("Lukuvinkit");
         alusta = new Piirtoalusta();
-        frame.setPreferredSize(new Dimension(300, 450));
+        frame.setPreferredSize(new Dimension(350, 450));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocation(screenW / 2, screenH / 2);
         frame.setVisible(true);
@@ -100,6 +100,22 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta.getOutput().setText(lukuvinkit);
         alusta.getInput().setText("");
 
+    }
+    
+    public void selaaHakusanalla(String hakusana) {
+        lukuvinkkiTaulu = new HashMap<>();
+        selaus = true;
+        int i = 1;
+
+        String lukuvinkit = "";
+        for (Lukuvinkki lukuvinkki : tietokanta.haeLukuvinkitHakusananPerusteella(hakusana)) {
+            String numerointi = String.valueOf(i);
+            lukuvinkit += numerointi + ". " + lukuvinkki.lyhytTulostus() + "\n\n";
+            lukuvinkkiTaulu.put(i, lukuvinkki);
+            i++;
+        }
+        alusta.getOutput().setText(lukuvinkit);
+        alusta.getInput().setText("");
     }
 
     @Override
@@ -202,5 +218,6 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
             }
         }
     }
+
 
 }

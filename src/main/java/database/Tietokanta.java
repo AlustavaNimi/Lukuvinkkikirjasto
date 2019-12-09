@@ -3,6 +3,7 @@ package database;
 
 import domain.Kirja;
 import domain.Lukuvinkki;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface Tietokanta {
@@ -18,5 +19,7 @@ public interface Tietokanta {
     public Lukuvinkki haeLukuvinkki(int id);
     
     public ArrayList<Lukuvinkki> haeLukuvinkit();
+    
+    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana);
     
 }

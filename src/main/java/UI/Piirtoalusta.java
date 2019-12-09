@@ -10,6 +10,7 @@ import javax.swing.*;
 public class Piirtoalusta extends JPanel {
 
     private JTextField input;
+    private JTextField hakuKentta;
     private JTextArea output;
     private String komennot;
     private JButton alkuunNappi;
@@ -39,8 +40,10 @@ public class Piirtoalusta extends JPanel {
         scroll = new JScrollPane(output);
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         input = new JTextField(15);
+        hakuKentta = new JTextField(15);
         output.setEditable(false);
         alkuunNappi = new JButton("Alkuun");
+        hakuKentta.addActionListener(kuuntelija);
         input.addActionListener(kuuntelija);
         alkuunNappi.addActionListener(kuuntelija);
         lisaaNappi = new JButton("Lisää");
@@ -63,7 +66,10 @@ public class Piirtoalusta extends JPanel {
                 this.add(linkkiNappi);
             }
         } else {
+            this.add(new JLabel("Valitse numerolla"));
             this.add(input);
+            this.add(new JLabel("Hae hakusanalla"));
+            this.add(hakuKentta);
             this.add(lisaaNappi);
             this.add(selaaNappi);
             this.add(lopetaNappi);
@@ -241,5 +247,9 @@ public class Piirtoalusta extends JPanel {
 
     public JButton getLinkkiNappi() {
         return this.linkkiNappi;
+    }
+    
+    public JTextField getHakuKentta() {
+        return this.hakuKentta;
     }
 }

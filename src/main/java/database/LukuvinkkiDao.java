@@ -225,7 +225,8 @@ public class LukuvinkkiDao implements Tietokanta {
         return lista.get(0);
     }
     
-    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana) throws SQLException {
+    @Override
+    public ArrayList<Lukuvinkki> haeLukuvinkitHakusananPerusteella(String hakusana){
         hakusana = hakusana.toLowerCase();
         ArrayList<Lukuvinkki> lukuvinkit = new ArrayList<>();
         try (Connection conn = luoTietokantaYhteys()) {

@@ -28,6 +28,9 @@ public class NappaimistonKuuntelija implements ActionListener {
             int i = Integer.parseInt(alusta.getInput().getText());
             GUI.tulostaYksittainenLukuvinkki(i);
             alusta.getOutput().setText("");
+        } else if (e.getSource() == alusta.getHakuKentta() && GUI.getSelaus()) {
+            String hakusana = alusta.getHakuKentta().getText();
+            GUI.selaaHakusanalla(hakusana);
         } else if (e.getSource() == alusta.getInput() && alusta.getInput().getText().toLowerCase().equals("lisaa vinkki")) {
             alusta.getOutput().setText("");
             alusta.getInput().setText("");
