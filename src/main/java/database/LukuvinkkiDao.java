@@ -15,14 +15,16 @@ import java.util.ArrayList;
 public class LukuvinkkiDao implements Tietokanta {
 
     private String tietokantaOsoite;
-    private boolean tiedostoOnJoOlemassa;
+    private boolean tiedostoOnJoOlemassa; // Tieto kovakoodatun datan lisäämiseen
 
     public LukuvinkkiDao(String tietokantaOsoite) {
         this.tietokantaOsoite = tietokantaOsoite;
         tiedostoOnJoOlemassa = onOlemassaTiedosto("db.db");
         luoTaulut();
+        
         if (!tiedostoOnJoOlemassa) {
-            lisaaKovakoodattuData();
+            KovakoodattuData data = new KovakoodattuData();
+            data.lisaaKovakoodattuData(this);
         }
     }
 
@@ -260,10 +262,6 @@ public class LukuvinkkiDao implements Tietokanta {
     private boolean onOlemassaTiedosto(String tiedostonimi) {
         File tiedosto = new File(tiedostonimi);
         return tiedosto.exists();
-    }
-    
-    private void lisaaKovakoodattuData() {
-        KovakoodattuData data = new KovakoodattuData(this);
     }
    
 }
