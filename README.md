@@ -6,7 +6,10 @@
 
 [Product backlog](https://docs.google.com/spreadsheets/d/1rBtfdbz3aD68T5sgYHyLOhiQsKZAhYVsElXckrt0-YY/edit?usp=sharing)
 
-[Sprint backlog ja sprint burndown-kaavio](https://docs.google.com/spreadsheets/d/1UURz--MI8hLlcHOOnGXXCvV4FUqv2Zm1d9TuHlCNGqk)
+Sprint backlogit sprinteille 1 ja 2 ovat [täällä](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/projects/1).
+
+[Sprint 3 backlog ja sprint burndown-kaaviot](https://docs.google.com/spreadsheets/d/1UURz--MI8hLlcHOOnGXXCvV4FUqv2Zm1d9TuHlCNGqk)
+
 
 ## Definition of Done:
 ### Kaikille sprinteille:
@@ -14,7 +17,7 @@
 - User storyjen ominaisuudet koodattu valmiiksi
 - Koodin tarkistaa ja arvioi vähintään yksi toinen tiimiläinen (myös ylläpidettävyyden osalta, mm. nimeämiskäytäntö on yhtenäinen)
 - Selkeä ja perusteltu arkkitehtuuri
-- Toteutetun koodin testikattavuuden tulee olla kohtuullinen (50% rivikattavuus muiden paitsi triviaalin koodin, kuten gettereiden/settereiden osalta)
+- Toteutetun koodin testikattavuuden tulee olla kohtuullinen ( > 50% rivikattavuus muiden paitsi triviaalin koodin, kuten gettereiden/settereiden osalta)
 - Hyväksymiskriteerit (Gherkin-formaatissa) täyttyvät ts. Cucumber-testit läpäisty (alla määritelty user storyjen yhteydessä)
 - Yksikkötestit läpäisty
 
@@ -53,7 +56,7 @@ _As a user, I want to be able to edit my reading suggestions_
 #### User story 2.4:
 _As a user, I want to be able to filter my reading suggestions by various categories/keywords in order to view a list of suggestions that are relevant to my filter criteria_
 
-__Update:__ Split in to user stories 3.1 and 3.4.
+__Päivitys:__ Jaettu user storyihin [3.1](#user-story-3.1:) ja [3.4](#user-story-3.4:).
 
 #### User story 2.5:
 _As a user, I want to be able to add blogpost-type of entries to my reading suggestion library_
@@ -66,10 +69,7 @@ Tähän tulee linkki .feature-tiedostoon
 
 Same acceptance criteria as before.
 
-#### User story 2.4:
-__Update:__ Split in to user stories 3.1 and 3.4.
-
-#### User story 3.1
+#### User story 3.1:
 _As a user, I want to be able to able to filter reading suggestions by entering search terms (hakusanoja)_
 
 Tähän tulee linkki .feature-tiedostoon
@@ -105,4 +105,4 @@ Suorita sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla
 
 Vaihtoehtoisesti voi suorittaa [releasen](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/releases) jar-tiedoston komennolla `java -jar Lukuvinkkikirjasto.jar`.
 
-Sovelluksessa on graafinen käyttöliittymä ja sovelluksessa voi lisätä, muokata, selata sekä poistaa kirjavinkkejä ja blogipostausvinkkejä. Sovellus ilmoittaa käytettävissä olevat komennot ajon aikana.
+Sovelluksessa on itsensä selittävä graafinen käyttöliittymä ja sovelluksessa voi lisätä, muokata, selata sekä poistaa kirjavinkkejä ja blogipostausvinkkejä.
