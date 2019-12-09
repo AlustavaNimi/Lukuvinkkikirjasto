@@ -27,7 +27,6 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     private String komennot;
     private JFrame frame;
     private HashMap<Integer, Lukuvinkki> lukuvinkkiTaulu;
-    private boolean selaus;
     private int selattavaVinkki;
     private boolean muokkaus;
 
@@ -35,16 +34,11 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         this.tietokanta = lukuvinkit;
         frame = new JFrame("Lukuvinkit");
         lukuvinkkiTaulu = new HashMap<>();
-        selaus = false;
         muokkaus = false;
     }
 
     public GraafinenKayttoliittyma() {
 
-    }
-
-    public boolean getSelaus() {
-        return selaus;
     }
 
     public boolean getMuokkaus() {
@@ -63,6 +57,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         frame.setVisible(true);
         frame = alusta.initComponents(frame, false, false);
         alusta.setGUIforKuuntelija(this);
+        selaa();
 
     }
 
@@ -81,13 +76,11 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         Lukuvinkki vinkki = lukuvinkkiTaulu.get(numero);
         alusta.getOutput().setText(vinkki.toString());
         selattavaVinkki = numero;
-        selaus = false;
     }
 
     @Override
     public void selaa() {
         lukuvinkkiTaulu = new HashMap<>();
-        selaus = true;
         int i = 1;
 
         String lukuvinkit = "";
@@ -104,7 +97,6 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     
     public void selaaHakusanalla(String hakusana) {
         lukuvinkkiTaulu = new HashMap<>();
-        selaus = true;
         int i = 1;
 
         String lukuvinkit = "";
@@ -202,8 +194,8 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta = new Piirtoalusta();
         frame = alusta.initComponents(frame, false, false);
         alusta.setGUIforKuuntelija(this);
-        selaus = false;
         muokkaus = false;
+        selaa();
     }
 
     public void avaaLinkki() {

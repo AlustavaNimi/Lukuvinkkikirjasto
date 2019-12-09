@@ -24,11 +24,11 @@ public class NappaimistonKuuntelija implements ActionListener {
             GUI.selaa();
         } else if (e.getSource() == alusta.getAlkuun()) {
             GUI.uusiAlusta();
-        } else if (e.getSource() == alusta.getInput() && GUI.getSelaus()) {
+        } else if (e.getSource() == alusta.getInput()) {
             int i = Integer.parseInt(alusta.getInput().getText());
             GUI.tulostaYksittainenLukuvinkki(i);
             alusta.getOutput().setText("");
-        } else if (e.getSource() == alusta.getHakuKentta() && GUI.getSelaus()) {
+        } else if (e.getSource() == alusta.getHakuKentta()) {
             String hakusana = alusta.getHakuKentta().getText();
             GUI.selaaHakusanalla(hakusana);
         } else if (e.getSource() == alusta.getInput() && alusta.getInput().getText().toLowerCase().equals("lisaa vinkki")) {
