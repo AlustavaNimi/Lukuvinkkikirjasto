@@ -79,6 +79,7 @@ public class Lukuvinkki {
         tuloste += "Otsikko: " + this.getOtsikko();
         tuloste += "\nKirjoittaja: " + this.getKirjoittaja();
         tuloste += "\nJulkaisuvuosi: " + this.getJulkaisuVuosi();
+        tuloste += "\nKuvaus: " + this.getKuvaus();
         tuloste += "\nRelated Courses: " + this.getKurssi();
         tuloste += "\nTagit: ";
         for (String tagi : tagit) {

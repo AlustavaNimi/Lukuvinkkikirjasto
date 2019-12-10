@@ -34,7 +34,6 @@ public class Kirja extends Lukuvinkki{
     @Override
     public String toString() {
         String tuloste = super.toString();
-        tuloste += "\nKirjoittaja: " + this.getKirjoittaja();
         tuloste += "\nTyyppi: Kirja";
         tuloste += "\nISBN: " + ISBN;
         return tuloste;
