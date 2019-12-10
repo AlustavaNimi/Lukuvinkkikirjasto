@@ -77,7 +77,7 @@ public class Lukuvinkki {
     public String toString() {
         String tuloste = "";
         tuloste += "Otsikko: " + this.getOtsikko();
-        tuloste += "\nkirjoittaja: " + this.getKirjoittaja();
+        tuloste += "\nKirjoittaja: " + this.getKirjoittaja();
         tuloste += "\nJulkaisuvuosi: " + this.getJulkaisuVuosi();
         tuloste += "\nRelated Courses: " + this.getKurssi();
         tuloste += "\nTagit: ";

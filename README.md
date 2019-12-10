@@ -71,7 +71,7 @@ Tähän tulee linkki .feature-tiedostoon
 Same acceptance criteria as before.
 
 #### User story 3.1:
-_As a user, I want to be able to able to filter reading suggestions by entering search terms (hakusanoja)_
+_As a user, I want to be able to filter reading suggestions by entering search terms (hakusanoja)_
 
 Tähän tulee linkki .feature-tiedostoon
 
