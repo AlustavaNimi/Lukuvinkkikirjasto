@@ -48,5 +48,6 @@ run {
 test {
     testLogging.showStandardStreams = true
     systemProperties['user.dir'] = workingDir
+    systemProperty 'java.awt.headless', 'false'
     // systemProperties System.getProperties()
 }
