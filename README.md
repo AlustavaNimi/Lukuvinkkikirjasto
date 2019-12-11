@@ -42,7 +42,7 @@ Same acceptance criteria as in Sprint 1
 #### User story 2.1:
 _As a user, I want to be able select a reading suggestion (lukuvinkki) from my reading list to view more details of this reading suggestion_
 
-Tähän tulee linkki .feature-tiedostoon
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/view_reading_suggestion_in_detail.feature)
 
 #### User story 2.2:
 _As a user, I want to be able to remove my reading suggestions_
