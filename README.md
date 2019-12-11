@@ -78,7 +78,7 @@ _As a user, I want to be able to filter reading suggestions by entering search t
 #### User story 3.2:
 _As a user, I want to be able to open a blogpost URL from within the app_
 
-Tähän tulee linkki .feature-tiedostoon
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/open_blogpost_url.feature)
 
 #### User story 3.3:
 _As a user, I want to see a list of reading suggestions on the home menu (aloitusnäkymä)_
