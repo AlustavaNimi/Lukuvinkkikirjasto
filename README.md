@@ -83,7 +83,7 @@ _As a user, I want to be able to open a blogpost URL from within the app_
 #### User story 3.3:
 _As a user, I want to see a list of reading suggestions on the home menu (aloitusnäkymä)_
 
-Tähän tulee linkki .feature-tiedostoon
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/view_reading_suggestions_on_home_menu.feature)
 
 #### User story 3.4:
 _As a user, I want an option to view only books or only blogposts_
