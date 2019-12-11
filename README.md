@@ -62,7 +62,7 @@ __Päivitys:__ Jaettu user storyihin 3.1 ja 3.4.
 #### User story 2.5:
 _As a user, I want to be able to add blogpost-type of entries to my reading suggestion library_
 
-Tähän tulee linkki .feature-tiedostoon
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_blogpost_suggestion.feature)
 
 ### Sprint 3
 
