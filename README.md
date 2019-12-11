@@ -93,7 +93,7 @@ Tähän tulee linkki .feature-tiedostoon
 #### User story 3.5:
 _As a user, I want to be able to mark reading suggestions that have been read already_
 
-Tähän tulee linkki .feature-tiedostoon
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/mark_reading_suggestion_as_read.feature)
 
 ## Asennus- ja käyttöohjeet
 Työpöytäkoneella pitää olla Java ja Gradle asennettuna.
