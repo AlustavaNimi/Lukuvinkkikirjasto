@@ -25,7 +25,7 @@ Sprint backlogit sprinteille 1 ja 2 ovat [täällä](https://github.com/Alustava
 ### Sprint 1
 
 #### User story 1.1:
-_As a user, I want to be able to add book suggestions to my reading list_
+_As a user, I want to be able to add books to my reading list_
 
 [Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_book_suggestion.feature)
 
@@ -60,7 +60,7 @@ _As a user, I want to be able to filter my reading suggestions by various catego
 __Päivitys:__ Jaettu user storyihin 3.1 ja 3.4.
 
 #### User story 2.5:
-_As a user, I want to be able to add blogpost-type of entries to my reading suggestion library_
+_As a user, I want to be able to add blogpost entries to my reading suggestion library_
 
 [Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/new_blogpost_suggestion.feature)
 
