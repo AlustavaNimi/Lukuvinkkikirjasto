@@ -88,7 +88,7 @@ _As a user, I want to see a list of reading suggestions on the home menu (aloitu
 #### User story 3.4:
 _As a user, I want an option to view only books or only blogposts_
 
-Tähän tulee linkki .feature-tiedostoon
+[Hyväksymiskriteerit](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/src/test/resources/main/filter_reading_suggestions_by_type.feature)
 
 #### User story 3.5:
 _As a user, I want to be able to mark reading suggestions that have been read already_
