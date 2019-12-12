@@ -1,6 +1,6 @@
 # Lukuvinkkikirjasto
 
-[JacocoTestReport](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/lukuvinkkitestreport.png) (Ongelmia saada codecov päivittymään (katso README:n alaosa))
+[JacocoTestReport](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/lukuvinkkitestreport.png)
 
 [![codecov](https://codecov.io/gh/AlustavaNimi/Lukuvinkkikirjasto/branch/master/graph/badge.svg)](https://codecov.io/gh/AlustavaNimi/Lukuvinkkikirjasto)
 
