@@ -123,7 +123,6 @@ public class Piirtoalusta extends JPanel {
 
     public JFrame lukuvinkinMuokkaus(JFrame frame, Lukuvinkki vinkki) {
         String isbn = "";
-        //if (vinkki.getTyyppi().equals("kirja")) {
         if (vinkki instanceof Kirja) {
             Kirja kirja = (Kirja) vinkki;
             isbn = kirja.getISBN();
