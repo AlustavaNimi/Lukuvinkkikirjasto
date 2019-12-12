@@ -1,5 +1,7 @@
 # Lukuvinkkikirjasto
 
+[JacocoTestReport](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/blob/master/lukuvinkkitestreport.png)
+
 [![codecov](https://codecov.io/gh/AlustavaNimi/Lukuvinkkikirjasto/branch/master/graph/badge.svg)](https://codecov.io/gh/AlustavaNimi/Lukuvinkkikirjasto)
 
 [![CircleCI](https://circleci.com/gh/AlustavaNimi/Lukuvinkkikirjasto.svg?style=svg)](https://circleci.com/gh/AlustavaNimi/Lukuvinkkikirjasto)
