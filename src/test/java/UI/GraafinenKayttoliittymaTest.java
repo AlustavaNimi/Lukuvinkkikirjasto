@@ -60,7 +60,7 @@ public class GraafinenKayttoliittymaTest {
         assertTrue(alusta.getOutput().getText().contains("testiotsikko"));
         GUI.poistaLukuvinkki();
         alusta = GUI.getAlusta();
-        assertTrue(alusta.getOutput().getText().contains("Vinkki poistettu!"));
+        assertTrue(alusta.getOutput().getText().contains("Lukuvinkki poistettu!"));
     }
 
     @Test
@@ -122,13 +122,10 @@ public class GraafinenKayttoliittymaTest {
 
     @Test
     public void testMuokkaaVinkkia() {
-        frame = alusta.initComponents(frame, false, false);
+        frame = alusta.initComponents(frame, true, true);
         assertFalse(GUI.getMuokkaus());
-        GUI.selaa();
         GUI.muokkaaVinkkia(1);
-        alusta = GUI.getAlusta();
         assertTrue(GUI.getMuokkaus());
-
     }
 
     @Test

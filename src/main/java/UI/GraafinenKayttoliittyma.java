@@ -7,6 +7,7 @@ import domain.Lukuvinkki;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -59,7 +60,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
     public void poistaLukuvinkki() {
         tietokanta.poistaLukuvinkki(lukuvinkkiTaulu.get(selattavaVinkki));
         uusiAlusta();
-        alusta.getOutput().setText("Vinkki poistettu!");
+        alusta.getOutput().setText("Lukuvinkki poistettu!");
     }
 
     public void tulostaYksittainenLukuvinkki(int numero) {
@@ -89,20 +90,20 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta.getInput().setText("");
 
     }
-    
+
     public void selaaHakusanalla(String hakusana) {
         lukuvinkkiTaulu = new HashMap<>();
         int i = 1;
 
         String lukuvinkit = "";
         ArrayList<String> tyypit = new ArrayList<>();
-        if(alusta.getKirjaCheckBox().isSelected()) {
+        if (alusta.getKirjaCheckBox().isSelected()) {
             tyypit.add("kirja");
         }
-        if(alusta.getBlogiCheckBox().isSelected()) {
+        if (alusta.getBlogiCheckBox().isSelected()) {
             tyypit.add("blogipostaus");
         }
-        for (Lukuvinkki lukuvinkki : tietokanta.haeLukuvinkitHakusananPerusteella(hakusana,tyypit)) {
+        for (Lukuvinkki lukuvinkki : tietokanta.haeLukuvinkitHakusananPerusteella(hakusana, tyypit)) {
             String numerointi = String.valueOf(i);
             lukuvinkit += numerointi + ". " + lukuvinkki.lyhytTulostus() + "\n\n";
             lukuvinkkiTaulu.put(i, lukuvinkki);
@@ -129,7 +130,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
         alusta.setGUIforKuuntelija(this);
         muokkaus = true;
     }
-    
+
     public void tallennaMuokkaus() {
         int id = lukuvinkkiTaulu.get(selattavaVinkki).getId();
         ArrayList<JTextField> lista = alusta.getVinkinTiedot();
@@ -144,7 +145,7 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
             k.setISBN(lista.get(2).getText());
         } else if (lukuvinkkiTaulu.get(selattavaVinkki).getTyyppi().equals("blogi")) {
             Blogipostaus b = (Blogipostaus) lukuvinkkiTaulu.get(selattavaVinkki);
-            b.setUrl(lista.get(2).getText());     
+            b.setUrl(lista.get(2).getText());
         }
         tietokanta.muokkaaLukuvinkkia(lukuvinkkiTaulu.get(selattavaVinkki));
 
@@ -208,21 +209,21 @@ public class GraafinenKayttoliittyma implements Kayttoliittyma {
             } catch (URISyntaxException ex) {
                 Logger.getLogger(GraafinenKayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
-                    Logger.getLogger(GraafinenKayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GraafinenKayttoliittyma.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-    
+
     public Piirtoalusta getAlusta() {
         return alusta;
     }
-    
+
     public Integer getSelattavaVinkki() {
         return selattavaVinkki;
     }
-    
+
     public void setSelattavaVinkki(Integer i) {
-        selattavaVinkki  = i;
+        selattavaVinkki = i;
     }
 
 }

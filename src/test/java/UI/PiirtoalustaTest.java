@@ -76,12 +76,10 @@ public class PiirtoalustaTest {
 
     @Test
     public void testLukuvinkinMuokkaus() {
-        frame = alusta.initComponents(GUI.getFrame(), false,false);
+        frame = alusta.initComponents(GUI.getFrame(), true,false);
         frame = alusta.lukuvinkinMuokkaus(frame, vinkki);
         assertEquals(alusta.getTallennaNappi().getText(), "Tallenna");
     }
     
    
-    
-
 }
