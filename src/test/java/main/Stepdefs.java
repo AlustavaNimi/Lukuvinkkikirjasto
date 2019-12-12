@@ -147,33 +147,33 @@ public class Stepdefs {
     }
 
     @When("author {string} is entered")
-    public void authorIsEntered(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    public void authorIsEntered(String author) {
+        alusta = gui.getAlusta();
+        alusta.getVinkinTiedot().get(1).setText(author);
     }
 
     @When("isbn {string} is entered")
-    public void isbnIsEntered(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    public void isbnIsEntered(String isbn) {
+        alusta = gui.getAlusta();
+        alusta.getVinkinTiedot().get(2).setText(isbn);
     }
 
     @When("description {string} is entered")
-    public void descriptionIsEntered(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    public void descriptionIsEntered(String description) {
+        alusta = gui.getAlusta();
+        alusta.getVinkinTiedot().get(3).setText(description);
     }
 
     @When("publication date {string} is entered")
-    public void publicationDateIsEntered(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    public void publicationDateIsEntered(String date) {
+        alusta = gui.getAlusta();
+        alusta.getVinkinTiedot().get(4).setText(date);
     }
 
     @When("course {string} is entered")
-    public void courseIsEntered(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    public void courseIsEntered(String course) {
+        alusta = gui.getAlusta();
+        alusta.getVinkinTiedot().get(5).setText(course);
     }
     
     @When("{string} is selected as filter criterion")
