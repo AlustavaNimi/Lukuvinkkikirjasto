@@ -120,13 +120,13 @@ public class GraafinenKayttoliittymaTest {
         assertTrue(alusta.getOutput().getText().contains("LisattyBlogi"));
     }
 
-//    @Test
-//    public void testMuokkaaVinkkia() {
-//        frame = alusta.initComponents(frame, true, true);
-//        assertFalse(GUI.getMuokkaus());
-//        GUI.muokkaaVinkkia(1);
-//        assertTrue(GUI.getMuokkaus());
-//    }
+    @Test
+    public void testMuokkaaVinkkia() {
+        frame = alusta.initComponents(frame, true, true);
+        assertFalse(GUI.getMuokkaus());
+        GUI.muokkaaVinkkia(1);
+        assertTrue(GUI.getMuokkaus());
+    }
 
     @Test
     public void testTallennaMuokkaus() {
