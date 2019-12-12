@@ -94,16 +94,14 @@ public class Stepdefs {
     public void commandIsSelected(String command) {
         if (command.equals("selaa")) {
             performAction(alusta.getSelaaNappi(), alusta.getSelaaNappi().getActionCommand());
-        }
-        if (command.equals("Lisää")) {
+        } else if (command.equals("Lisää")) {
             performAction(alusta.getLisaaNappi(), alusta.getLisaaNappi().getActionCommand());
-        }
-        if (command.equals("Alkuun")) {
+        } else if (command.equals("Alkuun")) {
             performAction(alusta.getAlkuun(), alusta.getAlkuun().getActionCommand());
-        }
-        if (command.equals("tallenna")) {
+        } else if (command.equals("tallenna")) {
             performAction(alusta.getTallennaNappi(), alusta.getTallennaNappi().getActionCommand());
         }
+        
         try {
             int i = Integer.parseInt(command);
             gui.tulostaYksittainenLukuvinkki(i);
@@ -212,7 +210,18 @@ public class Stepdefs {
 
     @When("search term {string} is entered")
     public void searchTermIsEntered(String search) {
+        alusta = gui.getAlusta();
         alusta.getHakuKentta().setText(search);
+    }
+    
+    @Then("title {string}, author {string}, url {string} and type {string} are displayed")
+    public void titleAuthorUrlAndTypeAreDisplayed(String title, String author, String url, String type) {
+        alusta = gui.getAlusta();
+        System.out.println(alusta.getOutput().getText());
+        assertTrue(alusta.getOutput().getText().contains(title));
+        assertTrue(alusta.getOutput().getText().contains(author));
+        assertTrue(alusta.getOutput().getText().contains(url));
+        assertTrue(alusta.getOutput().getText().contains(type));
     }
 
 }
