@@ -210,5 +210,9 @@ public class Stepdefs {
         performAction(alusta.getTallennaNappi(), alusta.getTallennaNappi().getActionCommand());
     }
 
+    @When("search term {string} is entered")
+    public void searchTermIsEntered(String search) {
+        alusta.getHakuKentta().setText(search);
+    }
 
 }
