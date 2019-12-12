@@ -176,7 +176,13 @@ public class Stepdefs {
     @When("{string} is selected as filter criterion")
     public void isSelectedAsFilterCriterion(String criterion) {
         alusta = gui.getAlusta();
-        alusta.getHakuKentta().setText(criterion);
+        if (criterion.equals("kirja")) {
+            alusta.getBlogiCheckBox().setSelected(false);
+            alusta.getKirjaCheckBox().setSelected(true);
+        } else {
+            alusta.getBlogiCheckBox().setSelected(true);
+            alusta.getKirjaCheckBox().setSelected(false);
+        }
     }
     
     @Given("reading suggestion with title title {string}, author {string} and url {string} and type {string} is successfully created")
