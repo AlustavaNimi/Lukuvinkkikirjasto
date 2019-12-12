@@ -101,6 +101,9 @@ public class Stepdefs {
         if (command.equals("Alkuun")) {
             performAction(alusta.getAlkuun(), alusta.getAlkuun().getActionCommand());
         }
+        if (command.equals("tallenna")) {
+            performAction(alusta.getTallennaNappi(), alusta.getTallennaNappi().getActionCommand());
+        }
         try {
             int i = Integer.parseInt(command);
             gui.tulostaYksittainenLukuvinkki(i);
@@ -132,15 +135,15 @@ public class Stepdefs {
     }
 
     @When("title {string} is entered")
-    public void titleIsEntered(String string) {
-        init();
-
+    public void titleIsEntered(String title) {
+        alusta = gui.getAlusta();
+        alusta.getVinkinTiedot().get(0).setText(title);
     }
 
     @When("type {string} is entered")
-    public void typeIsEntered(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    public void typeIsEntered(String type) {
+        alusta = gui.getAlusta();
+        alusta.getVinkinTiedot().get(6).setText(type);
     }
 
     @When("author {string} is entered")
@@ -188,6 +191,23 @@ public class Stepdefs {
     @Given("reading suggestion with title title {string}, author {string} and url {string} and type {string} is successfully created")
     public void readingSuggestionWithTitleTitleAuthorAndUrlAndTypeIsSuccessfullyCreated(String title, String author, String url, String type) {
         tietokanta.lisaaBlogi(new Blogipostaus(url, title, "", "", author, 0));
+    }
+    
+    @When("title {string}, author {string} and url {string} are entered")
+    public void titleAuthorAndUrlAreEntered(String title, String author, String url) {
+        // Write code here that turns the phrase above into concrete actions
+        tietokanta.lisaaBlogi(new Blogipostaus(url, title, "", "", author, 0));
+    }
+    
+    @When("title {string}, author {string} and url {string} and type {string} are entered")
+    public void titleAuthorAndUrlAndTypeAreEntered(String title, String author, String url, String type) {
+        alusta = gui.getAlusta();
+        alusta.getVinkinTiedot().get(0).setText(title);
+        alusta.getVinkinTiedot().get(1).setText(author);
+        alusta.getVinkinTiedot().get(2).setText(url);
+        alusta.getVinkinTiedot().get(4).setText("1");
+        alusta.getVinkinTiedot().get(6).setText(type);
+        performAction(alusta.getTallennaNappi(), alusta.getTallennaNappi().getActionCommand());
     }
 
 
