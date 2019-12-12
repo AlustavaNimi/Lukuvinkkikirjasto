@@ -106,4 +106,4 @@ Suorita sovellus projektin juuressa, missä on build.gradle -tiedosto komennolla
 
 Vaihtoehtoisesti voi suorittaa [releasen](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/releases) jar-tiedoston komennolla `java -jar Lukuvinkkikirjasto.jar`.
 
-Sovelluksessa on itsensä selittävä graafinen käyttöliittymä ja sovelluksessa voi lisätä, muokata, selata sekä poistaa kirjavinkkejä ja blogipostausvinkkejä.
+Sovelluksessa on itsensä selittävä graafinen käyttöliittymä ja sovelluksessa voi lisätä, muokata, selata sekä poistaa kirjavinkkejä ja blogipostausvinkkejä. Lisättäessä lukuvinkkiä pitää kirjoittaa tyypiksi joko _kirja_ tai _blogi_. Sovelluksessa on myös hakutoiminnallisuus sekä suodatus kirjan tai blogin perusteella.
