@@ -12,6 +12,7 @@ public class Lukuvinkki {
     private String tyyppi;
     private ArrayList<String> tagit;
     private int julkaisuVuosi;
+    private Boolean luettu;
 
     public Lukuvinkki(int id, String otsikko, String kuvaus, String kurssi, String kirjoittaja, int julkaisuVuosi, String tyyppi) {
         alusta(id, otsikko, kuvaus, kurssi, kirjoittaja, julkaisuVuosi, tyyppi);
@@ -72,7 +73,15 @@ public class Lukuvinkki {
     public String getTyyppi() {
         return tyyppi;
     }
-    
+
+    public Boolean getLuettu() {
+        return luettu;
+    }
+
+    public void setLuettu(Boolean luettu) {
+        this.luettu = luettu;
+    }
+
     @Override
     public String toString() {
         String tuloste = "";
@@ -92,7 +101,7 @@ public class Lukuvinkki {
         String tuloste = "";
         tuloste += "Otsikko: " + this.getOtsikko();
         tuloste += "\nKirjoittaja: " + this.getKirjoittaja();
-        
+
         return tuloste;
     }
 
@@ -105,6 +114,7 @@ public class Lukuvinkki {
         this.kirjoittaja = kirjoittaja;
         this.tyyppi = tyyppi;
         tagit = new ArrayList<>();
+        this.luettu = Boolean.FALSE;
     }
 
 }
