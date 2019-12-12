@@ -217,7 +217,6 @@ public class Stepdefs {
     @Then("title {string}, author {string}, url {string} and type {string} are displayed")
     public void titleAuthorUrlAndTypeAreDisplayed(String title, String author, String url, String type) {
         alusta = gui.getAlusta();
-        System.out.println(alusta.getOutput().getText());
         assertTrue(alusta.getOutput().getText().contains(title));
         assertTrue(alusta.getOutput().getText().contains(author));
         assertTrue(alusta.getOutput().getText().contains(url));
