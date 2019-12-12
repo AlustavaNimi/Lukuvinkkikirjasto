@@ -117,71 +117,15 @@ public class Piirtoalusta extends JPanel {
     }
 
     public JFrame lukuvinkinMuokkaus(JFrame frame, Lukuvinkki vinkki) {
-        vinkinTiedot = new ArrayList<>();
-        JTextField isbn = new JTextField();
-        JTextField tyyppi = new JTextField();
-        JTextField otsikko = new JTextField(vinkki.getOtsikko(), 20);
-        JTextField kirjoittaja = new JTextField(vinkki.getKirjoittaja(), 18);
-        JTextField kuvaus = new JTextField(vinkki.getKuvaus(), 20);
-        String vuosi = String.valueOf(vinkki.getJulkaisuVuosi());
-        JTextField vuosiluku = new JTextField(vuosi, 18);
-        JTextField kurssi = new JTextField(vinkki.getKurssi(), 20);
-        if (vinkki instanceof Kirja) {
-            Kirja kirja = (Kirja) vinkki;
-            isbn = new JTextField(kirja.getISBN(), 20);
-            tyyppi = new JTextField("kirja", 20);
-        } else if (vinkki instanceof Blogipostaus) {
-            Blogipostaus postaus = (Blogipostaus) vinkki;
-            isbn = new JTextField(postaus.getUrl(), 20);
-            tyyppi = new JTextField("blogi", 20);
+        String isbn = "";
+        if (vinkki.getTyyppi().equals("kirja")) {
+            isbn = ((Kirja)vinkki).getISBN();
+        } else {
+            isbn = ((Blogipostaus)vinkki).getUrl();
         }
-        vinkinTiedot.add(otsikko);
-        vinkinTiedot.add(kirjoittaja);
-        vinkinTiedot.add(kuvaus);
-        vinkinTiedot.add(vuosiluku);
-        vinkinTiedot.add(kurssi);
-        vinkinTiedot.add(isbn);
-        vinkinTiedot.add(tyyppi);
-
-        alkuunNappi = new JButton("Alkuun");
-        alkuunNappi.addActionListener(kuuntelija);
-
-        tallennaNappi = new JButton("Tallenna");
-        tallennaNappi.addActionListener(kuuntelija);
-
-        alkuunNappi.setLocation(new Point(195, 313));
-        JPanel p1 = new JPanel(new FlowLayout());
-        p1.add(new JLabel("Otsikko"));
-        p1.add(otsikko);
-        JPanel p2 = new JPanel(new FlowLayout());
-        p2.add(new JLabel("Kirjoittaja"));
-        p2.add(kirjoittaja);
-        JPanel p3 = new JPanel(new FlowLayout());
-        p3.add(new JLabel("ISBN/URL"));
-        p3.add(isbn);
-        JPanel p4 = new JPanel(new FlowLayout());
-        p4.add(new JLabel("Kuvaus"));
-        p4.add(kuvaus);
-        JPanel p5 = new JPanel(new FlowLayout());
-        p5.add(new JLabel("Vuosiluku"));
-        p5.add(vuosiluku);
-        JPanel p6 = new JPanel(new FlowLayout());
-        p6.add(new JLabel("Kurssi"));
-        p6.add(kurssi);
-        JPanel p7 = new JPanel(new FlowLayout());
-        p7.add(new JLabel("Tyyppi"));
-        p7.add(tyyppi);
-        this.add(p1);
-        this.add(p2);
-        this.add(p3);
-        this.add(p4);
-        this.add(p5);
-        this.add(p6);
-        this.add(p7);
-
-        this.add(tallennaNappi);
-        this.add(alkuunNappi);
-
+        rakennaMuokkausNakyma(vinkki.getOtsikko(), vinkki.getKirjoittaja(), vinkki.getKuvaus(),
+                String.valueOf(vinkki.getJulkaisuVuosi()), vinkki.getKurssi(), vinkki.getTyyppi(), isbn);
+        
         frame.add(this);
         frame.pack();
 
@@ -189,58 +133,63 @@ public class Piirtoalusta extends JPanel {
     }
 
     public JFrame lukuvinkinLisays(JFrame frame) {
+        rakennaMuokkausNakyma("","","","","","","");
+        frame.add(this);
+        frame.pack();
+        return frame;
+    }
+    
+    private void rakennaMuokkausNakyma(String otsikko, String kirjoittaja, String kuvaus, String vuosi, String kurssi, String tyyppi, String isbn) {
         vinkinTiedot = new ArrayList<>();
 
-        JTextField otsikko = new JTextField(20);
-        vinkinTiedot.add(otsikko);
+        JTextField otsikkoF = new JTextField(otsikko, 20);
+        vinkinTiedot.add(otsikkoF);
 
-        JTextField kirjoittaja = new JTextField(18);
-        vinkinTiedot.add(kirjoittaja);
+        JTextField kirjoittajaF = new JTextField(kirjoittaja,18);
+        vinkinTiedot.add(kirjoittajaF);
 
-        JTextField isbn = new JTextField(20);
-        vinkinTiedot.add(isbn);
+        JTextField isbnF = new JTextField(isbn, 20);
+        vinkinTiedot.add(isbnF);
 
-        JTextField kuvaus = new JTextField(20);
-        vinkinTiedot.add(kuvaus);
+        JTextField kuvausF = new JTextField(kuvaus, 20);
+        vinkinTiedot.add(kuvausF);
 
-        JTextField vuosiluku = new JTextField(18);
-        vinkinTiedot.add(vuosiluku);
+        JTextField vuosilukuF = new JTextField(vuosi, 18);
+        vinkinTiedot.add(vuosilukuF);
+        
+         JTextField kurssiF = new JTextField(kurssi, 20);
+        vinkinTiedot.add(kurssiF);
 
-        JTextField kurssi = new JTextField(20);
-        vinkinTiedot.add(kurssi);
-
-        JTextField tyyppi = new JTextField(20);
-        vinkinTiedot.add(tyyppi);
-
+        JTextField tyyppiF = new JTextField(tyyppi, 20);
+        vinkinTiedot.add(tyyppiF);
+        
         alkuunNappi = new JButton("Alkuun");
         alkuunNappi.addActionListener(kuuntelija);
 
         tallennaNappi = new JButton("Tallenna");
         tallennaNappi.addActionListener(kuuntelija);
-
-        alkuunNappi.setLocation(new Point(195, 313));
-
+        
         JPanel p1 = new JPanel(new FlowLayout());
         p1.add(new JLabel("Otsikko"));
-        p1.add(otsikko);
+        p1.add(otsikkoF);
         JPanel p2 = new JPanel(new FlowLayout());
         p2.add(new JLabel("Kirjoittaja"));
-        p2.add(kirjoittaja);
+        p2.add(kirjoittajaF);
         JPanel p3 = new JPanel(new FlowLayout());
         p3.add(new JLabel("ISBN/URL"));
-        p3.add(isbn);
+        p3.add(isbnF);
         JPanel p4 = new JPanel(new FlowLayout());
         p4.add(new JLabel("Kuvaus"));
-        p4.add(kuvaus);
+        p4.add(kuvausF);
         JPanel p5 = new JPanel(new FlowLayout());
         p5.add(new JLabel("Vuosiluku"));
-        p5.add(vuosiluku);
+        p5.add(vuosilukuF);
         JPanel p6 = new JPanel(new FlowLayout());
         p6.add(new JLabel("Kurssi"));
-        p6.add(kurssi);
+        p6.add(kurssiF);
         JPanel p7 = new JPanel(new FlowLayout());
         p7.add(new JLabel("Tyyppi"));
-        p7.add(tyyppi);
+        p7.add(tyyppiF);
         this.add(p1);
         this.add(p2);
         this.add(p3);
@@ -251,11 +200,6 @@ public class Piirtoalusta extends JPanel {
 
         this.add(tallennaNappi);
         this.add(alkuunNappi);
-
-        frame.add(this);
-        frame.pack();
-
-        return frame;
     }
 
     public JButton getTallennaNappi() {
