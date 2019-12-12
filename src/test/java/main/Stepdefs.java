@@ -108,12 +108,22 @@ public class Stepdefs {
 
         }
     }
+    
+    public boolean isSuggestionListed(String title) {
+        alusta = gui.getAlusta();
+        return alusta.getOutput().getText().contains(title);
+    }
 
     @Then("reading suggestion with title {string} is listed")
     public void readingSuggestionWithTitleIsListed(String title) {
-        alusta = gui.getAlusta();
-        assertTrue(alusta.getOutput().getText().contains(title));
+        assertTrue(isSuggestionListed(title));
     }
+    
+    @Then("reading suggestion with title {string} is not listed")
+    public void readingSuggestionWithTitleIsNotListed(String title) {
+        assertFalse(isSuggestionListed(title));
+    }
+
 
     @Then("system will respond with {string}")
     public void systemWillRespondWith(String output) {
@@ -121,11 +131,6 @@ public class Stepdefs {
         assertEquals(alusta.getOutput().getText(), output);
     }
 
-    /*@Given("command {string} is selected")
-    public void commandIsSelected(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
-    }*/
     @When("title {string} is entered")
     public void titleIsEntered(String string) {
         init();
@@ -172,6 +177,11 @@ public class Stepdefs {
     public void isSelectedAsFilterCriterion(String criterion) {
         alusta = gui.getAlusta();
         alusta.getHakuKentta().setText(criterion);
+    }
+    
+    @Given("reading suggestion with title title {string}, author {string} and url {string} and type {string} is successfully created")
+    public void readingSuggestionWithTitleTitleAuthorAndUrlAndTypeIsSuccessfullyCreated(String title, String author, String url, String type) {
+        tietokanta.lisaaBlogi(new Blogipostaus(url, title, "", "", author, 0));
     }
 
 
