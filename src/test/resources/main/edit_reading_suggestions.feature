@@ -5,4 +5,5 @@ Feature: Reading suggestions can be edited
         When command "selaa" is selected
         And command "1" is selected
         And Muokkaa is pressed
+        And Tallenna is pressed
         Then system will respond with "Muokkaus valmis!"

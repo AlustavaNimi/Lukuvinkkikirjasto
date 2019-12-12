@@ -80,6 +80,4 @@ public class PiirtoalustaTest {
         frame = alusta.lukuvinkinMuokkaus(frame, vinkki);
         assertEquals(alusta.getTallennaNappi().getText(), "Tallenna");
     }
-    
-   
 }

@@ -4,7 +4,10 @@ import UI.GraafinenKayttoliittyma;
 import UI.NappaimistonKuuntelija;
 import UI.Piirtoalusta;
 import database.FakeTietokanta;
+import database.LukuvinkkiDao;
 import database.Tietokanta;
+import domain.Blogipostaus;
+import domain.Kirja;
 import domain.Lukuvinkki;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -21,6 +24,7 @@ import javax.swing.JFrame;
 import static org.junit.Assert.*;
 
 public class Stepdefs {
+
     GraafinenKayttoliittyma gui;
     Piirtoalusta alusta;
     NappaimistonKuuntelija kuuntelija;
@@ -28,10 +32,10 @@ public class Stepdefs {
     JFrame frame;
 
     @Before
-    public void setup(){
+    public void setup() {
         tietokanta = new FakeTietokanta();
         alusta = new Piirtoalusta();
-        tietokanta = new FakeTietokanta();
+        tietokanta = new LukuvinkkiDao("jdbc:sqlite:test.db");
         kuuntelija = new NappaimistonKuuntelija(alusta);
         gui = new GraafinenKayttoliittyma(tietokanta);
         gui.run();
@@ -39,29 +43,35 @@ public class Stepdefs {
         init();
         alusta.setGUIforKuuntelija(gui);
     }
-    
+
     @After
     public void dispose() {
         frame.dispose();
     }
-    
+
     @Given("reading suggestion with title {string} and type {string} is successfully created")
     public void readingSuggestionWithTitleAndTypeIsSuccessfullyCreated(String title, String type) {
-        tietokanta.lisaaKirja(new Lukuvinkki(title));
+       if (type.equals("kirja")) {
+           Kirja kirja = new Kirja(title, "", "", "", 10, "");
+           tietokanta.lisaaKirja(kirja);
+       } else if (type.equals("blogi")) {
+           Blogipostaus p = new Blogipostaus("", title, "", "", "", 10);
+           tietokanta.lisaaBlogi(p);
+       }
     }
-    
+
     private void init() {
         frame = alusta.initComponents(frame, false, false);
         kuuntelija = alusta.getKuuntelija();
         alusta.setGUIforKuuntelija(gui);
     }
-    
+
     private void performAction(Object o, String cmd) {
         kuuntelija = alusta.getKuuntelija();
         ActionEvent tapahtuma = new ActionEvent(o, 1, cmd);
         kuuntelija.actionPerformed(tapahtuma);
     }
-    
+
     @When("Poista is pressed")
     public void poistaIsPressed() {
         alusta = gui.getAlusta();
@@ -72,6 +82,12 @@ public class Stepdefs {
     public void muokkaaIsPressed() {
         alusta = gui.getAlusta();
         performAction(alusta.getMuokkausNappi(), alusta.getMuokkausNappi().getActionCommand());
+    }
+
+    @When("Tallenna is pressed")
+    public void tallennaIsPressed() {
+        alusta = gui.getAlusta();
+        performAction(alusta.getTallennaNappi(), alusta.getTallennaNappi().getActionCommand());
     }
 
     @When("command {string} is selected")
@@ -89,7 +105,7 @@ public class Stepdefs {
             int i = Integer.parseInt(command);
             gui.tulostaYksittainenLukuvinkki(i);
         } catch (Exception e) {
-            
+
         }
     }
 
@@ -110,11 +126,10 @@ public class Stepdefs {
         // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
     }*/
-
     @When("title {string} is entered")
     public void titleIsEntered(String string) {
         init();
-        
+
     }
 
     @When("type {string} is entered")
