@@ -6,11 +6,11 @@
 
 [![CircleCI](https://circleci.com/gh/AlustavaNimi/Lukuvinkkikirjasto.svg?style=svg)](https://circleci.com/gh/AlustavaNimi/Lukuvinkkikirjasto)
 
-[Product backlog](https://docs.google.com/spreadsheets/d/1rBtfdbz3aD68T5sgYHyLOhiQsKZAhYVsElXckrt0-YY/edit?usp=sharing)
+[Product backlog](https://docs.google.com/spreadsheets/d/1QlJy02yp_AWBz-zBsUdYRPK_q1Q2QlPF55iRRBTfWzA/edit?usp=sharing)
 
 Sprint backlogit sprinteille 1 ja 2 ovat [täällä](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/projects/1).
 
-[Sprint 3 backlog ja sprint burndown-kaaviot](https://docs.google.com/spreadsheets/d/1UURz--MI8hLlcHOOnGXXCvV4FUqv2Zm1d9TuHlCNGqk)
+[Sprint 3 backlog ja sprint burndown-kaaviot](https://docs.google.com/spreadsheets/d/1nqBu0T1TrZO78jt01lwxQJOJcsubsEBII-R8Fph5Zaw/edit?usp=sharing)
 
 
 ## Definition of Done:
@@ -111,4 +111,4 @@ Vaihtoehtoisesti voi suorittaa [releasen](https://github.com/AlustavaNimi/Lukuvi
 Sovelluksessa on itsensä selittävä graafinen käyttöliittymä ja sovelluksessa voi lisätä, muokata, selata sekä poistaa kirjavinkkejä ja blogipostausvinkkejä. Lisättäessä lukuvinkkiä pitää kirjoittaa tyypiksi joko _kirja_ tai _blogi_. Sovelluksessa on myös hakutoiminnallisuus sekä suodatus kirjan tai blogin perusteella.
 
 ## Ongelmia
-Tällä hetkellä emme ole saaneet circleCI:tä toimimaan java Swingin kanssa ja tästä syystä myöskään codecov ei suostu päivittymään.
+Tällä hetkellä emme ole saaneet circleCI:tä toimimaan Java Swingin kanssa ja tästä syystä myöskään CodeCov ei suostu päivittymään.
