@@ -6,12 +6,30 @@
 
 [![CircleCI](https://circleci.com/gh/AlustavaNimi/Lukuvinkkikirjasto.svg?style=svg)](https://circleci.com/gh/AlustavaNimi/Lukuvinkkikirjasto)
 
+[Loppuraportti](https://docs.google.com/document/d/1XZVIkTuH_eYwHOxgFlm0VgdKLFqLirpBuBc17AfCnao)
+
+<!-- TOC -->
+
+## Sisällysluettelo
+
+- [Backlogit](#backlogit)
+- [Definition of Done](#definition-of-done)
+    - [Kaikille sprinteille](#kaikille-sprinteille)
+    - [Sprint 1](#sprint-1)
+    - [Sprint 2](#sprint-2)
+    - [Sprint 3](#sprint-3)
+- [Asennus- ja käyttöohjeet](#asennus--ja-k%C3%A4ytt%C3%B6ohjeet)
+- [Ongelmia](#ongelmia)
+
+<!-- /TOC -->
+
+## Backlogit
+
 [Product backlog](https://docs.google.com/spreadsheets/d/1QlJy02yp_AWBz-zBsUdYRPK_q1Q2QlPF55iRRBTfWzA/edit?usp=sharing)
 
 Sprint backlogit sprinteille 1 ja 2 ovat [täällä](https://github.com/AlustavaNimi/Lukuvinkkikirjasto/projects/1).
 
 [Sprint 3 backlog ja sprint burndown-kaaviot](https://docs.google.com/spreadsheets/d/1nqBu0T1TrZO78jt01lwxQJOJcsubsEBII-R8Fph5Zaw/edit?usp=sharing)
-
 
 ## Definition of Done:
 
