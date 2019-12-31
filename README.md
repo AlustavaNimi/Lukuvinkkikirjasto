@@ -57,7 +57,7 @@ _As a user, I want to be able to view a list of my book suggestions to browse th
 ### Sprint 2
 
 #### User story 1.1 and 1.2:
-Same acceptance criteria as in Sprint 1
+Same acceptance criteria as in [Sprint 1](#sprint-1)
 
 #### User story 2.1:
 _As a user, I want to be able select a reading suggestion (lukuvinkki) from my reading list to view more details of this reading suggestion_
@@ -77,7 +77,7 @@ _As a user, I want to be able to edit my reading suggestions_
 #### User story 2.4:
 _As a user, I want to be able to filter my reading suggestions by various categories/keywords in order to view a list of suggestions that are relevant to my filter criteria_
 
-__Päivitys:__ Jaettu user storyihin 3.1 ja 3.4.
+__Päivitys:__ Jaettu user storyihin [3.1](#user-story-31) ja [3.4](#user-story-34).
 
 #### User story 2.5:
 _As a user, I want to be able to add blogpost entries to my reading suggestion library_
